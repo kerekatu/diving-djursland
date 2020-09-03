@@ -1,0 +1,101 @@
+/* IMPORTS */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+/* VARIABLES */
+
+:root {
+  --ff: 'Inter', sans-serif;
+  --fs-0: 1.4rem;
+  --fs: 1.6rem;
+  --fs-2: 1.8rem;
+  --fs-3: 2.4rem;
+  --fs-4: 3.6rem;
+  --fs-5: 4.8rem;
+  --lh: 1;
+  --lh-2: 1.3;
+  --lh-3: 1.58;
+
+  --br: 0.4rem;
+  --br-2: 100rem;
+
+  --c-white: #fff;
+  --c-white-d: #f9f9f9;
+  --c-gray: #eee;
+  --c-black: #222;
+  --c-black-l: #666;
+  --c-blue: #5269ff;
+  --c-blue-d: #485de4;
+  --c-blue-l: #8494ff;
+  --c-orange: #fdbd5c;
+  --c-orange-d: #ffa721;
+}
+
+/* RESET */
+
+::-moz-selection {
+  background-color: var(--c-orange-d);
+  color: var(--c-white);
+}
+
+::selection {
+  background-color: var(--c-orange-d);
+  color: var(--c-white);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--ff);
+  font-size: var(--fs);
+  min-height: 100vh;
+  color: var(--c-black);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+input,
+button,
+textarea {
+  font-size: 1.6rem;
+  font-family: var(--ff);
+}
+
+.app {
+  display: grid;
+  grid-template-rows: 10rem 1fr 15rem;
+
+  &_home {
+    grid-template-rows: 64rem 1fr 15rem;
+  }
+}
+
+/* COMMON */
+
+h1 {
+  font-size: var(--fs-5);
+  font-weight: 700;
+  color: var(--c-white);
+}

@@ -1,0 +1,66 @@
+.header {
+  height: 10rem;
+  background-color: var(--c-blue);
+
+  &__content {
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8rem;
+    font-weight: 700;
+  }
+
+  &__hero {
+    display: flex;
+    flex-direction: column;
+    width: 90rem;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10rem 0;
+
+    & > p {
+      color: var(--c-white);
+      padding: 3rem 2rem;
+      line-height: 1.58;
+    }
+  }
+
+  &__cta {
+    margin-top: 1.4rem;
+    display: flex;
+    justify-content: center;
+    gap: 0 3rem;
+  }
+
+  &_extended {
+    height: 70rem;
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background: url(/home-background.png) no-repeat bottom;
+      background-size: cover;
+      bottom: 0;
+      left: 0;
+      z-index: -2;
+    }
+
+    &::before {
+      content: '';
+      background: url(/wave.svg) no-repeat top;
+      background-size: cover;
+      display: block;
+      position: absolute;
+      height: 19rem;
+      width: 100%;
+      bottom: 0;
+      right: 0;
+      z-index: -1;
+    }
+  }
+}

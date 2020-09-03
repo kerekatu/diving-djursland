@@ -1,0 +1,18 @@
+.navbar {
+  display: flex;
+
+  &__list {
+    display: flex;
+    align-items: center;
+  }
+
+  &__item:not(:last-child) {
+    margin-right: 3rem;
+  }
+
+  &__link {
+    color: var(--c-white);
+    font-size: var(--fs);
+    font-weight: 700;
+  }
+}
