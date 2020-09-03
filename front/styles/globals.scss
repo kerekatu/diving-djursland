@@ -83,6 +83,16 @@ textarea {
   font-family: var(--ff);
 }
 
+main {
+  max-width: 144rem;
+  margin: 0 auto;
+}
+
+footer {
+  max-width: 144rem;
+  margin: 0 auto;
+}
+
 .app {
   display: grid;
   grid-template-rows: 10rem 1fr 15rem;
