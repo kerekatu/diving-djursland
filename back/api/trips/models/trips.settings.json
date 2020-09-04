@@ -1,0 +1,54 @@
+{
+  "kind": "collectionType",
+  "collectionName": "trips",
+  "info": {
+    "name": "trips"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "unique": false,
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "date": {
+      "type": "datetime",
+      "required": true
+    },
+    "participants": {
+      "type": "integer"
+    },
+    "participantsLeft": {
+      "type": "integer"
+    },
+    "priceDKK": {
+      "type": "decimal"
+    },
+    "address": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "private": false,
+      "required": true,
+      "targetField": "title"
+    },
+    "priceEUR": {
+      "type": "decimal"
+    },
+    "trip_categories": {
+      "collection": "trip-categories",
+      "via": "trips"
+    },
+    "trip_places": {
+      "via": "trips",
+      "collection": "trip-places"
+    }
+  }
+}

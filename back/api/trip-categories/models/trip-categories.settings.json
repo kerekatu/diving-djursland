@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "trip_categories",
+  "info": {
+    "name": "TripCategories"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "category": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "trips": {
+      "via": "trip_categories",
+      "collection": "trips",
+      "dominant": true
+    }
+  }
+}

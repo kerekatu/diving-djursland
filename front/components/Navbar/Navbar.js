@@ -1,8 +1,7 @@
-import React from 'react'
 import Link from 'next/link'
 import styles from './Navbar.module.scss'
 
-import Button from '../Button/Button'
+import Button from '@/components/Button/Button'
 
 const Navbar = () => {
   return (

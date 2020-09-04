@@ -10,7 +10,7 @@
     padding: 1rem 2rem;
     color: var(--c-white);
     font-weight: 700;
-    font-size: var(--fs);
+    font-size: var(--fs-2);
     border-radius: var(--br);
     border: none;
     box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.12);
@@ -27,7 +27,7 @@
       padding: 1.2rem 8rem;
       color: var(--c-white);
       font-weight: 700;
-      font-size: var(--fs-2);
+      font-size: var(--fs-3);
       border-radius: var(--br-2);
       border: none;
     }
@@ -39,7 +39,7 @@
       padding: 1.2rem 3rem;
       color: var(--c-white);
       font-weight: 700;
-      font-size: var(--fs-2);
+      font-size: var(--fs-3);
       border: 0.2rem solid var(--c-white);
       border-radius: var(--br);
     }

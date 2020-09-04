@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "classnames": "^2.2.6",
+    "date-fns": "^2.16.1",
     "eslint": "^7.8.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.22.0",
@@ -26,6 +27,8 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-standard": "^4.0.1",
+    "remark": "^12.0.1",
+    "remark-html": "^12.0.0",
     "sass": "^1.26.10",
     "swr": "^0.3.1"
   }

@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "trip_places",
+  "info": {
+    "name": "TripPlaces"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": false
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "depth": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "media": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "trips": {
+      "collection": "trips",
+      "via": "trip_places",
+      "dominant": true
+    }
+  }
+}

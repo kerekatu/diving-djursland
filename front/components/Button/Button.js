@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './Button.module.scss'
 import PropTypes from 'prop-types'
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'

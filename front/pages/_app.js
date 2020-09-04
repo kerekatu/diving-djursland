@@ -1,22 +1,23 @@
-import '../styles/globals.scss'
-import Header from '../components/Header/Header'
+import '@/styles/globals.scss'
+import Header from '@/components/Header/Header'
 import PropTypes from 'prop-types'
+import { SWRConfig } from 'swr'
 
 function MyApp({ Component, pageProps }) {
-  if (Component?.name === 'Home') {
-    return (
-      <div className="app_home">
-        <Header type="extended" />
-        <Component {...pageProps} />
-      </div>
-    )
-  }
+  const headerCondition = Component?.name === 'Home'
 
   return (
-    <div className="app">
-      <Header />
-      <Component {...pageProps} />
-    </div>
+    <SWRConfig
+      value={{
+        refreshInterval: 0,
+        fetcher: (...args) => fetch(...args).then((res) => res.json())
+      }}
+    >
+      <div className={headerCondition ? 'app_home' : 'app'}>
+        <Header isExtended={headerCondition && true} />
+        <Component {...pageProps} />
+      </div>
+    </SWRConfig>
   )
 }
 

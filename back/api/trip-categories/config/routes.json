@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/trip-categories",
+      "handler": "trip-categories.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/trip-categories/count",
+      "handler": "trip-categories.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/trip-categories/:id",
+      "handler": "trip-categories.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/trip-categories",
+      "handler": "trip-categories.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/trip-categories/:id",
+      "handler": "trip-categories.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/trip-categories/:id",
+      "handler": "trip-categories.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

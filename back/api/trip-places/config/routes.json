@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/trip-places",
+      "handler": "trip-places.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/trip-places/count",
+      "handler": "trip-places.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/trip-places/:id",
+      "handler": "trip-places.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/trip-places",
+      "handler": "trip-places.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/trip-places/:id",
+      "handler": "trip-places.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/trip-places/:id",
+      "handler": "trip-places.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
