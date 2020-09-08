@@ -38,8 +38,8 @@
       "required": false
     },
     "trips": {
-      "collection": "trips",
       "via": "trip_places",
+      "collection": "trips",
       "dominant": true
     }
   }

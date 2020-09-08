@@ -6,7 +6,7 @@ import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 const Button = ({ title, type, icon, droppable }) => {
   return (
     <button className={styles['btn_' + type]}>
-      {title}{' '}
+      {title}
       {droppable && <Icon icon={faAngleDown} className={styles.btn__icon} />}
     </button>
   )

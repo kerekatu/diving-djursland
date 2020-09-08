@@ -15,9 +15,8 @@
       "unique": true
     },
     "trips": {
-      "via": "trip_categories",
-      "collection": "trips",
-      "dominant": true
+      "via": "trip_category",
+      "collection": "trips"
     }
   }
 }

@@ -33,22 +33,20 @@
     "address": {
       "type": "string"
     },
-    "slug": {
-      "type": "uid",
-      "private": false,
-      "required": true,
-      "targetField": "title"
-    },
     "priceEUR": {
       "type": "decimal"
     },
-    "trip_categories": {
-      "collection": "trip-categories",
+    "trip_category": {
+      "model": "trip-categories",
       "via": "trips"
     },
     "trip_places": {
-      "via": "trips",
-      "collection": "trip-places"
+      "collection": "trip-places",
+      "via": "trips"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
     }
   }
 }

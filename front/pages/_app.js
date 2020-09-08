@@ -1,10 +1,11 @@
 import '@/styles/globals.scss'
+import '@/styles/grid.scss'
 import Header from '@/components/Header/Header'
 import PropTypes from 'prop-types'
 import { SWRConfig } from 'swr'
 
 function MyApp({ Component, pageProps }) {
-  const headerCondition = Component?.name === 'Home'
+  const headerCondition = Component?.name === 'HomePage'
 
   return (
     <SWRConfig
@@ -15,7 +16,9 @@ function MyApp({ Component, pageProps }) {
     >
       <div className={headerCondition ? 'app_home' : 'app'}>
         <Header isExtended={headerCondition && true} />
-        <Component {...pageProps} />
+        <main className="main-content">
+          <Component {...pageProps} />
+        </main>
       </div>
     </SWRConfig>
   )

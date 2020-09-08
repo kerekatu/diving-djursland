@@ -1,5 +1,5 @@
-const Places = () => {
+const PlacesPage = () => {
   return <div></div>
 }
 
-export default Places
+export default PlacesPage

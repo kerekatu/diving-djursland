@@ -1,13 +1,13 @@
 import { getAllData } from '@/lib/api'
 import PropTypes from 'prop-types'
 
-const Trips = ({ allTrips }) => {
+import TripsList from '@/components/Trips/TripsList'
+
+const TripsPage = ({ allTrips }) => {
   return (
-    <div>
-      {allTrips.map((trip, index) => (
-        <div key={index}>{trip.title}</div>
-      ))}
-    </div>
+    <section className="trips">
+      <TripsList items={allTrips} />
+    </section>
   )
 }
 
@@ -21,8 +21,8 @@ export async function getStaticProps() {
   }
 }
 
-Trips.propTypes = {
+TripsPage.propTypes = {
   allTrips: PropTypes.array.isRequired
 }
 
-export default Trips
+export default TripsPage

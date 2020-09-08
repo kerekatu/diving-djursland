@@ -1,0 +1,11 @@
+{
+  "files.exclude": {
+    ".vscode": true,
+    "front\\node_modules": true,
+    "front\\.next": true,
+    "front\\jsconfig.json": true,
+    "front\\package-lock.json": true,
+    "front\\.eslintrc.js": true,
+    "front\\yarn.lock": true
+  }
+}

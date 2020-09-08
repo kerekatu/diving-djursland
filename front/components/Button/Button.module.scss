@@ -3,6 +3,18 @@
     margin-left: 0.5rem;
   }
 
+  &_primary {
+    display: flex;
+    align-items: center;
+    background-color: var(--c-orange-d);
+    padding: 0.8rem 8rem;
+    color: var(--c-white);
+    font-weight: 700;
+    font-size: var(--fs-2);
+    border-radius: var(--br);
+    border: none;
+  }
+
   &_secondary {
     display: flex;
     align-items: center;

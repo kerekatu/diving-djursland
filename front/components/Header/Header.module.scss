@@ -1,13 +1,13 @@
 .header {
   height: 10rem;
   background-color: var(--c-blue);
+  padding: var(--pp-desktop);
 
   &__content {
     height: 10rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 8rem;
     font-weight: 700;
     max-width: 144rem;
     margin: 0 auto;
@@ -36,8 +36,9 @@
   }
 
   &_extended {
-    height: 70rem;
+    height: 65rem;
     position: relative;
+    padding: var(--pp-desktop-h);
 
     &::after {
       content: '';
