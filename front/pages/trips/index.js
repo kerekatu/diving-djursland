@@ -1,4 +1,4 @@
-import { getAllData } from '@/lib/api'
+import { getNewestTrips } from '@/lib/api'
 import PropTypes from 'prop-types'
 
 import TripsList from '@/components/Trips/TripsList'
@@ -11,8 +11,10 @@ const TripsPage = ({ allTrips }) => {
   )
 }
 
+// ! Add Static Links
+
 export async function getStaticProps() {
-  const allTrips = (await getAllData('trips')) || []
+  const allTrips = (await getNewestTrips('trips')) || []
 
   return {
     props: {

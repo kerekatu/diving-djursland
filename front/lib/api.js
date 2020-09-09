@@ -18,7 +18,19 @@ async function fetchAPI(url) {
   return json
 }
 
+export async function getNewestTrips() {
+  const data = await fetchAPI('trips' + '?_sort=date:ASC')
+
+  return data
+}
+
 export async function getAllData(collection) {
+  const data = await fetchAPI(collection + '?_sort=date:DESC')
+
+  return data
+}
+
+export async function getPopularData(collection) {
   const data = await fetchAPI(collection)
 
   return data
