@@ -9,9 +9,9 @@
 }
 
 .home {
-  padding: var(--pp-desktop-h);
-  max-width: 144rem;
-  margin: 0 auto;
+  display: grid;
+  grid-template-rows: 70rem 80rem 50rem;
+  gap: 8rem 0;
 }
 
 .main-content {

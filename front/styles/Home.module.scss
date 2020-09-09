@@ -1,7 +1,8 @@
 .home {
+  // PLACES SECTION
   &_places {
-    margin-top: 8rem;
-    min-height: 100vh;
+    max-width: 144rem;
+    margin: 8rem auto 0 auto;
 
     &__container {
       display: grid;
@@ -39,6 +40,44 @@
       line-height: var(--lh-2);
       margin-top: 0.6rem;
       margin-bottom: 2rem;
+    }
+  }
+
+  // TRIPS SECTION
+  &_trips {
+    padding: var(--ms-desktop);
+    background-color: var(--c-white-d);
+    height: 100vh;
+  }
+
+  // NEWSLETTER SECTION
+  &_newsletter {
+    padding: var(--ms-desktop);
+    background-color: var(--c-blue);
+
+    &__content {
+      width: 70rem;
+      margin: 0 auto;
+
+      & > h1 {
+        margin-bottom: 2rem;
+      }
+
+      & > h4 {
+        line-height: var(--lh-2);
+        width: 56rem;
+      }
+    }
+
+    &__form {
+      margin-top: 4rem;
+      padding: 5rem 6rem;
+      background-color: var(--c-white);
+      height: 36rem;
+      width: 100%;
+      border-radius: var(--br);
+      border: 0.1rem solid var(--c-gray);
+      box-shadow: 0 1rem 4rem 0.4rem rgba(0, 0, 0, 0.1);
     }
   }
 }

@@ -22,6 +22,7 @@
 
   --pp-desktop-h: 0 8rem;
   --pp-desktop: 0 4rem;
+  --ms-desktop: 8rem 0;
 
   --c-white: #fff;
   --c-white-d: #f9f9f9;
@@ -158,13 +159,17 @@ h5 {
 }
 
 .green_text {
-  color: var(--c-green);
+  color: var(--c-green) !important;
 }
 
 .orange_text {
-  color: var(--c-orange);
+  color: var(--c-orange) !important;
 }
 
 .red_text {
-  color: var(--c-red);
+  color: var(--c-red) !important;
+}
+
+.white_text {
+  color: var(--c-white) !important;
 }

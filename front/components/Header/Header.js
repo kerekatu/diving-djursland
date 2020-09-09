@@ -23,8 +23,12 @@ const Header = ({ isExtended }) => {
             Djursland.
           </p>
           <div className={styles.header__cta}>
-            <Button type="_cta_primary" title="Se Kommende Dykkerture" />
-            <Button type="_cta_secondary" title="Kontakt Os" />
+            <Button
+              type="_cta_primary"
+              title="Se Kommende Dykkerture"
+              link="/trips"
+            />
+            <Button type="_cta_secondary" title="Kontakt Os" link="/contact" />
           </div>
         </section>
       )}
@@ -33,7 +37,7 @@ const Header = ({ isExtended }) => {
 }
 
 Header.propTypes = {
-  isExtended: PropTypes.bool
+  isExtended: PropTypes.bool,
 }
 
 export default Header

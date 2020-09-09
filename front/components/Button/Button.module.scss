@@ -36,6 +36,7 @@
     font-size: var(--fs);
     border-radius: var(--br-2);
     border: 0.2rem solid var(--c-blue);
+    transition: all 0.2s ease-in-out;
 
     &:hover {
       background-color: var(--c-blue);
@@ -45,6 +46,7 @@
       font-size: var(--fs);
       border-radius: var(--br-2);
       border: 0.2rem solid var(--c-blue);
+      box-shadow: 0 0.4rem 1.5rem rgba(0, 0, 0, 0.12);
     }
   }
 
@@ -59,6 +61,12 @@
       font-size: var(--fs-3);
       border-radius: var(--br-2);
       border: none;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        box-shadow: 0 0.4rem 1.5rem rgba(0, 0, 0, 0.12);
+        background-color: var(--c-orange);
+      }
     }
 
     &_secondary {
@@ -71,6 +79,13 @@
       font-size: var(--fs-3);
       border: 0.2rem solid var(--c-white);
       border-radius: var(--br);
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        background-color: var(--c-white);
+        color: var(--c-blue);
+        box-shadow: 0 0.4rem 1.5rem rgba(0, 0, 0, 0.12);
+      }
     }
   }
 }
