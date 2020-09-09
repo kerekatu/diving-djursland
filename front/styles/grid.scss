@@ -8,6 +8,12 @@
   }
 }
 
+.home {
+  padding: var(--pp-desktop-h);
+  max-width: 144rem;
+  margin: 0 auto;
+}
+
 .main-content {
   padding: var(--pp-desktop);
 }

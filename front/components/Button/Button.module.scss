@@ -29,6 +29,23 @@
   }
 
   &_tertiary {
+    background-color: transparent;
+    padding: 0.75rem 2rem;
+    color: var(--c-blue);
+    font-weight: 700;
+    font-size: var(--fs);
+    border-radius: var(--br-2);
+    border: 0.2rem solid var(--c-blue);
+
+    &:hover {
+      background-color: var(--c-blue);
+      padding: 0.75rem 2rem;
+      color: var(--c-white);
+      font-weight: 700;
+      font-size: var(--fs);
+      border-radius: var(--br-2);
+      border: 0.2rem solid var(--c-blue);
+    }
   }
 
   &__cta {

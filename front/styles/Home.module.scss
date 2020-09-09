@@ -1,6 +1,44 @@
 .home {
   &_places {
-    margin-top: 3rem;
+    margin-top: 8rem;
     min-height: 100vh;
+
+    &__container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0 2rem;
+      margin-top: 6rem;
+    }
+
+    &__img {
+      display: block;
+      width: 100%;
+      height: 25rem;
+      object-fit: cover;
+      border-top-left-radius: var(--br);
+      border-top-right-radius: var(--br);
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+      height: 100%;
+      max-height: 20rem;
+
+      & > button {
+        align-self: end;
+        justify-self: end;
+        margin-top: auto;
+      }
+    }
+
+    &__desc {
+      color: var(--c-black-l-2);
+      font-size: var(--fs);
+      line-height: var(--lh-2);
+      margin-top: 0.6rem;
+      margin-bottom: 2rem;
+    }
   }
 }

@@ -70,6 +70,7 @@ body {
   font-size: var(--fs-2);
   min-height: 100vh;
   color: var(--c-black);
+  text-rendering: optimizeLegibility;
 }
 
 a {
@@ -93,7 +94,6 @@ textarea {
 }
 
 main {
-  padding: var(--pp-desktop);
   width: 100%;
 }
 
@@ -124,6 +124,12 @@ h3 {
 
 h4 {
   font-size: var(--fs-3);
+  font-weight: 700;
+  color: var(--c-black);
+}
+
+h5 {
+  font-size: var(--fs-2);
   font-weight: 700;
   color: var(--c-black);
 }

@@ -27,7 +27,7 @@ const TripsList = ({ items }) => {
               <img
                 src={
                   'http://localhost:1337' +
-                  trip.trip_places[0].media[0].formats.small.url
+                  trip.trip_places[0].media[0]?.formats.small.url
                 }
                 alt="Diving Trip Place"
                 className={styles.trips_listing__img}
@@ -62,7 +62,7 @@ const TripsList = ({ items }) => {
 }
 
 TripsList.propTypes = {
-  items: PropTypes.array.isRequired
+  items: PropTypes.array.isRequired,
 }
 
 export default TripsList

@@ -11,12 +11,12 @@ function MyApp({ Component, pageProps }) {
     <SWRConfig
       value={{
         refreshInterval: 0,
-        fetcher: (...args) => fetch(...args).then((res) => res.json())
+        fetcher: (...args) => fetch(...args).then((res) => res.json()),
       }}
     >
       <div className={headerCondition ? 'app_home' : 'app'}>
         <Header isExtended={headerCondition && true} />
-        <main className="main-content">
+        <main className={headerCondition ? 'home' : 'main-content'}>
           <Component {...pageProps} />
         </main>
       </div>
@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps }) {
 
 MyApp.propTypes = {
   Component: PropTypes.oneOfType([PropTypes.func, PropTypes.object]).isRequired,
-  pageProps: PropTypes.any
+  pageProps: PropTypes.any,
 }
 
 export default MyApp

@@ -5,7 +5,9 @@
     "front\\.next": true,
     "front\\jsconfig.json": true,
     "front\\package-lock.json": true,
-    "front\\.eslintrc.js": true,
-    "front\\yarn.lock": true
+    "front\\yarn.lock": true,
+    "front/.next": true,
+    "front/node_modules": true,
+    "front/jsconfig.json": true
   }
 }

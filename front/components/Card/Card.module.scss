@@ -1,5 +1,8 @@
 .card {
   &_highlight {
+    display: flex;
+    flex-direction: column;
     background-color: var(--c-white-d);
+    border-radius: var(--br);
   }
 }

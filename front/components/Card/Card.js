@@ -3,12 +3,14 @@ import PropTypes from 'prop-types'
 import cx from 'classnames'
 
 const Card = ({ children, type }) => {
-  return <div className={cx(styles.card, styles.card_ + type)}>{children}</div>
+  return (
+    <div className={cx(styles.card, styles['card_' + type])}>{children}</div>
+  )
 }
 
 Card.propTypes = {
   children: PropTypes.node,
-  type: PropTypes.string.isRequired
+  type: PropTypes.string.isRequired,
 }
 
 export default Card
