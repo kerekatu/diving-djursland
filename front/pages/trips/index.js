@@ -13,8 +13,6 @@ const TripsPage = ({ allTrips, allMarkers }) => {
   )
 }
 
-// ! Add Static Links
-
 export async function getStaticProps() {
   const allTrips = (await getNewestTrips('trips')) || []
   const allMarkers = (await getAllData('map-markers', '')) || []

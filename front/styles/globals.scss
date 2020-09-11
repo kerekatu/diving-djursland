@@ -145,15 +145,15 @@ h5 {
   display: block;
   border-radius: var(--br-2);
 
-  &__let {
+  &_let {
     background-color: var(--c-green);
   }
 
-  &__medium {
+  &_medium {
     background-color: var(--c-orange);
   }
 
-  &__svær {
+  &_svær {
     background-color: var(--c-red);
   }
 }

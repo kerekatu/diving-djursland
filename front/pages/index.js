@@ -4,12 +4,13 @@ import { trimWords } from '@/lib/trim'
 import { getPopularData } from '@/lib/api'
 import PropTypes from 'prop-types'
 import { Button } from '@/components/Button/Button'
+import { withTranslation } from '../i18n'
 
-const HomePage = ({ popularPlaces }) => {
+const HomePage = ({ popularPlaces, t }) => {
   return (
     <>
       <section className={styles.home_places}>
-        <h2 className="center">Mest Populære Dykkersteder</h2>
+        <h2 className="center">{t('heading-section-places')}</h2>
         <div className={styles.home_places__container}>
           {popularPlaces
             .sort((a, b) => b.trips.length - a.trips.length)
@@ -31,7 +32,11 @@ const HomePage = ({ popularPlaces }) => {
                   <p className={styles.home_places__desc}>
                     {item.content && trimWords(item.content, 9, 100)}
                   </p>
-                  <Button title="Læs mere" type="tertiary" />
+                  <Button
+                    title="Læs mere"
+                    type="tertiary"
+                    link={`/places/${item.slug}`}
+                  />
                 </div>
               </Card>
             ))}
@@ -71,4 +76,4 @@ HomePage.propTypes = {
     .isRequired
 }
 
-export default HomePage
+export default withTranslation('home')(HomePage)

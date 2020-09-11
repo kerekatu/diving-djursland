@@ -4,8 +4,9 @@ import styles from './Header.module.scss'
 import Navbar from '@/components/Navbar/Navbar'
 import Logo from '@/components/Logo/Logo'
 import { Button } from '@/components/Button/Button'
+import { withTranslation } from '../../i18n'
 
-const Header = ({ isExtended }) => {
+const Header = ({ isExtended, t }) => {
   return (
     <header className={isExtended ? styles.header_extended : styles.header}>
       <div className={styles.header__content}>
@@ -15,7 +16,7 @@ const Header = ({ isExtended }) => {
 
       {isExtended && (
         <section className={styles.header__hero}>
-          <h1>Deltag i Vores Spændende Dykkerture</h1>
+          <h1>{t('header-hero-h1')}</h1>
           <p>
             Djursland rummer mange unikke naturoplevelser både over og under
             vandet. Er du certificeret dykker har du mulighed for at deltage i
@@ -40,4 +41,4 @@ Header.propTypes = {
   isExtended: PropTypes.bool
 }
 
-export default Header
+export default withTranslation('header')(Header)

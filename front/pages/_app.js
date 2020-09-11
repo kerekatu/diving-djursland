@@ -1,27 +1,24 @@
 import '@/styles/globals.scss'
 import '@/styles/grid.scss'
-import Header from '@/components/Header/Header'
 import PropTypes from 'prop-types'
-import { SWRConfig } from 'swr'
+import { appWithTranslation } from '../i18n'
+import { useRouter } from 'next/router'
+
+import Header from '@/components/Header/Header'
 
 function MyApp({ Component, pageProps }) {
-  const headerCondition = Component?.name === 'HomePage'
+  const router = useRouter()
+  console.log(router)
+  const headerCondition = router.pathname === '/'
   const tripsCondition = Component?.name === 'TripsPage'
 
   return (
-    <SWRConfig
-      value={{
-        refreshInterval: 0,
-        fetcher: (...args) => fetch(...args).then((res) => res.json())
-      }}
-    >
-      <div className={headerCondition ? 'app_home' : 'app'}>
-        <Header isExtended={headerCondition && true} />
-        <main className={headerCondition ? 'home' : 'main-content'}>
-          <Component {...pageProps} />
-        </main>
-      </div>
-    </SWRConfig>
+    <div className={headerCondition ? 'app_home' : 'app'}>
+      <Header isExtended={headerCondition && true} />
+      <main className={headerCondition ? 'home' : 'main-content'}>
+        <Component {...pageProps} />
+      </main>
+    </div>
   )
 }
 
@@ -30,4 +27,4 @@ MyApp.propTypes = {
   pageProps: PropTypes.any
 }
 
-export default MyApp
+export default appWithTranslation(MyApp)

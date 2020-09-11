@@ -3,8 +3,8 @@ import styles from './Marker.module.scss'
 import cx from 'classnames'
 import PropTypes from 'prop-types'
 import useOnClickOutside from '@/hooks/useOnClickOutside'
-import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
-import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import { trimWords } from '@/lib/trim'
+import Link from 'next/link'
 
 const Marker = ({ category, placeInfo }) => {
   const ref = useRef()
@@ -23,31 +23,30 @@ const Marker = ({ category, placeInfo }) => {
         onClick={() => setOpen(!open)}
       ></button>
       {open && (
-        <a href="/about">
-          <div className={styles.marker_dropdown}>
-            <button
-              className={styles.marker_dropdown__btn_close}
-              onClick={() => setOpen(false)}
-            >
-              <Icon icon={faTimes} className={styles.marker_dropdown__icon} />
-            </button>
-            <img
-              src={
-                placeInfo.media[0]
-                  ? 'http://localhost:1337' +
-                    placeInfo.media[0]?.formats.small.url
-                  : '/placeholder.png'
-              }
-              alt="Place Thumbnail"
-              className={styles.marker_dropdown__img}
-            />
-            <div className={styles.marker_dropdown__content}>
-              <div className={styles.marker_dropdown__title}>
-                {placeInfo.title}
+        <Link as={`/places/${placeInfo.slug}`} href="/places/[slug]">
+          <a>
+            <div className={styles.marker_dropdown}>
+              <img
+                src={
+                  placeInfo.media[0]
+                    ? 'http://localhost:1337' +
+                      placeInfo.media[0]?.formats.small.url
+                    : '/placeholder.png'
+                }
+                alt="Place Thumbnail"
+                className={styles.marker_dropdown__img}
+              />
+              <div className={styles.marker_dropdown__content}>
+                <div className={styles.marker_dropdown__title}>
+                  {placeInfo.title}
+                </div>
+                <p className={styles.marker_dropdown__desc}>
+                  {trimWords(placeInfo.content.replace(/[^\w\s]/gi, ''), 6, 30)}
+                </p>
               </div>
             </div>
-          </div>
-        </a>
+          </a>
+        </Link>
       )}
     </div>
   )

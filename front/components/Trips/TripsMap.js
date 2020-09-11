@@ -4,8 +4,6 @@ import PropTypes from 'prop-types'
 import Marker from '../Marker/Marker'
 
 const TripsMap = ({ markers }) => {
-  console.log(markers)
-
   return (
     <div className={styles.trips_map}>
       <GoogleMapReact

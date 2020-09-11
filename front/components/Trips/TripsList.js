@@ -19,7 +19,7 @@ const TripsList = ({ items }) => {
               {trip?.trip_category && (
                 <button className={styles.trips_listing__difficulty}>
                   <div
-                    className={`dot dot__${trip.trip_category.category.toLowerCase()}`}
+                    className={`dot dot_${trip.trip_category.category.toLowerCase()}`}
                   ></div>
                   <p>{trip.trip_category.category}</p>
                 </button>
