@@ -13,19 +13,14 @@
     font-size: var(--fs-2);
     border-radius: var(--br);
     border: none;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: var(--c-orange);
+    }
   }
 
   &_secondary {
-    display: flex;
-    align-items: center;
-    background-color: var(--c-blue-d);
-    padding: 1rem 2rem;
-    color: var(--c-white);
-    font-weight: 700;
-    font-size: var(--fs-2);
-    border-radius: var(--br);
-    border: none;
-    box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.12);
   }
 
   &_tertiary {
@@ -58,7 +53,7 @@
       padding: 1.2rem 8rem;
       color: var(--c-white);
       font-weight: 700;
-      font-size: var(--fs-3);
+      font-size: var(--fs-2);
       border-radius: var(--br-2);
       border: none;
       transition: all 0.2s ease-in-out;
@@ -76,7 +71,7 @@
       padding: 1.2rem 3rem;
       color: var(--c-white);
       font-weight: 700;
-      font-size: var(--fs-3);
+      font-size: var(--fs-2);
       border: 0.2rem solid var(--c-white);
       border-radius: var(--br);
       transition: all 0.2s ease-in-out;
@@ -87,5 +82,67 @@
         box-shadow: 0 0.4rem 1.5rem rgba(0, 0, 0, 0.12);
       }
     }
+  }
+}
+
+.btn_dropdown_pressed {
+  box-shadow: inset 0 0.4rem 1.5rem rgba(0, 0, 0, 0.12);
+}
+
+.btn_dropdown {
+  display: flex;
+  align-items: center;
+  background-color: var(--c-blue-d);
+  padding: 1rem 2rem;
+  color: var(--c-white);
+  font-weight: 700;
+  font-size: var(--fs-1);
+  border: none;
+  border-radius: var(--br);
+  transition: box-shadow 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: inset 0 0.4rem 1.5rem rgba(0, 0, 0, 0.12);
+  }
+
+  &_container {
+    position: relative;
+  }
+
+  &__content {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 4.2rem;
+    border-radius: var(--br);
+    background-color: var(--c-white-d);
+    box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.12);
+    z-index: 2;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    border: none;
+    padding: 1rem 2rem;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-weight: 700;
+    font-size: var(--fs-1);
+    background-color: transparent;
+    color: var(--c-blue-d);
+    border-radius: var(--br);
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      background-color: var(--c-gray);
+    }
+  }
+
+  &__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.5rem;
   }
 }

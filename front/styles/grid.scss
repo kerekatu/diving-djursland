@@ -1,7 +1,6 @@
 .app {
   display: grid;
-  grid-template-rows: 10rem 1fr 15rem;
-  gap: 6rem 0;
+  grid-template-rows: 8rem 1fr;
 
   &_home {
     grid-template-rows: 64rem 1fr 15rem;
@@ -11,7 +10,6 @@
 .home {
   display: grid;
   grid-template-rows: 70rem 80rem 50rem;
-  gap: 8rem 0;
 }
 
 .main-content {
@@ -20,7 +18,8 @@
 
 .trips {
   display: grid;
-  grid-template-columns: 4fr 3fr;
+  grid-template-columns: 55% 45%;
+  gap: 0 4rem;
   max-width: 144rem;
   margin: 0 auto;
 }

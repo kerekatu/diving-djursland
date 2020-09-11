@@ -3,7 +3,7 @@ import Card from '@/components/Card/Card'
 import { trimWords } from '@/lib/trim'
 import { getPopularData } from '@/lib/api'
 import PropTypes from 'prop-types'
-import Button from '@/components/Button/Button'
+import { Button } from '@/components/Button/Button'
 
 const HomePage = ({ popularPlaces }) => {
   return (
@@ -18,7 +18,10 @@ const HomePage = ({ popularPlaces }) => {
               <Card type="highlight" key={index}>
                 <img
                   src={
-                    'http://localhost:1337' + item.media[0]?.formats.small.url
+                    item.media[0]
+                      ? 'http://localhost:1337' +
+                        item.media[0]?.formats.small.url
+                      : '/placeholder.png'
                   }
                   alt="Populær Dykkersted"
                   className={styles.home_places__img}
@@ -58,14 +61,14 @@ export async function getStaticProps() {
 
   return {
     props: {
-      popularPlaces,
-    },
+      popularPlaces
+    }
   }
 }
 
 HomePage.propTypes = {
   popularPlaces: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
-    .isRequired,
+    .isRequired
 }
 
 export default HomePage

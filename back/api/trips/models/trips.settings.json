@@ -37,8 +37,8 @@
       "type": "decimal"
     },
     "trip_category": {
-      "model": "trip-categories",
-      "via": "trips"
+      "via": "trips",
+      "model": "trip-categories"
     },
     "trip_places": {
       "collection": "trip-places",

@@ -1,4 +1,8 @@
 .trips_listing {
+  margin: 6rem 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+
   &__list {
     margin-top: 2.6rem;
   }
@@ -38,6 +42,11 @@
     border-radius: var(--br);
     font-size: var(--fs);
     font-weight: 700;
+    transition: opacity 0.2s ease-in-out;
+
+    &:hover {
+      opacity: 0.8;
+    }
 
     & > p {
       margin-left: 0.8rem;
@@ -92,4 +101,11 @@
     align-self: end;
     margin-bottom: 0.5rem;
   }
+}
+
+.trips_map {
+  position: sticky;
+  top: 8rem;
+  width: 100% !important;
+  height: calc(100vh - 8rem);
 }

@@ -15,8 +15,12 @@
       "unique": true
     },
     "trips": {
+      "collection": "trips",
+      "via": "trip_category"
+    },
+    "map_markers": {
       "via": "trip_category",
-      "collection": "trips"
+      "collection": "map-markers"
     }
   }
 }

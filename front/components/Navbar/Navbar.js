@@ -1,9 +1,19 @@
+import { useContext, useState } from 'react'
+import { I18nContext } from 'next-i18next'
 import Link from 'next/link'
 import styles from './Navbar.module.scss'
 
-import Button from '@/components/Button/Button'
+import { ButtonDropdown } from '@/components/Button/Button'
 
 const Navbar = () => {
+  const [language, setLanguage] = useState([
+    { title: 'Dansk', icon: '/dk-flag.svg' },
+    { title: 'English', icon: '/gb-flag.svg' }
+  ])
+  // const {
+  //   i18n: { language }
+  // } = useContext(I18nContext)
+
   return (
     <nav className={styles.navbar}>
       <ul className={styles.navbar__list}>
@@ -28,7 +38,11 @@ const Navbar = () => {
           </Link>
         </li>
         <li className={styles.navbar__item}>
-          <Button type="secondary" title="dk" droppable={true} />
+          <ButtonDropdown
+            defaultOption={language[0]}
+            options={language}
+            setOption={setLanguage}
+          />
         </li>
       </ul>
     </nav>

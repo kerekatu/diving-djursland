@@ -3,7 +3,7 @@ import styles from './Header.module.scss'
 
 import Navbar from '@/components/Navbar/Navbar'
 import Logo from '@/components/Logo/Logo'
-import Button from '@/components/Button/Button'
+import { Button } from '@/components/Button/Button'
 
 const Header = ({ isExtended }) => {
   return (
@@ -37,7 +37,7 @@ const Header = ({ isExtended }) => {
 }
 
 Header.propTypes = {
-  isExtended: PropTypes.bool,
+  isExtended: PropTypes.bool
 }
 
 export default Header

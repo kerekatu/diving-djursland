@@ -1,17 +1,17 @@
 import styles from './Trips.module.scss'
 import PropTypes from 'prop-types'
 import { formatDate } from '@/lib/date'
-import Link from 'next/link'
 import cx from 'classnames'
+import { trimWords } from '@/lib/trim'
 
-import Button from '@/components/Button/Button'
+import { Button } from '@/components/Button/Button'
 
 const TripsList = ({ items }) => {
   console.log(items)
   return (
     <div className={styles.trips_listing}>
       <span className={styles.trips_listing__amount}>{items.length} ture</span>
-      <h3>Kommende Dykkerture</h3>
+      <h3>Kommende Dykkerture – Djursland</h3>
       <ul className={styles.trips_listing__list}>
         {items.map((trip, index) => (
           <li key={index} className={styles.trips_listing__item}>
@@ -45,7 +45,7 @@ const TripsList = ({ items }) => {
                 {formatDate(trip.date, 'EEEE d. MMMM, HH:mm')}
               </span>
               <p className={styles.trips_listing__desc}>
-                {trip.description.substr(0, 150) + '...'}
+                {trimWords(trip.description, 20, 140)}
               </p>
               <div className={styles.trips_listing__checkout}>
                 <p
@@ -62,7 +62,7 @@ const TripsList = ({ items }) => {
 }
 
 TripsList.propTypes = {
-  items: PropTypes.array.isRequired,
+  items: PropTypes.array.isRequired
 }
 
 export default TripsList

@@ -24,8 +24,8 @@ export async function getNewestTrips() {
   return data
 }
 
-export async function getAllData(collection) {
-  const data = await fetchAPI(collection + '?_sort=date:DESC')
+export async function getAllData(collection, sort = '?_sort=date:DESC') {
+  const data = await fetchAPI(collection + sort)
 
   return data
 }

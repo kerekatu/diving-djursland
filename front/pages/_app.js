@@ -6,12 +6,13 @@ import { SWRConfig } from 'swr'
 
 function MyApp({ Component, pageProps }) {
   const headerCondition = Component?.name === 'HomePage'
+  const tripsCondition = Component?.name === 'TripsPage'
 
   return (
     <SWRConfig
       value={{
         refreshInterval: 0,
-        fetcher: (...args) => fetch(...args).then((res) => res.json()),
+        fetcher: (...args) => fetch(...args).then((res) => res.json())
       }}
     >
       <div className={headerCondition ? 'app_home' : 'app'}>
@@ -26,7 +27,7 @@ function MyApp({ Component, pageProps }) {
 
 MyApp.propTypes = {
   Component: PropTypes.oneOfType([PropTypes.func, PropTypes.object]).isRequired,
-  pageProps: PropTypes.any,
+  pageProps: PropTypes.any
 }
 
 export default MyApp

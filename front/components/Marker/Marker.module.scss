@@ -1,0 +1,99 @@
+.marker_container {
+  position: relative;
+}
+
+.marker {
+  width: 3rem;
+  height: 3rem;
+  display: block;
+  border-radius: var(--br-2);
+  box-shadow: 0 0.4rem 1.5rem rgba(0, 0, 0, 0.12);
+  opacity: 0.8;
+  border: none;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+
+  &_let {
+    background-color: var(--c-green);
+  }
+
+  &_medium {
+    background-color: var(--c-orange-d);
+  }
+
+  &_svær {
+    background-color: var(--c-red);
+  }
+
+  &_pressed {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+
+.marker_dropdown {
+  width: 25rem;
+  height: 15rem;
+  position: absolute;
+  border: var(--c-white-d);
+  box-shadow: 0 0.4rem 1.5rem rgba(0, 0, 0, 0.2);
+  border-radius: var(--br);
+  color: var(--c-black);
+  font-size: var(--fs-1);
+  z-index: 10;
+  top: 4rem;
+  left: calc(50% - -1.5rem) !important;
+  transform: translate(-50%, 0) !important;
+
+  &__btn_close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--c-white);
+    border-radius: var(--br-2);
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    border: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    opacity: 0.8;
+    z-index: 11;
+    transition: opacity 0.2s ease-in-out;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__icon {
+    color: var(--c-black);
+    font-size: var(--fs-1);
+  }
+
+  &__content {
+    padding: 1.5rem;
+    background-color: var(--c-white);
+    border-bottom-right-radius: var(--br);
+    border-bottom-left-radius: var(--br);
+  }
+
+  &__title {
+    font-size: var(--fs-2);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-top-right-radius: var(--br);
+    border-top-left-radius: var(--br);
+    object-fit: cover;
+  }
+}

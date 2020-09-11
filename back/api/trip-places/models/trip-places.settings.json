@@ -41,6 +41,10 @@
       "via": "trip_places",
       "collection": "trips",
       "dominant": true
+    },
+    "map_marker": {
+      "via": "trip_place",
+      "model": "map-markers"
     }
   }
 }

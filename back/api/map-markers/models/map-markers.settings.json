@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "map_markers",
+  "info": {
+    "name": "MapMarkers"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "trip_place": {
+      "model": "trip-places",
+      "via": "map_marker"
+    },
+    "trip_category": {
+      "model": "trip-categories",
+      "via": "map_markers"
+    },
+    "lat": {
+      "type": "string"
+    },
+    "lng": {
+      "type": "string"
+    }
+  }
+}

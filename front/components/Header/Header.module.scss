@@ -1,10 +1,14 @@
 .header {
-  height: 10rem;
+  position: sticky;
+  top: 0;
+  left: 0;
+  height: 8rem;
   background-color: var(--c-blue);
   padding: var(--pp-desktop);
+  z-index: 10;
 
   &__content {
-    height: 10rem;
+    height: 8rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -19,7 +23,7 @@
     width: 90rem;
     margin: 0 auto;
     text-align: center;
-    padding: 10rem 0;
+    padding: 8rem 0;
 
     & > p {
       color: var(--c-white);
@@ -39,6 +43,10 @@
     height: 65rem;
     position: relative;
     padding: var(--pp-desktop-h);
+
+    & > .header__content {
+      height: 10rem;
+    }
 
     &::after {
       content: '';
