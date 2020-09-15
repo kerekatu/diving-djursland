@@ -14,7 +14,7 @@ const TripsList = ({
   mapVisibility,
   filteredStatus,
   handleMapVisibility,
-  handleFilterStatus
+  handleFilterStatus,
 }) => {
   return (
     <div className={styles.trips_listing}>
@@ -49,7 +49,7 @@ const TripsList = ({
           items.map((trip, index) => (
             <li key={index} className={styles.trips_listing__item}>
               <div className={styles.trips_listing__img_container}>
-                {trip?.trip_places[0] && (
+                {trip.trip_places[0].trip_category && (
                   <button
                     className={styles.trips_listing__difficulty}
                     onClick={() => filterItems(trip)}
@@ -110,7 +110,7 @@ TripsList.propTypes = {
   mapVisibility: PropTypes.bool.isRequired,
   handleMapVisibility: PropTypes.func.isRequired,
   handleFilterStatus: PropTypes.func.isRequired,
-  filteredStatus: PropTypes.bool.isRequired
+  filteredStatus: PropTypes.bool.isRequired,
 }
 
 export default TripsList

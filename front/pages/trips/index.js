@@ -1,90 +1,34 @@
-import { useState } from 'react'
-import { getNewestTrips, getAllData } from '@/lib/api'
-import PropTypes from 'prop-types'
-import { formatDate, getFullDate } from '@/lib/date'
+// @ts-nocheck
+import I18nProvider from 'next-translate/I18nProvider'
+import React from 'react'
+import C, * as _rest from '../../pages_/trips'
+import ns0 from '../../locales/da/common.json'
+import ns1 from '../../locales/da/trips.json'
 
-import TripsList from '@/components/Trips/TripsList'
-import TripsMap from '@/components/Trips/TripsMap'
+const namespaces = { 'common': ns0, 'trips': ns1 }
 
-const TripsPage = ({ allTrips, allMarkers }) => {
-  const tripsDateCondition = allTrips.filter(
-    (trip) => formatDate(trip.date, 'dMY') > getFullDate(new Date())
-  )
-
-  const [trips, setTrips] = useState(tripsDateCondition)
-  const [markers, setMarkers] = useState(allMarkers)
-  const [mapVisibility, setMapVisibility] = useState(true)
-  const [filteredStatus, setFilteredStatus] = useState(false)
-
-  const filterTripCategory = (filterItem) => {
-    setTrips(
-      trips.filter(
-        (item) =>
-          item.trip_category.category === filterItem.trip_category.category
-      )
-    )
-
-    setMarkers(
-      markers.filter(
-        (item) =>
-          item.trip_category.category === filterItem.trip_category.category
-      )
-    )
-
-    setFilteredStatus(true)
-  }
-
-  const handleFilterStatus = () => {
-    setFilteredStatus(false)
-    setTrips(tripsDateCondition)
-    setMarkers(allMarkers)
-  }
-
-  const handleMapVisibility = () => {
-    setMapVisibility(!mapVisibility)
-  }
-
-  const handleFindTrips = (place) => {
-    setTrips(trips.filter((trip) => trip.trip_places[0].title === place))
-  }
-
+export default function Page(p){
   return (
-    <section className={mapVisibility ? 'trips' : 'trips_listing_full'}>
-      <TripsList
-        items={trips}
-        filterItems={filterTripCategory}
-        mapVisibility={mapVisibility}
-        filteredStatus={filteredStatus}
-        handleMapVisibility={handleMapVisibility}
-        handleFilterStatus={handleFilterStatus}
-      />
-      {mapVisibility && (
-        <TripsMap
-          markers={markers}
-          handleMapVisibility={handleMapVisibility}
-          handleFindTrips={handleFindTrips}
-          handleFilterStatus={handleFilterStatus}
-        />
-      )}
-    </section>
+    <I18nProvider 
+      lang="da" 
+      namespaces={namespaces}  
+      internals={{"defaultLanguage":"da","isStaticMode":true}}
+    >
+      <C {...p} />
+    </I18nProvider>
   )
 }
 
-export async function getStaticProps() {
-  const allTrips = (await getNewestTrips('trips')) || []
-  const allMarkers = (await getAllData('map-markers', '')) || []
+Page = Object.assign(Page, { ...C })
 
-  return {
-    props: {
-      allTrips,
-      allMarkers
-    }
-  }
+if(C && C.getInitialProps) {
+  Page.getInitialProps = ctx => C.getInitialProps({ ...ctx, lang: 'da'})
 }
 
-TripsPage.propTypes = {
-  allTrips: PropTypes.array.isRequired,
-  allMarkers: PropTypes.array.isRequired
-}
 
-export default TripsPage
+export const getStaticProps = ctx => _rest.getStaticProps({ ...ctx, lang: 'da' })
+
+
+
+
+

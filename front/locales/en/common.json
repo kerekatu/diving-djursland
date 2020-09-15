@@ -1,7 +1,10 @@
 {
-  "header-hero-h1": "Join Our Exciting Diving Trips",
+  "header-hero-h1": "Join Our Exciting Diving Tours",
   "header-hero-p": "Djursland contains many unique nature experiences both above and below the water. If you are a certified diver, you have the opportunity to participate in our many guided tours to various destinations around Djursland.",
-  "header-hero-cta-1": "See Upcoming Diving Trips",
+  "header-hero-cta-1": "See Upcoming Diving Tours",
   "header-hero-cta-2": "Contact Us",
-  "navbar-links": ["Hyome", "Trips", "Info", "Contact"]
+  "navbar-link-1": "Home",
+  "navbar-link-2": "Diving Trips",
+  "navbar-link-3": "Practical Info",
+  "navbar-link-4": "Contact"
 }

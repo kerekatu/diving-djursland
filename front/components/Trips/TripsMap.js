@@ -9,7 +9,7 @@ const TripsMap = ({
   markers,
   handleMapVisibility,
   handleFindTrips,
-  handleFilterStatus
+  handleFilterStatus,
 }) => {
   return (
     <div className={styles.trips_map}>
@@ -25,26 +25,28 @@ const TripsMap = ({
         defaultZoom={9.5}
         yesIWantToUseGoogleMapApiInternals
       >
-        {markers.map((marker) => (
-          <Marker
-            lat={marker.lat}
-            lng={marker.lng}
-            placeInfo={marker.trip_place}
-            category={marker.trip_category.category.toLowerCase()}
-            handleFindTrips={handleFindTrips}
-            handleFilterStatus={handleFilterStatus}
-            key={marker.id}
-          />
-        ))}
+        {markers === [] &&
+          markers.map((marker) => (
+            <Marker
+              lat={marker.lat}
+              lng={marker.lng}
+              placeInfo={marker.trip_place}
+              category={marker.trip_category.category.toLowerCase()}
+              handleFindTrips={handleFindTrips}
+              handleFilterStatus={handleFilterStatus}
+              key={marker.id}
+            />
+          ))}
       </GoogleMapReact>
     </div>
   )
 }
 
 TripsMap.propTypes = {
-  markers: PropTypes.array,
-  handleMapVisibility: PropTypes.func,
-  handleFindTrips: PropTypes.func
+  markers: PropTypes.array.isRequired,
+  handleMapVisibility: PropTypes.func.isRequired,
+  handleFindTrips: PropTypes.func.isRequired,
+  handleFilterStatus: PropTypes.func.isRequired,
 }
 
 export default TripsMap

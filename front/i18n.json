@@ -1,0 +1,15 @@
+{
+  "allLanguages": ["da", "en", "de"],
+  "defaultLanguage": "da",
+  "currentPagesDir": "pages_",
+  "finalPagesDir": "pages",
+  "localesPath": "locales",
+  "pages": {
+    "*": ["common"],
+    "/": ["home"],
+    "/trips": ["trips"],
+    "/contact": ["contact"],
+    "/info": ["info"],
+    "/places": ["places"]
+  }
+}

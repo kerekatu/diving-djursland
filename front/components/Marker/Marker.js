@@ -10,7 +10,7 @@ const Marker = ({
   category,
   placeInfo,
   handleFindTrips,
-  handleFilterStatus
+  handleFilterStatus,
 }) => {
   const ref = useRef()
   const [open, setOpen] = useState(false)
@@ -70,7 +70,10 @@ const Marker = ({
 
 Marker.propTypes = {
   category: PropTypes.string,
-  placeInfo: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired
+  placeInfo: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
+    .isRequired,
+  handleFindTrips: PropTypes.func.isRequired,
+  handleFilterStatus: PropTypes.func.isRequired,
 }
 
 export default Marker

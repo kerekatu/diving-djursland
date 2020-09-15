@@ -3,5 +3,8 @@
   "header-hero-p": "Djursland rummer mange unikke naturoplevelser både over og under vandet. Er du certificeret dykker har du mulighed for at deltage i vores mange guidede ture på forskellige destinationer rund omkring Djursland.",
   "header-hero-cta-1": "Se Kommende Dykkerture",
   "header-hero-cta-2": "Kontakt Os",
-  "navbar-links": ["Forside", "Dykkerture", "Praktisk Info", "Kontakt"]
+  "navbar-link-1": "Forside",
+  "navbar-link-2": "Dykkerture",
+  "navbar-link-3": "Praktisk Info",
+  "navbar-link-4": "Kontakt"
 }

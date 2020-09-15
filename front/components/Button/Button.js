@@ -3,9 +3,10 @@ import styles from './Button.module.scss'
 import PropTypes from 'prop-types'
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons'
-import Link from 'next/link'
+import Link from 'next-translate/Link'
 import cx from 'classnames'
 import useOnClickOutside from '@/hooks/useOnClickOutside'
+import { useRouter } from 'next/router'
 
 export const Button = ({ title, type, icon, link, ...props }) => {
   if (link) {
@@ -42,12 +43,19 @@ Button.propTypes = {
   type: PropTypes.string.isRequired,
   icon: PropTypes.any,
   droppable: PropTypes.bool,
-  link: PropTypes.string
+  link: PropTypes.string,
 }
 
-export const ButtonDropdown = ({ defaultOption, options, setOption }) => {
+export const ButtonDropdown = ({
+  defaultOption,
+  options,
+  setOption,
+  navbar = false,
+}) => {
   const ref = useRef()
   const [open, setOpen] = useState(false)
+
+  // const routerQuery = router.asPath.split('/').pop()
 
   useOnClickOutside(ref, () => setOpen(false))
 
@@ -57,13 +65,25 @@ export const ButtonDropdown = ({ defaultOption, options, setOption }) => {
         className={cx(styles.btn_dropdown, open && styles.btn_dropdown_pressed)}
         onClick={() => setOpen(!open)}
       >
-        {defaultOption?.icon && (
-          <img
-            src={defaultOption.icon}
-            alt="Language Icon"
-            className={styles.btn_dropdown__icon}
-          />
-        )}
+        {navbar
+          ? options.map((option) => {
+              if (defaultOption === option.slug) {
+                return (
+                  <img
+                    src={option.icon}
+                    alt="Language Icon"
+                    className={styles.btn_dropdown__icon}
+                  />
+                )
+              }
+            })
+          : defaultOption?.icon && (
+              <img
+                src={defaultOption.icon}
+                alt="Icon"
+                className={styles.btn_dropdown__icon}
+              />
+            )}
         <Icon
           icon={open ? faAngleUp : faAngleDown}
           className={styles.btn__icon_right}
@@ -71,24 +91,41 @@ export const ButtonDropdown = ({ defaultOption, options, setOption }) => {
       </button>
       {open && (
         <div className={styles.btn_dropdown__content}>
-          {options.map((option, index) =>
-            option.title === defaultOption.title ? null : (
-              <button
-                className={styles.btn_dropdown__item}
-                key={index}
-                onClick={() => setOption({ ...options, option })}
-              >
-                {option?.icon && (
-                  <img
-                    src={option.icon}
-                    alt="Language Icon"
-                    className={styles.btn_dropdown__icon}
-                  />
-                )}
-                {option.title}
-              </button>
-            )
-          )}
+          {navbar
+            ? options.map((option) =>
+                option.slug === defaultOption ? null : (
+                  <Link href="/" lang={option.slug} key={option.slug}>
+                    <a className={styles.btn_dropdown__item}>
+                      {option?.icon && (
+                        <img
+                          src={option.icon}
+                          alt="Language Icon"
+                          className={styles.btn_dropdown__icon}
+                        />
+                      )}
+                      {option.title}
+                    </a>
+                  </Link>
+                )
+              )
+            : options.map((option, index) =>
+                option.title === defaultOption.title ? null : (
+                  <button
+                    className={styles.btn_dropdown__item}
+                    key={index}
+                    onClick={() => setOption({ ...options, option })}
+                  >
+                    {option?.icon && (
+                      <img
+                        src={option.icon}
+                        alt="Language Icon"
+                        className={styles.btn_dropdown__icon}
+                      />
+                    )}
+                    {option.title}
+                  </button>
+                )
+              )}
         </div>
       )}
     </div>
@@ -99,8 +136,9 @@ ButtonDropdown.propTypes = {
   defaultOption: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
-    PropTypes.array
+    PropTypes.array,
   ]).isRequired,
   options: PropTypes.array.isRequired,
-  setOption: PropTypes.func.isRequired
+  setOption: PropTypes.func.isRequired,
+  navbar: PropTypes.bool,
 }

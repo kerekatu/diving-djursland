@@ -1,17 +1,33 @@
-import { useRouter } from 'next/router'
-import { getAllData } from '@/lib/api'
+// @ts-nocheck
+import I18nProvider from 'next-translate/I18nProvider'
+import React from 'react'
+import C, * as _rest from '../../pages_/trips/[slug]'
+import ns0 from '../../locales/da/common.json'
 
-const Trip = () => {
-  return <div></div>
+const namespaces = { 'common': ns0 }
+
+export default function Page(p){
+  return (
+    <I18nProvider 
+      lang="da" 
+      namespaces={namespaces}  
+      internals={{"defaultLanguage":"da","isStaticMode":true}}
+    >
+      <C {...p} />
+    </I18nProvider>
+  )
 }
 
-export async function getStaticPaths() {
-  const allPlacesLinks = await getAllData('trip-places')
+Page = Object.assign(Page, { ...C })
 
-  return {
-    paths: allPlacesLinks.map((place) => `/places/${place.slug}`) || [],
-    fallback: true
-  }
+if(C && C.getInitialProps) {
+  Page.getInitialProps = ctx => C.getInitialProps({ ...ctx, lang: 'da'})
 }
 
-export default Trip
+
+
+export const getStaticPaths = ctx => _rest.getStaticPaths({ ...ctx, lang: 'da' })
+
+
+
+

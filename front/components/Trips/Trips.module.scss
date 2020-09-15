@@ -123,6 +123,8 @@
 .trips_map {
   position: sticky;
   top: 8rem;
+  display: block;
+  right: auto !important;
   width: 100% !important;
   height: calc(100vh - 8rem);
 

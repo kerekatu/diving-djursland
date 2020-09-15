@@ -1,79 +1,34 @@
-import styles from '@/styles/Home.module.scss'
-import Card from '@/components/Card/Card'
-import { trimWords } from '@/lib/trim'
-import { getPopularData } from '@/lib/api'
-import PropTypes from 'prop-types'
-import { Button } from '@/components/Button/Button'
-import { withTranslation } from '../i18n'
+// @ts-nocheck
+import I18nProvider from 'next-translate/I18nProvider'
+import React from 'react'
+import C, * as _rest from '../pages_'
+import ns0 from '../locales/da/common.json'
+import ns1 from '../locales/da/home.json'
 
-const HomePage = ({ popularPlaces, t }) => {
+const namespaces = { 'common': ns0, 'home': ns1 }
+
+export default function Page(p){
   return (
-    <>
-      <section className={styles.home_places}>
-        <h2 className="center">{t('heading-section-places')}</h2>
-        <div className={styles.home_places__container}>
-          {popularPlaces
-            .sort((a, b) => b.trips.length - a.trips.length)
-            .slice(0, 3)
-            .map((item, index) => (
-              <Card type="highlight" key={index}>
-                <img
-                  src={
-                    item.media[0]
-                      ? 'http://localhost:1337' +
-                        item.media[0]?.formats.small.url
-                      : '/placeholder.png'
-                  }
-                  alt="Populær Dykkersted"
-                  className={styles.home_places__img}
-                />
-                <div className={styles.home_places__content}>
-                  <h5>{item.title}</h5>
-                  <p className={styles.home_places__desc}>
-                    {item.content && trimWords(item.content, 9, 100)}
-                  </p>
-                  <Button
-                    title="Læs mere"
-                    type="tertiary"
-                    link={`/places/${item.slug}`}
-                  />
-                </div>
-              </Card>
-            ))}
-        </div>
-      </section>
-
-      <section className={styles.home_trips}>
-        <h2 className="center">Kommende Begivenheder</h2>
-      </section>
-
-      <section className={styles.home_newsletter}>
-        <div className={styles.home_newsletter__content}>
-          <h1>Nyhedsbrev</h1>
-          <h4 className="white_text">
-            Tilmeld dig nyhedsbrevet og få notifikationer direkte på din mail om
-            alle nye begivenheder!
-          </h4>
-          <form action="" className={styles.home_newsletter__form}></form>
-        </div>
-      </section>
-    </>
+    <I18nProvider 
+      lang="da" 
+      namespaces={namespaces}  
+      internals={{"defaultLanguage":"da","isStaticMode":true}}
+    >
+      <C {...p} />
+    </I18nProvider>
   )
 }
 
-export async function getStaticProps() {
-  const popularPlaces = await getPopularData('trip-places')
+Page = Object.assign(Page, { ...C })
 
-  return {
-    props: {
-      popularPlaces
-    }
-  }
+if(C && C.getInitialProps) {
+  Page.getInitialProps = ctx => C.getInitialProps({ ...ctx, lang: 'da'})
 }
 
-HomePage.propTypes = {
-  popularPlaces: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
-    .isRequired
-}
 
-export default withTranslation('home')(HomePage)
+export const getStaticProps = ctx => _rest.getStaticProps({ ...ctx, lang: 'da' })
+
+
+
+
+
