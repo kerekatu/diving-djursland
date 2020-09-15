@@ -38,13 +38,17 @@
       "required": false
     },
     "trips": {
-      "via": "trip_places",
       "collection": "trips",
+      "via": "trip_places",
       "dominant": true
     },
     "map_marker": {
-      "via": "trip_place",
-      "model": "map-markers"
+      "model": "map-markers",
+      "via": "trip_place"
+    },
+    "trip_category": {
+      "model": "trip-categories",
+      "via": "trip_places"
     }
   }
 }

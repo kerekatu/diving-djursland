@@ -1,5 +1,9 @@
 .btn {
-  &__icon {
+  &__icon_left {
+    margin-right: 0.5rem;
+  }
+
+  &__icon_right {
     margin-left: 0.5rem;
   }
 
@@ -21,6 +25,20 @@
   }
 
   &_secondary {
+    display: block;
+    background-color: transparent;
+    padding: 0.5rem 1rem;
+    color: var(--c-blue);
+    font-weight: 700;
+    font-size: var(--fs-1);
+    border-radius: var(--br);
+    border: 0.2rem solid var(--c-blue);
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      color: var(--c-white);
+      background-color: var(--c-blue);
+    }
   }
 
   &_tertiary {

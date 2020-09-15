@@ -3,6 +3,23 @@
   overflow-y: auto;
   scrollbar-width: thin;
 
+  &__top {
+    &_container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    &_right {
+      display: flex;
+      margin-bottom: 0.5rem;
+
+      & > button:not(:last-child) {
+        margin-right: 1.5rem;
+      }
+    }
+  }
+
   &__list {
     margin-top: 2.6rem;
   }
@@ -108,4 +125,33 @@
   top: 8rem;
   width: 100% !important;
   height: calc(100vh - 8rem);
+
+  &_hidden {
+    visibility: none;
+    display: none;
+  }
+
+  &__btn {
+    background-color: var(--c-white);
+    border: none;
+    border-radius: 0.2rem;
+    padding: 1rem 1rem;
+    margin: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 0.1rem 0.4rem -0.1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 13;
+  }
+
+  &__btn:hover > &__icon {
+    color: var(--c-black-l);
+  }
+
+  &__icon {
+    height: 2rem;
+    width: 2rem !important;
+    display: block;
+    color: #666;
+  }
 }

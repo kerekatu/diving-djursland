@@ -6,11 +6,19 @@ import useOnClickOutside from '@/hooks/useOnClickOutside'
 import { trimWords } from '@/lib/trim'
 import Link from 'next/link'
 
-const Marker = ({ category, placeInfo }) => {
+const Marker = ({
+  category,
+  placeInfo,
+  handleFindTrips,
+  handleFilterStatus
+}) => {
   const ref = useRef()
   const [open, setOpen] = useState(false)
 
-  useOnClickOutside(ref, () => setOpen(false))
+  useOnClickOutside(ref, () => {
+    setOpen(false)
+    handleFilterStatus()
+  })
 
   return (
     <div className={styles.marker_container} ref={ref}>
@@ -20,7 +28,10 @@ const Marker = ({ category, placeInfo }) => {
           styles['marker_' + category],
           open && styles.marker_pressed
         )}
-        onClick={() => setOpen(!open)}
+        onClick={() => {
+          setOpen(!open)
+          handleFindTrips(placeInfo.title)
+        }}
       ></button>
       {open && (
         <Link as={`/places/${placeInfo.slug}`} href="/places/[slug]">
@@ -38,10 +49,15 @@ const Marker = ({ category, placeInfo }) => {
               />
               <div className={styles.marker_dropdown__content}>
                 <div className={styles.marker_dropdown__title}>
-                  {placeInfo.title}
+                  {placeInfo?.title}
                 </div>
                 <p className={styles.marker_dropdown__desc}>
-                  {trimWords(placeInfo.content.replace(/[^\w\s]/gi, ''), 6, 30)}
+                  {placeInfo.content &&
+                    trimWords(
+                      placeInfo.content.replace(/[^\w\s]/gi, ''),
+                      6,
+                      30
+                    )}
                 </p>
               </div>
             </div>

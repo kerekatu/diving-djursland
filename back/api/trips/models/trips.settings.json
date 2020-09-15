@@ -36,13 +36,9 @@
     "priceEUR": {
       "type": "decimal"
     },
-    "trip_category": {
-      "via": "trips",
-      "model": "trip-categories"
-    },
     "trip_places": {
-      "collection": "trip-places",
-      "via": "trips"
+      "via": "trips",
+      "collection": "trip-places"
     },
     "slug": {
       "type": "uid",

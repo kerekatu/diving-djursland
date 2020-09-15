@@ -7,18 +7,34 @@ import Link from 'next/link'
 import cx from 'classnames'
 import useOnClickOutside from '@/hooks/useOnClickOutside'
 
-export const Button = ({ title, type, icon, link }) => {
+export const Button = ({ title, type, icon, link, ...props }) => {
   if (link) {
     return (
       <Link href={link}>
         <a className={styles['btn_' + type]}>
-          {icon} {title}
+          {icon && (
+            <Icon
+              icon={icon}
+              className={title ? styles.btn__icon_left : styles.btn__icon}
+            />
+          )}
+          {title}
         </a>
       </Link>
     )
   }
 
-  return <button className={styles['btn_' + type]}>{title}</button>
+  return (
+    <button className={styles['btn_' + type]} {...props}>
+      {icon && (
+        <Icon
+          icon={icon}
+          className={title ? styles.btn__icon_left : styles.btn__icon}
+        />
+      )}
+      {title}
+    </button>
+  )
 }
 
 Button.propTypes = {
@@ -50,7 +66,7 @@ export const ButtonDropdown = ({ defaultOption, options, setOption }) => {
         )}
         <Icon
           icon={open ? faAngleUp : faAngleDown}
-          className={styles.btn__icon}
+          className={styles.btn__icon_right}
         />
       </button>
       {open && (

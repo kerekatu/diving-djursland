@@ -14,13 +14,13 @@
       "required": true,
       "unique": true
     },
-    "trips": {
-      "collection": "trips",
-      "via": "trip_category"
-    },
     "map_markers": {
       "via": "trip_category",
       "collection": "map-markers"
+    },
+    "trip_places": {
+      "via": "trip_category",
+      "collection": "trip-places"
     }
   }
 }

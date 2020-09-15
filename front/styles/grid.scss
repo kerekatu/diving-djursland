@@ -22,4 +22,8 @@
   gap: 0 4rem;
   max-width: 144rem;
   margin: 0 auto;
+
+  &_listing_full {
+    grid-template-columns: 1fr;
+  }
 }

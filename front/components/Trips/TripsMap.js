@@ -2,10 +2,23 @@ import styles from './Trips.module.scss'
 import GoogleMapReact from 'google-map-react'
 import PropTypes from 'prop-types'
 import Marker from '../Marker/Marker'
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
-const TripsMap = ({ markers }) => {
+const TripsMap = ({
+  markers,
+  handleMapVisibility,
+  handleFindTrips,
+  handleFilterStatus
+}) => {
   return (
     <div className={styles.trips_map}>
+      <button
+        className={styles.trips_map__btn}
+        onClick={() => handleMapVisibility()}
+      >
+        <Icon icon={faTimes} className={styles.trips_map__icon} />
+      </button>
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_MAPS_API }}
         defaultCenter={[56.406654, 10.797895]}
@@ -18,6 +31,8 @@ const TripsMap = ({ markers }) => {
             lng={marker.lng}
             placeInfo={marker.trip_place}
             category={marker.trip_category.category.toLowerCase()}
+            handleFindTrips={handleFindTrips}
+            handleFilterStatus={handleFilterStatus}
             key={marker.id}
           />
         ))}
@@ -27,7 +42,9 @@ const TripsMap = ({ markers }) => {
 }
 
 TripsMap.propTypes = {
-  markers: PropTypes.array
+  markers: PropTypes.array,
+  handleMapVisibility: PropTypes.func,
+  handleFindTrips: PropTypes.func
 }
 
 export default TripsMap
