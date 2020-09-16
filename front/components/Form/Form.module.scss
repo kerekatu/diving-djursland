@@ -1,0 +1,50 @@
+.form {
+  & > button {
+    margin-top: auto;
+  }
+
+  &__input_container {
+    display: flex;
+    flex-direction: column;
+
+    &:not(:first-child) {
+      margin-top: 5rem;
+    }
+  }
+
+  &__label {
+    color: var(--c-black-l-2);
+    margin-bottom: 1rem;
+    font-size: var(--fs-2);
+  }
+
+  &__input {
+    background-color: var(--c-gray);
+    border-radius: var(--br);
+    border: 0.1rem solid var(--c-gray-d);
+    padding: 1.2rem 2rem;
+    color: var(--c-black-l);
+    transition: all 0.2s ease-in-out;
+
+    &:placeholder-shown {
+      opacity: 0.6;
+    }
+
+    &:focus,
+    &:active {
+      border: 0.1rem solid var(--c-blue);
+      outline: none;
+    }
+
+    &:required {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+
+    &:invalid:focus {
+      border: 0.1rem solid var(--c-red) !important;
+      outline: none !important;
+      box-shadow: none !important;
+    }
+  }
+}

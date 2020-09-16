@@ -1,14 +1,15 @@
 .home {
   // PLACES SECTION
   &_places {
-    max-width: 144rem;
-    margin: 8rem auto 0 auto;
+    margin: 8rem 0;
+    padding: var(--pp-desktop-h);
 
     &__container {
       display: grid;
+      max-width: 144rem;
       grid-template-columns: repeat(3, 1fr);
       gap: 0 2rem;
-      margin-top: 6rem;
+      margin: 6rem auto 0 auto;
     }
 
     &__img {
@@ -47,6 +48,61 @@
   &_trips {
     padding: var(--ms-desktop);
     background-color: var(--c-white-d);
+
+    & > a {
+      width: 30rem;
+      margin: 0 auto;
+    }
+
+    &__container {
+      display: grid;
+      max-width: 144rem;
+      margin: 6rem auto 8rem auto;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem 2rem;
+      grid-template-rows: repeat(3, 1fr);
+    }
+
+    &__img_highlight {
+      display: block;
+      width: 100%;
+      height: 34rem;
+      object-fit: cover;
+      border-top-left-radius: var(--br);
+      border-top-right-radius: var(--br);
+    }
+
+    &__content {
+      display: grid;
+      grid-template-columns: 60% 40%;
+      padding: 3rem 4rem;
+
+      &_left > * {
+        overflow-wrap: break-word;
+      }
+
+      &_right {
+        display: flex;
+        flex-direction: column;
+        align-self: flex-end;
+        justify-self: flex-end;
+      }
+    }
+
+    &__desc {
+      font-size: var(--fs-1);
+      margin-top: 1rem;
+      color: var(--c-black-l-2);
+      line-height: var(--lh-1);
+    }
+
+    &__date {
+      font-size: var(--fs-1);
+      font-weight: 700;
+      color: var(--c-black-l-3);
+      align-self: end;
+      margin-bottom: 0.5rem;
+    }
   }
 
   // NEWSLETTER SECTION
@@ -69,14 +125,23 @@
     }
 
     &__form {
+      display: flex;
+      flex-direction: column;
       margin-top: 4rem;
       padding: 5rem 6rem;
       background-color: var(--c-white);
-      height: 36rem;
+      height: 40rem;
       width: 100%;
       border-radius: var(--br);
       border: 0.1rem solid var(--c-gray);
-      box-shadow: 0 1rem 4rem 0.4rem rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0.5rem 1rem rgba(154, 160, 185, 0.05),
+        0 1.5rem 4rem rgba(166, 173, 201, 0.2);
+
+      & > button {
+        margin-top: auto;
+        align-self: flex-start;
+        padding: 1.2rem 8rem;
+      }
     }
   }
 }

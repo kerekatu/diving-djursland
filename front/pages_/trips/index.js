@@ -16,19 +16,22 @@ const TripsPage = ({ allTrips, allMarkers }) => {
   const [markers, setMarkers] = useState(allMarkers)
   const [mapVisibility, setMapVisibility] = useState(true)
   const [filteredStatus, setFilteredStatus] = useState(false)
+  const [hoveredMarker, setHoveredMarker] = useState(null)
 
   const filterTripCategory = (filterItem) => {
     setTrips(
       trips.filter(
         (item) =>
-          item.trip_category.category === filterItem.trip_category.category
+          item.trip_places[0].trip_category ===
+          filterItem.trip_places[0].trip_category
       )
     )
 
     setMarkers(
       markers.filter(
         (item) =>
-          item.trip_category.category === filterItem.trip_category.category
+          item.trip_place.trip_category ===
+          filterItem.trip_places[0].trip_category
       )
     )
 
@@ -49,6 +52,14 @@ const TripsPage = ({ allTrips, allMarkers }) => {
     setTrips(trips.filter((trip) => trip.trip_places[0].title === place))
   }
 
+  const hoverMarkerWithTrip = (trip) => {
+    if (!trip) {
+      setHoveredMarker(null)
+    }
+
+    setHoveredMarker(trip)
+  }
+
   return (
     <Layout>
       <section className={mapVisibility ? 'trips' : 'trips_listing_full'}>
@@ -59,13 +70,16 @@ const TripsPage = ({ allTrips, allMarkers }) => {
           filteredStatus={filteredStatus}
           handleMapVisibility={handleMapVisibility}
           handleFilterStatus={handleFilterStatus}
+          hoverMarkerWithTrip={hoverMarkerWithTrip}
         />
         {mapVisibility && (
           <TripsMap
             markers={markers}
+            filteredStatus={filteredStatus}
             handleMapVisibility={handleMapVisibility}
             handleFindTrips={handleFindTrips}
             handleFilterStatus={handleFilterStatus}
+            hoveredMarker={hoveredMarker}
           />
         )}
       </section>
@@ -74,7 +88,7 @@ const TripsPage = ({ allTrips, allMarkers }) => {
 }
 
 export async function getStaticProps() {
-  const allTrips = (await getNewestTrips('trips')) || []
+  const allTrips = (await getNewestTrips()) || []
   const allMarkers = (await getAllData('map-markers', '')) || []
 
   return {

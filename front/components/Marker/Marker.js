@@ -1,24 +1,40 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import styles from './Marker.module.scss'
 import cx from 'classnames'
 import PropTypes from 'prop-types'
 import useOnClickOutside from '@/hooks/useOnClickOutside'
 import { trimWords } from '@/lib/trim'
-import Link from 'next/link'
+import Link from 'next-translate/Link'
 
 const Marker = ({
   category,
   placeInfo,
   handleFindTrips,
   handleFilterStatus,
+  filteredStatus,
+  hoveredMarker,
+  markerId,
 }) => {
   const ref = useRef()
   const [open, setOpen] = useState(false)
+  const [hovered, setHovered] = useState(false)
 
   useOnClickOutside(ref, () => {
-    setOpen(false)
-    handleFilterStatus()
+    if (filteredStatus) {
+      setOpen(false)
+    } else if (open && !filteredStatus) {
+      setOpen(false)
+      handleFilterStatus()
+    }
   })
+
+  useEffect(() => {
+    if (hoveredMarker === markerId) {
+      setHovered(true)
+    } else {
+      setHovered(false)
+    }
+  }, [hoveredMarker])
 
   return (
     <div className={styles.marker_container} ref={ref}>
@@ -26,11 +42,18 @@ const Marker = ({
         className={cx(
           styles.marker,
           styles['marker_' + category],
-          open && styles.marker_pressed
+          open && styles.marker_pressed,
+          hovered && styles.marker_pressed
         )}
         onClick={() => {
-          setOpen(!open)
-          handleFindTrips(placeInfo.title)
+          if (!open && !filteredStatus) {
+            setOpen(true)
+            handleFindTrips(placeInfo.title)
+          } else if (!open && filteredStatus) {
+            setOpen(true)
+          } else {
+            setOpen(false)
+          }
         }}
       ></button>
       {open && (
@@ -69,11 +92,14 @@ const Marker = ({
 }
 
 Marker.propTypes = {
-  category: PropTypes.string,
+  category: PropTypes.number.isRequired,
   placeInfo: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
     .isRequired,
   handleFindTrips: PropTypes.func.isRequired,
   handleFilterStatus: PropTypes.func.isRequired,
+  filteredStatus: PropTypes.bool.isRequired,
+  hoveredMarker: PropTypes.number.isRequired,
+  markerId: PropTypes.number.isRequired,
 }
 
 export default Marker

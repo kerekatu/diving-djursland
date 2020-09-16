@@ -14,10 +14,6 @@
       "required": true,
       "unique": true
     },
-    "map_markers": {
-      "via": "trip_category",
-      "collection": "map-markers"
-    },
     "trip_places": {
       "via": "trip_category",
       "collection": "trip-places"

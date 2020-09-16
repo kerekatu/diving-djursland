@@ -1,3 +1,11 @@
 {
-  "heading-section-places": "Mest Populære Dykkersteder"
+  "heading-section-places": "Mest Populære Dykkersteder",
+  "heading-section-trips": "Kommende Dykkerture",
+  "section-trips-cta": "Se Alle Begivenheder",
+  "heading-section-newsletter": "Nyhedsbrev",
+  "heading-section-newsletter-2": "Tilmeld dig nyhedsbrevet og få notifikationer direkte på din mail om alle nye begivenheder!",
+  "newsletter-form-label": "Navn",
+  "newsletter-form-label-2": "Email-adresse (skal udfyldes)",
+  "newsletter-form-cta": "Ja tak, tilmeld mig",
+  "section-places-cta": "Læs mere"
 }

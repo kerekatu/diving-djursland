@@ -6,20 +6,19 @@ import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons'
 import Link from 'next-translate/Link'
 import cx from 'classnames'
 import useOnClickOutside from '@/hooks/useOnClickOutside'
-import { useRouter } from 'next/router'
 
 export const Button = ({ title, type, icon, link, ...props }) => {
   if (link) {
     return (
-      <Link href={link}>
+      <Link href={link} {...props}>
         <a className={styles['btn_' + type]}>
+          {title}
           {icon && (
             <Icon
               icon={icon}
-              className={title ? styles.btn__icon_left : styles.btn__icon}
+              className={title ? styles.btn__icon_right : styles.btn__icon}
             />
           )}
-          {title}
         </a>
       </Link>
     )
@@ -66,13 +65,14 @@ export const ButtonDropdown = ({
         onClick={() => setOpen(!open)}
       >
         {navbar
-          ? options.map((option) => {
+          ? options.map((option, index) => {
               if (defaultOption === option.slug) {
                 return (
                   <img
                     src={option.icon}
                     alt="Language Icon"
                     className={styles.btn_dropdown__icon}
+                    key={index}
                   />
                 )
               }

@@ -2,8 +2,8 @@ async function fetchAPI(url) {
   const response = await fetch(`http://localhost:1337/${url}`, {
     method: 'GET',
     headers: {
-      'Content-Type': 'application/json'
-    }
+      'Content-Type': 'application/json',
+    },
   })
   const result = await response.json()
 
@@ -19,7 +19,7 @@ async function fetchAPI(url) {
 }
 
 export async function getNewestTrips() {
-  const data = await fetchAPI('trips' + '?_sort=date:ASC')
+  const data = await fetchAPI('trips?_sort=date:ASC')
 
   return data
 }

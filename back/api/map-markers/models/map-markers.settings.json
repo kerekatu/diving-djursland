@@ -10,12 +10,8 @@
   },
   "attributes": {
     "trip_place": {
-      "via": "map_marker",
-      "model": "trip-places"
-    },
-    "trip_category": {
-      "model": "trip-categories",
-      "via": "map_markers"
+      "model": "trip-places",
+      "via": "map_marker"
     },
     "lat": {
       "type": "string"

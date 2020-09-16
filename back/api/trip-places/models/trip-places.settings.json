@@ -43,8 +43,8 @@
       "dominant": true
     },
     "map_marker": {
-      "model": "map-markers",
-      "via": "trip_place"
+      "via": "trip_place",
+      "model": "map-markers"
     },
     "trip_category": {
       "model": "trip-categories",

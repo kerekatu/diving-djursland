@@ -7,6 +7,9 @@
   padding: var(--pp-desktop);
   z-index: 10;
 
+  &_scrolled {
+  }
+
   &__content {
     height: 8rem;
     display: flex;

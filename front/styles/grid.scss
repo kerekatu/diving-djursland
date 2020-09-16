@@ -3,13 +3,15 @@
   grid-template-rows: 8rem 1fr;
 
   &_home {
-    grid-template-rows: 64rem 1fr 15rem;
+    display: grid;
+    grid-template-rows: 65rem 1fr;
   }
 }
 
 .home {
   display: grid;
-  grid-template-rows: 70rem 80rem 50rem;
+  grid-template-rows: 74rem 90rem 52rem;
+  margin-bottom: 20rem;
 }
 
 .main-content {

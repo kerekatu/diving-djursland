@@ -4,9 +4,10 @@ import { formatDate } from '@/lib/date'
 import cx from 'classnames'
 import { trimWords } from '@/lib/trim'
 import { faMap, faTimes } from '@fortawesome/free-solid-svg-icons'
+import useTranslation from 'next-translate/useTranslation'
 
 import { Button } from '@/components/Button/Button'
-import { categoryFormat } from '@/lib/categoryFormat'
+import categoryFormat from '@/lib/categoryFormat'
 
 const TripsList = ({
   items,
@@ -15,7 +16,10 @@ const TripsList = ({
   filteredStatus,
   handleMapVisibility,
   handleFilterStatus,
+  hoverMarkerWithTrip,
 }) => {
+  const { t, lang } = useTranslation()
+
   return (
     <div className={styles.trips_listing}>
       <div className={styles.trips_listing__top_container}>
@@ -47,7 +51,14 @@ const TripsList = ({
       <ul className={styles.trips_listing__list}>
         {items ? (
           items.map((trip, index) => (
-            <li key={index} className={styles.trips_listing__item}>
+            <li
+              key={index}
+              className={styles.trips_listing__item}
+              onMouseOver={() =>
+                hoverMarkerWithTrip(trip.trip_places[0].map_marker)
+              }
+              onMouseOut={() => hoverMarkerWithTrip()}
+            >
               <div className={styles.trips_listing__img_container}>
                 {trip.trip_places[0].trip_category && (
                   <button
@@ -55,11 +66,11 @@ const TripsList = ({
                     onClick={() => filterItems(trip)}
                   >
                     <div
-                      className={`dot dot_${categoryFormat(
-                        trip.trip_places[0].trip_category
-                      )}`}
+                      className={`dot dot_${trip.trip_places[0].trip_category}`}
                     ></div>
-                    <p>{categoryFormat(trip.trip_places[0].trip_category)}</p>
+                    <p>
+                      {categoryFormat(trip.trip_places[0].trip_category, t)}
+                    </p>
                   </button>
                 )}
                 <img
@@ -80,18 +91,25 @@ const TripsList = ({
                     trip.participantsLeft < 4 && 'red_text'
                   )}
                 >{`${trip.participantsLeft} pladser tilbage (ud af ${trip.participants})`}</p>
-                <h4>{trip.title}</h4>
+                <h4>{trimWords(trip.title, 10, 40)}</h4>
                 <span className={styles.trips_listing__date}>
-                  {formatDate(trip.date, 'EEEE d. MMMM, HH:mm')}
+                  {formatDate(trip.date, 'EEEE d. MMMM, HH:mm', lang)}
                 </span>
                 <p className={styles.trips_listing__desc}>
-                  {trip.description && trimWords(trip.description, 20, 140)}
+                  {trip.description && trimWords(trip.description, 30, 180)}
                 </p>
                 <div className={styles.trips_listing__checkout}>
-                  <p
-                    className={styles.trips_listing__price}
-                  >{`${trip.priceDKK} DKK / ${trip.priceEUR} EUR`}</p>
-                  <Button title="Tilmeld" type="primary" />
+                  <p className={styles.trips_listing__price}></p>
+                  <Button
+                    title={
+                      lang === 'da'
+                        ? `Tilmeld (${trip.priceDKK} DKK)`
+                        : `Reserve (${trip.priceEUR} EUR)`
+                    }
+                    as={`/trips/${trip.slug}`}
+                    link="/trips/[slug]"
+                    type="primary"
+                  />
                 </div>
               </div>
             </li>

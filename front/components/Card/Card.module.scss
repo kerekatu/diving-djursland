@@ -1,8 +1,27 @@
 .card {
-  &_highlight {
+  &_primary {
     display: flex;
     flex-direction: column;
     background-color: var(--c-white-d);
     border-radius: var(--br);
+  }
+
+  &_secondary {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--c-gray);
+    border-radius: var(--br);
+    border: 0.1rem solid var(--c-gray-d);
+    justify-content: center;
+  }
+
+  &_highlight {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--c-gray);
+    border-radius: var(--br);
+    border: 0.1rem solid var(--c-gray-d);
+    grid-row: 1 / -1;
+    grid-column: 1 / 2;
   }
 }

@@ -10,6 +10,8 @@ const TripsMap = ({
   handleMapVisibility,
   handleFindTrips,
   handleFilterStatus,
+  filteredStatus,
+  hoveredMarker,
 }) => {
   return (
     <div className={styles.trips_map}>
@@ -25,15 +27,18 @@ const TripsMap = ({
         defaultZoom={9.5}
         yesIWantToUseGoogleMapApiInternals
       >
-        {markers === [] &&
+        {markers &&
           markers.map((marker) => (
             <Marker
               lat={marker.lat}
               lng={marker.lng}
+              filteredStatus={filteredStatus}
               placeInfo={marker.trip_place}
-              category={marker.trip_category.category.toLowerCase()}
+              category={marker.trip_place.trip_category}
+              markerId={marker.id}
               handleFindTrips={handleFindTrips}
               handleFilterStatus={handleFilterStatus}
+              hoveredMarker={hoveredMarker}
               key={marker.id}
             />
           ))}
@@ -47,6 +52,8 @@ TripsMap.propTypes = {
   handleMapVisibility: PropTypes.func.isRequired,
   handleFindTrips: PropTypes.func.isRequired,
   handleFilterStatus: PropTypes.func.isRequired,
+  filteredStatus: PropTypes.bool.isRequired,
+  hoveredMarker: PropTypes.number.isRequired,
 }
 
 export default TripsMap

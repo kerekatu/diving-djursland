@@ -1,9 +1,15 @@
-export const categoryFormat = (category) => {
+const categoryFormat = (category, t) => {
+  const categoryEasy = t('common:category-1')
+  const categoryMedium = t('common:category-2')
+  const categoryHard = t('common:category-3')
+
   if (category === 1) {
-    return 'let'
+    return categoryEasy
   } else if (category === 2) {
-    return 'medium'
+    return categoryMedium
   } else if (category === 3) {
-    return 'svær'
+    return categoryHard
   }
 }
+
+export default categoryFormat

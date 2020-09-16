@@ -1,10 +1,9 @@
 import { format, getDate, getMonth, getYear } from 'date-fns'
 import { da, enGB, de } from 'date-fns/locale'
 
-export const formatDate = (date, formatStr = 'PP') => {
-  const locales = { da, enGB, de }
+export const formatDate = (date, formatStr = 'PP', lang) => {
   return format(new Date(date), formatStr, {
-    locale: locales[global.__localeId__]
+    locale: lang === 'da' ? da : lang === 'en' ? enGB : de,
   })
 }
 

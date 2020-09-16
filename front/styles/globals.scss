@@ -98,10 +98,6 @@ main {
   width: 100%;
 }
 
-footer {
-  max-width: 144rem;
-}
-
 /* COMMON */
 
 h1 {
@@ -145,15 +141,15 @@ h5 {
   display: block;
   border-radius: var(--br-2);
 
-  &_let {
+  &_1 {
     background-color: var(--c-green);
   }
 
-  &_medium {
+  &_2 {
     background-color: var(--c-orange);
   }
 
-  &_svær {
+  &_3 {
     background-color: var(--c-red);
   }
 }
@@ -172,4 +168,8 @@ h5 {
 
 .white_text {
   color: var(--c-white) !important;
+}
+
+.black_text {
+  color: var(--c-black) !important;
 }

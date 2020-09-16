@@ -1,6 +1,10 @@
 .navbar {
   display: flex;
 
+  &_footer &__link {
+    color: var(--c-blue);
+  }
+
   &__list {
     display: flex;
     align-items: center;
