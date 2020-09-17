@@ -23,15 +23,17 @@
 
     &__content {
       display: flex;
+      position: relative;
       flex-direction: column;
       padding: 2rem;
-      height: 100%;
-      max-height: 20rem;
+      min-height: 10rem;
 
       & > a {
-        align-self: end;
-        justify-self: end;
-        margin-top: auto;
+        position: absolute;
+        bottom: -1.2rem;
+        left: 50%;
+        background-color: var(--c-white);
+        transform: translate(-50%, 0);
       }
     }
 
@@ -40,13 +42,14 @@
       font-size: var(--fs);
       line-height: var(--lh-2);
       margin-top: 0.6rem;
+      min-height: 5rem;
       margin-bottom: 2rem;
     }
   }
 
   // TRIPS SECTION
   &_trips {
-    padding: var(--ms-desktop);
+    padding: 8rem 8rem;
     background-color: var(--c-white-d);
 
     & > a {

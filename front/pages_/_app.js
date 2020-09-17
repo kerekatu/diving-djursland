@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }) {
 
 MyApp.propTypes = {
   Component: PropTypes.oneOfType([PropTypes.func, PropTypes.object]).isRequired,
-  pageProps: PropTypes.any,
+  pageProps: PropTypes.any
 }
 
 export default MyApp

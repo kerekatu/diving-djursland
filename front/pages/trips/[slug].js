@@ -25,7 +25,7 @@ if(C && C.getInitialProps) {
 }
 
 
-
+export const getStaticProps = ctx => _rest.getStaticProps({ ...ctx, lang: 'da' })
 export const getStaticPaths = ctx => _rest.getStaticPaths({ ...ctx, lang: 'da' })
 
 

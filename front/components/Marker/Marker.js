@@ -13,7 +13,7 @@ const Marker = ({
   handleFilterStatus,
   filteredStatus,
   hoveredMarker,
-  markerId,
+  markerId
 }) => {
   const ref = useRef()
   const [open, setOpen] = useState(false)
@@ -53,6 +53,7 @@ const Marker = ({
             setOpen(true)
           } else {
             setOpen(false)
+            handleFilterStatus()
           }
         }}
       ></button>
@@ -99,7 +100,7 @@ Marker.propTypes = {
   handleFilterStatus: PropTypes.func.isRequired,
   filteredStatus: PropTypes.bool.isRequired,
   hoveredMarker: PropTypes.number.isRequired,
-  markerId: PropTypes.number.isRequired,
+  markerId: PropTypes.number.isRequired
 }
 
 export default Marker

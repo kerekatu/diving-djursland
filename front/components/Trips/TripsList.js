@@ -16,7 +16,7 @@ const TripsList = ({
   filteredStatus,
   handleMapVisibility,
   handleFilterStatus,
-  hoverMarkerWithTrip,
+  hoverMarkerWithTrip
 }) => {
   const { t, lang } = useTranslation()
 
@@ -81,6 +81,7 @@ const TripsList = ({
                       : '/placeholder.png'
                   }
                   alt="Diving Trip Place"
+                  loading="lazy"
                   className={styles.trips_listing__img}
                 />
               </div>
@@ -129,6 +130,7 @@ TripsList.propTypes = {
   handleMapVisibility: PropTypes.func.isRequired,
   handleFilterStatus: PropTypes.func.isRequired,
   filteredStatus: PropTypes.bool.isRequired,
+  hoverMarkerWithTrip: PropTypes.func.isRequired
 }
 
 export default TripsList

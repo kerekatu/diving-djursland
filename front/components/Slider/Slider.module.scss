@@ -1,0 +1,47 @@
+.slider {
+  width: 100%;
+  height: inherit;
+  position: relative;
+
+  & > button {
+    color: var(--c-white);
+    font-size: var(--fs-5);
+    position: absolute;
+  }
+
+  & > button:first-of-type {
+    top: 50%;
+    left: 4rem;
+  }
+
+  & > button:not(:first-of-type) {
+    top: 50%;
+    right: 4rem;
+  }
+
+  &__amount {
+    position: absolute;
+    background-color: var(--c-white-d);
+    padding: 0.5rem 1.5rem;
+    border-radius: var(--br);
+    top: 2rem;
+    right: 2rem;
+    font-size: var(--fs-1);
+    box-shadow: 0 0.4rem 1.5rem rgba(0, 0, 0, 0.1);
+  }
+
+  &__item {
+    height: 100%;
+    width: 100%;
+  }
+
+  &__img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+    user-select: none;
+    pointer-events: none;
+    border-radius: var(--br);
+  }
+}

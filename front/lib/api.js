@@ -2,8 +2,8 @@ async function fetchAPI(url) {
   const response = await fetch(`http://localhost:1337/${url}`, {
     method: 'GET',
     headers: {
-      'Content-Type': 'application/json',
-    },
+      'Content-Type': 'application/json'
+    }
   })
   const result = await response.json()
 
@@ -16,6 +16,12 @@ async function fetchAPI(url) {
   const json = JSON.parse(JSON.stringify(result))
 
   return json
+}
+
+export async function getDataWithSlug(collection, slug) {
+  const data = await fetchAPI(collection + '?slug=' + slug)
+
+  return data
 }
 
 export async function getNewestTrips() {

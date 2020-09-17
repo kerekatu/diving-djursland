@@ -31,6 +31,7 @@ const HomePage = ({ popularPlaces, newestTrips }) => {
                         item.media[0]?.formats.small.url
                       : '/placeholder.png'
                   }
+                  loading="lazy"
                   alt="Populær Dykkersted"
                   className={styles.home_places__img}
                 />
@@ -53,14 +54,14 @@ const HomePage = ({ popularPlaces, newestTrips }) => {
       <section className={styles.home_trips}>
         <h2 className="center">{t('home:heading-section-trips')}</h2>
         <div className={styles.home_trips__container}>
-          {newestTrips.map((trip, index) => {
+          {newestTrips.slice(0, 4).map((trip, index) => {
             return index === 0 ? (
               <Card type="highlight" key={index}>
                 <img
                   src={
                     trip.trip_places[0].media[0]
                       ? 'http://localhost:1337' +
-                        trip.trip_places[0].media[0]?.formats.small.url
+                        trip.trip_places[0].media[0]?.formats.medium.url
                       : '/placeholder.png'
                   }
                   alt="Ny Dykkertur"
@@ -161,8 +162,8 @@ export async function getStaticProps() {
   return {
     props: {
       popularPlaces,
-      newestTrips,
-    },
+      newestTrips
+    }
   }
 }
 
@@ -170,7 +171,7 @@ HomePage.propTypes = {
   popularPlaces: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
     .isRequired,
   newestTrips: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
-    .isRequired,
+    .isRequired
 }
 
 export default HomePage

@@ -15,16 +15,18 @@
 }
 
 .main-content {
-  padding: var(--pp-desktop);
+  min-height: calc(100vh - 8rem);
 }
 
 .trips {
   display: grid;
+  padding: var(--pp-desktop);
   grid-template-columns: 55% 45%;
   gap: 0 4rem;
   margin: 0 auto;
 
   &_listing_full {
     grid-template-columns: 1fr;
+    padding: var(--pp-desktop);
   }
 }

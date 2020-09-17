@@ -1,4 +1,9 @@
 .btn {
+  &_icon {
+    background-color: transparent;
+    border: none;
+  }
+
   &__icon_left {
     margin-right: 0.5rem;
   }
@@ -54,7 +59,7 @@
 
     &:hover {
       background-color: var(--c-blue);
-      padding: 0.75rem 2rem;
+      padding: 0.75rem 3rem;
       color: var(--c-white);
       font-weight: 700;
       font-size: var(--fs);
