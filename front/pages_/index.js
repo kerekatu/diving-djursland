@@ -81,8 +81,12 @@ const HomePage = ({ popularPlaces, newestTrips }) => {
                     <Button
                       title={
                         lang === 'da'
-                          ? `Tilmeld (${trip.priceDKK} DKK)`
-                          : `Reserve (${trip.priceEUR} EUR)`
+                          ? `${t('common:trip-book-cta')} (${
+                              trip.priceDKK
+                            } DKK)`
+                          : `${t('common:trip-book-cta')} (${
+                              trip.priceEUR
+                            } EUR)`
                       }
                       as={`/trips/${trip.slug}`}
                       link="/trips/[slug]"
@@ -107,8 +111,12 @@ const HomePage = ({ popularPlaces, newestTrips }) => {
                     <Button
                       title={
                         lang === 'da'
-                          ? `Tilmeld (${trip.priceDKK} DKK)`
-                          : `Reserve (${trip.priceEUR} EUR)`
+                          ? `${t('common:trip-book-cta')} (${
+                              trip.priceDKK
+                            } DKK)`
+                          : `${t('common:trip-book-cta')} (${
+                              trip.priceEUR
+                            } EUR)`
                       }
                       type="primary"
                     />

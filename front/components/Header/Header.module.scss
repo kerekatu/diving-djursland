@@ -7,9 +7,6 @@
   padding: var(--pp-desktop);
   z-index: 10;
 
-  &_scrolled {
-  }
-
   &__content {
     height: 8rem;
     display: flex;
@@ -27,10 +24,28 @@
     text-align: center;
     padding: 8rem 0;
 
+    @media only screen and (max-width: 75em) {
+      width: 100%;
+    }
+
+    & > h1 {
+      @media only screen and (max-width: 75em) {
+        font-size: 4vw !important;
+      }
+    }
+
     & > p {
       color: var(--c-white);
       padding: 3rem 2rem;
       line-height: 1.58;
+
+      @media only screen and (max-width: 75em) {
+        font-size: 1.4vw !important;
+      }
+
+      @media only screen and (max-width: 56.25em) {
+        font-size: var(--fs-1) !important;
+      }
     }
   }
 
@@ -42,7 +57,7 @@
   }
 
   &_extended {
-    height: 65rem;
+    height: inherit;
     position: relative;
     padding: var(--pp-desktop-h);
 
@@ -75,6 +90,10 @@
       bottom: 0;
       right: 0;
       z-index: -1;
+
+      @media only screen and (max-width: 56.25em) {
+        background: none;
+      }
     }
   }
 }

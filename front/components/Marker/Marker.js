@@ -36,6 +36,10 @@ const Marker = ({
     }
   }, [hoveredMarker])
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [open])
+
   return (
     <div className={styles.marker_container} ref={ref}>
       <button

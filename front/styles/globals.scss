@@ -41,6 +41,13 @@
   --c-green: #14b266;
 }
 
+/* BREAKPOINTS */
+
+// bp-desktop: 90em;
+// bp-tablet-land: 75em;
+// bp-tablet-port: 56.25em;
+// bp-mobile: 37.5em;
+
 /* RESET */
 
 ::-moz-selection {
@@ -64,6 +71,10 @@
 html {
   font-size: 62.5%;
   box-sizing: border-box;
+
+  @media only screen and (max-width: 56.25em) {
+    font-size: 56%;
+  }
 }
 
 body {

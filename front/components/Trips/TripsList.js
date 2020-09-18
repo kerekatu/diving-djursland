@@ -48,7 +48,13 @@ const TripsList = ({
           )}
         </div>
       </div>
-      <ul className={styles.trips_listing__list}>
+      <ul
+        className={
+          mapVisibility
+            ? styles.trips_listing__list
+            : styles.trips_listing__list_full
+        }
+      >
         {items ? (
           items.map((trip, index) => (
             <li
@@ -96,16 +102,15 @@ const TripsList = ({
                 <span className={styles.trips_listing__date}>
                   {formatDate(trip.date, 'EEEE d. MMMM, HH:mm', lang)}
                 </span>
-                <p className={styles.trips_listing__desc}>
+                {/* <p className={styles.trips_listing__desc}>
                   {trip.description && trimWords(trip.description, 30, 180)}
-                </p>
+                </p> */}
                 <div className={styles.trips_listing__checkout}>
-                  <p className={styles.trips_listing__price}></p>
                   <Button
                     title={
                       lang === 'da'
-                        ? `Tilmeld (${trip.priceDKK} DKK)`
-                        : `Reserve (${trip.priceEUR} EUR)`
+                        ? `${t('common:trip-book-cta')} (${trip.priceDKK} DKK)`
+                        : `${t('common:trip-book-cta')} (${trip.priceEUR} EUR)`
                     }
                     as={`/trips/${trip.slug}`}
                     link="/trips/[slug]"
@@ -116,8 +121,13 @@ const TripsList = ({
             </li>
           ))
         ) : (
-          <p>Ingen dykkertur er planlagt endnu, kom tilbage senere...</p>
+          <p className={styles.trips_listing__notification}>
+            Ingen dykkertur er planlagt endnu, kom tilbage senere...
+          </p>
         )}
+        <p className={styles.trips_listing__notification}>
+          Flere dykkerture kommer snart...
+        </p>
       </ul>
     </div>
   )

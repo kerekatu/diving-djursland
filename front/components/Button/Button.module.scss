@@ -15,6 +15,7 @@
   &_primary {
     display: flex;
     align-items: center;
+    justify-content: center;
     background-color: var(--c-orange-d);
     padding: 1rem 4rem;
     color: var(--c-white);
@@ -49,7 +50,7 @@
   &_tertiary {
     display: block;
     background-color: transparent;
-    padding: 0.75rem 2rem;
+    padding: 0.8rem 3rem;
     color: var(--c-blue);
     font-weight: 700;
     font-size: var(--fs);
@@ -59,7 +60,7 @@
 
     &:hover {
       background-color: var(--c-blue);
-      padding: 0.75rem 3rem;
+      padding: 0.8rem 4rem;
       color: var(--c-white);
       font-weight: 700;
       font-size: var(--fs);

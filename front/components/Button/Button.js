@@ -42,14 +42,14 @@ Button.propTypes = {
   type: PropTypes.string.isRequired,
   icon: PropTypes.any,
   droppable: PropTypes.bool,
-  link: PropTypes.string,
+  link: PropTypes.string
 }
 
 export const ButtonDropdown = ({
   defaultOption,
   options,
   setOption,
-  navbar = false,
+  navbar = false
 }) => {
   const ref = useRef()
   const [open, setOpen] = useState(false)
@@ -136,9 +136,9 @@ ButtonDropdown.propTypes = {
   defaultOption: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
-    PropTypes.array,
+    PropTypes.array
   ]).isRequired,
   options: PropTypes.array.isRequired,
   setOption: PropTypes.func.isRequired,
-  navbar: PropTypes.bool,
+  navbar: PropTypes.bool
 }

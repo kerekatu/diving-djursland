@@ -1,7 +1,5 @@
 .trips_listing {
   margin: 6rem 0;
-  overflow-y: auto;
-  scrollbar-width: thin;
 
   &__top {
     &_container {
@@ -20,8 +18,42 @@
     }
   }
 
+  &__notification {
+    margin: 6rem 0 2rem 0;
+    color: var(--c-black-l);
+    text-align: center;
+  }
+
   &__list {
     margin-top: 2.6rem;
+
+    &_full {
+      margin-top: 2.6rem;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+
+  &__list_full > &__item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-top: none;
+    gap: 2rem;
+
+    &:not(:last-of-type) {
+      margin-right: 4rem;
+    }
+  }
+
+  &__list_full &__checkout {
+    align-self: initial;
+    width: 100%;
+    justify-content: center;
+  }
+
+  &__list_full &__notification {
+    grid-column: 1 / -1;
   }
 
   &__item {
@@ -105,10 +137,8 @@
 
   &__checkout {
     display: flex;
-    flex-direction: column;
     margin-top: auto;
     align-self: end;
-    justify-self: end;
   }
 
   &__price {
