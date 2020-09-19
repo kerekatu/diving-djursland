@@ -10,6 +10,7 @@
     "front\\jsconfig.json": true,
     "front/yarn.lock": true,
     "front/package-lock.json": true,
-    "front/pages": true
+    "front/pages": true,
+    "front/.env.local": true
   }
 }

@@ -5,6 +5,7 @@ import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons'
 import Link from 'next-translate/Link'
 import cx from 'classnames'
+
 import useOnClickOutside from '@/hooks/useOnClickOutside'
 
 export const Button = ({ title, type, icon, link, ...props }) => {
@@ -42,14 +43,14 @@ Button.propTypes = {
   type: PropTypes.string.isRequired,
   icon: PropTypes.any,
   droppable: PropTypes.bool,
-  link: PropTypes.string
+  link: PropTypes.string,
 }
 
 export const ButtonDropdown = ({
   defaultOption,
   options,
   setOption,
-  navbar = false
+  navbar = false,
 }) => {
   const ref = useRef()
   const [open, setOpen] = useState(false)
@@ -89,6 +90,7 @@ export const ButtonDropdown = ({
           className={styles.btn__icon_right}
         />
       </button>
+
       {open && (
         <div className={styles.btn_dropdown__content}>
           {navbar
@@ -136,9 +138,9 @@ ButtonDropdown.propTypes = {
   defaultOption: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
-    PropTypes.array
+    PropTypes.array,
   ]).isRequired,
   options: PropTypes.array.isRequired,
   setOption: PropTypes.func.isRequired,
-  navbar: PropTypes.bool
+  navbar: PropTypes.bool,
 }

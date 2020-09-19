@@ -1,12 +1,13 @@
 import styles from '@/styles/Home.module.scss'
-import Card from '@/components/Card/Card'
-import { trimWords } from '@/lib/trim'
-import { getPopularData, getNewestTrips } from '@/lib/api'
 import PropTypes from 'prop-types'
 import useTranslation from 'next-translate/useTranslation'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
+
+import { trimWords } from '@/lib/trim'
+import { getPopularData, getNewestTrips } from '@/lib/api'
 import { formatDate } from '@/lib/date'
 
+import Card from '@/components/Card/Card'
 import { Button } from '@/components/Button/Button'
 import Layout from '@/components/Layout/Layout'
 import { Form, FormInput } from '@/components/Form/Form'
@@ -22,32 +23,33 @@ const HomePage = ({ popularPlaces, newestTrips }) => {
           {popularPlaces
             .sort((a, b) => b.trips.length - a.trips.length)
             .slice(0, 3)
-            .map((item, index) => (
-              <Card type="primary" key={index}>
-                <img
-                  src={
-                    item.media[0]
-                      ? 'http://localhost:1337' +
-                        item.media[0]?.formats.small.url
-                      : '/placeholder.png'
-                  }
-                  loading="lazy"
-                  alt="Populær Dykkersted"
-                  className={styles.home_places__img}
-                />
-                <div className={styles.home_places__content}>
-                  <h5>{item.title}</h5>
-                  <p className={styles.home_places__desc}>
-                    {item.content && trimWords(item.content, 30, 140)}
-                  </p>
-                  <Button
-                    title={t('home:section-places-cta')}
-                    type="tertiary"
-                    link={`/places/${item.slug}`}
+            .map((item, index) => {
+              const description =
+                item.content && trimWords(item.content, 30, 140)
+              const img = item.media[0]
+                ? `http://localhost:1337${item.media[0]?.formats.small.url}`
+                : '/placeholder.png'
+
+              return (
+                <Card type="primary" key={index}>
+                  <img
+                    src={img}
+                    loading="lazy"
+                    alt="Populær Dykkersted"
+                    className={styles.home_places__img}
                   />
-                </div>
-              </Card>
-            ))}
+                  <div className={styles.home_places__content}>
+                    <h5>{item.title}</h5>
+                    <p className={styles.home_places__desc}>{description}</p>
+                    <Button
+                      title={t('home:section-places-cta')}
+                      type="tertiary"
+                      link={`/places/${item.slug}`}
+                    />
+                  </div>
+                </Card>
+              )
+            })}
         </div>
       </section>
 
@@ -55,39 +57,34 @@ const HomePage = ({ popularPlaces, newestTrips }) => {
         <h2 className="center">{t('home:heading-section-trips')}</h2>
         <div className={styles.home_trips__container}>
           {newestTrips.slice(0, 4).map((trip, index) => {
+            const title = trip.title && trimWords(trip.title, 10, 40)
+            const description =
+              trip.description && trimWords(trip.description, 16, 100)
+            const img = trip.trip_places[0].media[0]
+              ? `http://localhost:1337'${trip.trip_places[0].media[0]?.formats.medium.url}`
+              : '/placeholder.png'
+            const date = formatDate(trip.date, 'd/M/yy HH:mm', lang)
+            const btnTitle =
+              lang === 'da'
+                ? `${t('common:trip-book-cta')} (${trip.priceDKK} DKK)`
+                : `${t('common:trip-book-cta')} (${trip.priceEUR} EUR)`
+
             return index === 0 ? (
               <Card type="highlight" key={index}>
                 <img
-                  src={
-                    trip.trip_places[0].media[0]
-                      ? 'http://localhost:1337' +
-                        trip.trip_places[0].media[0]?.formats.medium.url
-                      : '/placeholder.png'
-                  }
+                  src={img}
                   alt="Ny Dykkertur"
                   className={styles.home_trips__img_highlight}
                 />
                 <div className={styles.home_trips__content}>
                   <div className={styles.home_trips__content_left}>
-                    <h4>{trimWords(trip.title, 10, 40)}</h4>
-                    <p className={styles.home_trips__desc}>
-                      {trip.description && trimWords(trip.description, 24, 200)}
-                    </p>
+                    <h4>{title}</h4>
+                    <p className={styles.home_trips__desc}>{description}</p>
                   </div>
                   <div className={styles.home_trips__content_right}>
-                    <p className={styles.home_trips__date}>
-                      {formatDate(trip.date, 'd/M/yy HH:mm', lang)}
-                    </p>
+                    <p className={styles.home_trips__date}>{date}</p>
                     <Button
-                      title={
-                        lang === 'da'
-                          ? `${t('common:trip-book-cta')} (${
-                              trip.priceDKK
-                            } DKK)`
-                          : `${t('common:trip-book-cta')} (${
-                              trip.priceEUR
-                            } EUR)`
-                      }
+                      title={btnTitle}
                       as={`/trips/${trip.slug}`}
                       link="/trips/[slug]"
                       type="primary"
@@ -99,27 +96,12 @@ const HomePage = ({ popularPlaces, newestTrips }) => {
               <Card type="secondary" key={index}>
                 <div className={styles.home_trips__content}>
                   <div className={styles.home_trips__content_left}>
-                    <h4>{trimWords(trip.title, 10, 40)}</h4>
-                    <p className={styles.home_trips__desc}>
-                      {trip.description && trimWords(trip.description, 20, 110)}
-                    </p>
+                    <h4>{title}</h4>
+                    <p className={styles.home_trips__desc}>{description}</p>
                   </div>
                   <div className={styles.home_trips__content_right}>
-                    <p className={styles.home_trips__date}>
-                      {formatDate(trip.date, 'd/M/yy HH:mm', lang)}
-                    </p>
-                    <Button
-                      title={
-                        lang === 'da'
-                          ? `${t('common:trip-book-cta')} (${
-                              trip.priceDKK
-                            } DKK)`
-                          : `${t('common:trip-book-cta')} (${
-                              trip.priceEUR
-                            } EUR)`
-                      }
-                      type="primary"
-                    />
+                    <p className={styles.home_trips__date}>{date}</p>
+                    <Button title={btnTitle} type="primary" />
                   </div>
                 </div>
               </Card>
@@ -170,8 +152,8 @@ export async function getStaticProps() {
   return {
     props: {
       popularPlaces,
-      newestTrips
-    }
+      newestTrips,
+    },
   }
 }
 
@@ -179,7 +161,7 @@ HomePage.propTypes = {
   popularPlaces: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
     .isRequired,
   newestTrips: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
-    .isRequired
+    .isRequired,
 }
 
 export default HomePage

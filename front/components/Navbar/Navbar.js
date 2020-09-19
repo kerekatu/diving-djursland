@@ -5,15 +5,15 @@ import cx from 'classnames'
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
 import { faArrowUp, faBars } from '@fortawesome/free-solid-svg-icons'
 import { useRouter } from 'next/router'
+import useTranslation from 'next-translate/useTranslation'
 
 import { ButtonDropdown, Button } from '@/components/Button/Button'
-import useTranslation from 'next-translate/useTranslation'
 
 const Navbar = ({ isFooter = false }) => {
   const [open, setOpen] = useState(false)
   const [language, setLanguage] = useState([
     { title: 'Dansk', slug: 'da', icon: '/dk-flag.svg' },
-    { title: 'English', slug: 'en', icon: '/gb-flag.svg' }
+    { title: 'English', slug: 'en', icon: '/gb-flag.svg' },
   ])
   const router = useRouter()
 
@@ -62,6 +62,7 @@ const Navbar = ({ isFooter = false }) => {
             </li>
           </ul>
         </nav>
+
         <nav className={styles.navbar_hamburger}>
           <Button
             type="dropdown"
@@ -74,6 +75,7 @@ const Navbar = ({ isFooter = false }) => {
             setOption={setLanguage}
             navbar={true}
           />
+
           {open && (
             <div className={styles.navbar_hamburger__content}>
               <ul className={styles.navbar__list}>

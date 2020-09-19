@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter()
-  const headerCondition = () => {
+  const homeCondition = () => {
     if (
       router.pathname === '/' ||
       router.pathname === '/da' ||
@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }) {
   }
 
   return (
-    <div className={headerCondition() ? 'app_home' : 'app'}>
+    <div className={homeCondition() ? 'app_home' : 'app'}>
       <Component {...pageProps} />
     </div>
   )
@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }) {
 
 MyApp.propTypes = {
   Component: PropTypes.oneOfType([PropTypes.func, PropTypes.object]).isRequired,
-  pageProps: PropTypes.any
+  pageProps: PropTypes.any,
 }
 
 export default MyApp

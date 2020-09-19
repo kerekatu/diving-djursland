@@ -1,10 +1,11 @@
-import { useRouter } from 'next/router'
-import { getAllData, getDataWithSlug } from '@/lib/api'
-import PropTypes from 'prop-types'
-import Layout from '@/components/Layout/Layout'
 import styles from '@/styles/Trip.module.scss'
+import { useRouter } from 'next/router'
+import PropTypes from 'prop-types'
+
+import { getAllData, getDataWithSlug } from '@/lib/api'
 
 import { Slider, SliderItem } from '@/components/Slider/Slider'
+import Layout from '@/components/Layout/Layout'
 
 const Trip = ({ tripData }) => {
   const trip = tripData[0]
@@ -44,8 +45,8 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
-      tripData
-    }
+      tripData,
+    },
   }
 }
 
@@ -54,12 +55,12 @@ export async function getStaticPaths() {
 
   return {
     paths: allTripsLinks.map((trip) => `/trips/${trip.slug}`) || [],
-    fallback: true
+    fallback: true,
   }
 }
 
 Trip.propTypes = {
-  tripData: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired
+  tripData: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
 }
 
 export default Trip

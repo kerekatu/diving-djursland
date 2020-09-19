@@ -1,12 +1,13 @@
 import styles from './Footer.module.scss'
-import Navbar from '../Navbar/Navbar'
 import PropTypes from 'prop-types'
-import Logo from '../Logo/Logo'
 import {
   faFacebookSquare,
   faInstagramSquare,
 } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
+
+import Logo from '@/components/Logo/Logo'
+import Navbar from '@/components/Navbar/Navbar'
 
 const Footer = ({ isExtended = false }) => {
   return (

@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import { getNewestTrips, getAllData } from '@/lib/api'
 import PropTypes from 'prop-types'
+
 import { formatDate, getFullDate } from '@/lib/date'
+import { getNewestTrips, getAllData } from '@/lib/api'
 
 import TripsList from '@/components/Trips/TripsList'
 import TripsMap from '@/components/Trips/TripsMap'
@@ -72,6 +73,7 @@ const TripsPage = ({ allTrips, allMarkers }) => {
           handleFilterStatus={handleFilterStatus}
           hoverMarkerWithTrip={hoverMarkerWithTrip}
         />
+
         {mapVisibility && (
           <TripsMap
             markers={markers}
@@ -94,14 +96,14 @@ export async function getStaticProps() {
   return {
     props: {
       allTrips,
-      allMarkers
-    }
+      allMarkers,
+    },
   }
 }
 
 TripsPage.propTypes = {
   allTrips: PropTypes.array.isRequired,
-  allMarkers: PropTypes.array.isRequired
+  allMarkers: PropTypes.array.isRequired,
 }
 
 export default TripsPage

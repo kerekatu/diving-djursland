@@ -1,6 +1,7 @@
 import styles from './Form.module.scss'
 import PropTypes from 'prop-types'
-import { Button } from '../Button/Button'
+
+import { Button } from '@/components/Button/Button'
 
 export const Form = ({ children, customClass, buttonTitle }) => {
   return (

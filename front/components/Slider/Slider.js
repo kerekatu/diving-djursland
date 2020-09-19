@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react'
 import styles from './Slider.module.scss'
 import PropTypes from 'prop-types'
-import { Button } from '../Button/Button'
 import {
   faChevronRight,
-  faChevronLeft
+  faChevronLeft,
 } from '@fortawesome/free-solid-svg-icons'
+
+import { Button } from '@/components/Button/Button'
 
 export const Slider = ({
   children,
   showAmount = false,
   autoPlay = false,
-  autoPlaySpeed = 5000
+  autoPlaySpeed = 5000,
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0)
 
@@ -71,7 +72,7 @@ Slider.propTypes = {
   children: PropTypes.node.isRequired,
   showAmount: PropTypes.bool,
   autoPlay: PropTypes.bool,
-  autoPlaySpeed: PropTypes.number
+  autoPlaySpeed: PropTypes.number,
 }
 
 export const SliderItem = ({ item }) => {
@@ -86,6 +87,6 @@ SliderItem.propTypes = {
   item: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.object,
-    PropTypes.string
-  ]).isRequired
+    PropTypes.string,
+  ]).isRequired,
 }

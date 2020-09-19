@@ -1,13 +1,14 @@
 import styles from './Trips.module.scss'
 import PropTypes from 'prop-types'
-import { formatDate } from '@/lib/date'
 import cx from 'classnames'
-import { trimWords } from '@/lib/trim'
 import { faMap, faTimes } from '@fortawesome/free-solid-svg-icons'
 import useTranslation from 'next-translate/useTranslation'
 
-import { Button } from '@/components/Button/Button'
+import { trimWords } from '@/lib/trim'
 import categoryFormat from '@/lib/categoryFormat'
+import { formatDate } from '@/lib/date'
+
+import { Button } from '@/components/Button/Button'
 
 const TripsList = ({
   items,
@@ -16,7 +17,7 @@ const TripsList = ({
   filteredStatus,
   handleMapVisibility,
   handleFilterStatus,
-  hoverMarkerWithTrip
+  hoverMarkerWithTrip,
 }) => {
   const { t, lang } = useTranslation()
 
@@ -48,6 +49,7 @@ const TripsList = ({
           )}
         </div>
       </div>
+
       <ul
         className={
           mapVisibility
@@ -55,76 +57,65 @@ const TripsList = ({
             : styles.trips_listing__list_full
         }
       >
-        {items ? (
-          items.map((trip, index) => (
-            <li
-              key={index}
-              className={styles.trips_listing__item}
-              onMouseOver={() =>
-                hoverMarkerWithTrip(trip.trip_places[0].map_marker)
-              }
-              onMouseOut={() => hoverMarkerWithTrip()}
-            >
-              <div className={styles.trips_listing__img_container}>
-                {trip.trip_places[0].trip_category && (
-                  <button
-                    className={styles.trips_listing__difficulty}
-                    onClick={() => filterItems(trip)}
-                  >
-                    <div
-                      className={`dot dot_${trip.trip_places[0].trip_category}`}
-                    ></div>
-                    <p>
-                      {categoryFormat(trip.trip_places[0].trip_category, t)}
-                    </p>
-                  </button>
-                )}
-                <img
-                  src={
-                    trip.trip_places[0].media[0]
-                      ? 'http://localhost:1337' +
-                        trip.trip_places[0].media[0]?.formats.small.url
-                      : '/placeholder.png'
-                  }
-                  alt="Diving Trip Place"
-                  loading="lazy"
-                  className={styles.trips_listing__img}
-                />
-              </div>
-              <div className={styles.trips_listing__content}>
-                <p
-                  className={cx(
-                    styles.trips_listing__participants,
-                    trip.participantsLeft < 4 && 'red_text'
+        {items &&
+          items.map((trip, index) => {
+            const marker = trip.trip_places[0].map_marker
+            const category = trip.trip_places[0].trip_category
+            const img = trip.trip_places[0].media[0]
+              ? `http://localhost:1337'${trip.trip_places[0].media[0]?.formats.small.url}`
+              : '/placeholder.png'
+            const title = trimWords(trip.title, 10, 40)
+            const date = formatDate(trip.date, 'EEEE d. MMMM, HH:mm', lang)
+            const btnTitle =
+              lang === 'da'
+                ? `${t('common:trip-book-cta')} (${trip.priceDKK} DKK)`
+                : `${t('common:trip-book-cta')} (${trip.priceEUR} EUR)`
+
+            return (
+              <li
+                key={index}
+                className={styles.trips_listing__item}
+                onMouseOver={() => hoverMarkerWithTrip(marker)}
+                onMouseOut={() => hoverMarkerWithTrip()}
+              >
+                <div className={styles.trips_listing__img_container}>
+                  {category && (
+                    <button
+                      className={styles.trips_listing__difficulty}
+                      onClick={() => filterItems(trip)}
+                    >
+                      <div className={`dot dot_${category}`}></div>
+                      <p>{categoryFormat(category, t)}</p>
+                    </button>
                   )}
-                >{`${trip.participantsLeft} pladser tilbage (ud af ${trip.participants})`}</p>
-                <h4>{trimWords(trip.title, 10, 40)}</h4>
-                <span className={styles.trips_listing__date}>
-                  {formatDate(trip.date, 'EEEE d. MMMM, HH:mm', lang)}
-                </span>
-                {/* <p className={styles.trips_listing__desc}>
-                  {trip.description && trimWords(trip.description, 30, 180)}
-                </p> */}
-                <div className={styles.trips_listing__checkout}>
-                  <Button
-                    title={
-                      lang === 'da'
-                        ? `${t('common:trip-book-cta')} (${trip.priceDKK} DKK)`
-                        : `${t('common:trip-book-cta')} (${trip.priceEUR} EUR)`
-                    }
-                    as={`/trips/${trip.slug}`}
-                    link="/trips/[slug]"
-                    type="primary"
+                  <img
+                    src={img}
+                    alt="Diving Trip Place"
+                    loading="lazy"
+                    className={styles.trips_listing__img}
                   />
                 </div>
-              </div>
-            </li>
-          ))
-        ) : (
-          <p className={styles.trips_listing__notification}>
-            Ingen dykkertur er planlagt endnu, kom tilbage senere...
-          </p>
-        )}
+                <div className={styles.trips_listing__content}>
+                  <p
+                    className={cx(
+                      styles.trips_listing__participants,
+                      trip.participantsLeft < 4 && 'red_text'
+                    )}
+                  >{`${trip.participantsLeft} pladser tilbage (ud af ${trip.participants})`}</p>
+                  <h4>{title}</h4>
+                  <span className={styles.trips_listing__date}>{date}</span>
+                  <div className={styles.trips_listing__checkout}>
+                    <Button
+                      title={btnTitle}
+                      as={`/trips/${trip.slug}`}
+                      link="/trips/[slug]"
+                      type="primary"
+                    />
+                  </div>
+                </div>
+              </li>
+            )
+          })}
         <p className={styles.trips_listing__notification}>
           Flere dykkerture kommer snart...
         </p>
@@ -140,7 +131,7 @@ TripsList.propTypes = {
   handleMapVisibility: PropTypes.func.isRequired,
   handleFilterStatus: PropTypes.func.isRequired,
   filteredStatus: PropTypes.bool.isRequired,
-  hoverMarkerWithTrip: PropTypes.func.isRequired
+  hoverMarkerWithTrip: PropTypes.func.isRequired,
 }
 
 export default TripsList

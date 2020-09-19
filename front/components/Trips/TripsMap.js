@@ -1,9 +1,10 @@
 import styles from './Trips.module.scss'
 import GoogleMapReact from 'google-map-react'
 import PropTypes from 'prop-types'
-import Marker from '../Marker/Marker'
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
+
+import Marker from '@/components/Marker/Marker'
 
 const TripsMap = ({
   markers,

@@ -2,9 +2,10 @@ import { useState, useRef, useEffect } from 'react'
 import styles from './Marker.module.scss'
 import cx from 'classnames'
 import PropTypes from 'prop-types'
+import Link from 'next-translate/Link'
+
 import useOnClickOutside from '@/hooks/useOnClickOutside'
 import { trimWords } from '@/lib/trim'
-import Link from 'next-translate/Link'
 
 const Marker = ({
   category,
@@ -13,7 +14,7 @@ const Marker = ({
   handleFilterStatus,
   filteredStatus,
   hoveredMarker,
-  markerId
+  markerId,
 }) => {
   const ref = useRef()
   const [open, setOpen] = useState(false)
@@ -40,6 +41,18 @@ const Marker = ({
     window.scrollTo(0, 0)
   }, [open])
 
+  const handleClickMarker = () => {
+    if (!open && !filteredStatus) {
+      setOpen(true)
+      handleFindTrips(placeInfo.title)
+    } else if (!open && filteredStatus) {
+      setOpen(true)
+    } else {
+      setOpen(false)
+      handleFilterStatus()
+    }
+  }
+
   return (
     <div className={styles.marker_container} ref={ref}>
       <button
@@ -49,18 +62,9 @@ const Marker = ({
           open && styles.marker_pressed,
           hovered && styles.marker_pressed
         )}
-        onClick={() => {
-          if (!open && !filteredStatus) {
-            setOpen(true)
-            handleFindTrips(placeInfo.title)
-          } else if (!open && filteredStatus) {
-            setOpen(true)
-          } else {
-            setOpen(false)
-            handleFilterStatus()
-          }
-        }}
+        onClick={() => handleClickMarker()}
       ></button>
+
       {open && (
         <Link as={`/places/${placeInfo.slug}`} href="/places/[slug]">
           <a>
@@ -104,7 +108,7 @@ Marker.propTypes = {
   handleFilterStatus: PropTypes.func.isRequired,
   filteredStatus: PropTypes.bool.isRequired,
   hoveredMarker: PropTypes.number.isRequired,
-  markerId: PropTypes.number.isRequired
+  markerId: PropTypes.number.isRequired,
 }
 
 export default Marker
