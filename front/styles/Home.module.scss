@@ -4,6 +4,10 @@
     margin: 8rem 0 12rem 0;
     padding: var(--pp-desktop-h);
 
+    @media only screen and (max-width: 37.5em) {
+      padding: var(--pp-desktop);
+    }
+
     &__container {
       display: grid;
       max-width: 144rem;
@@ -13,8 +17,12 @@
 
       & > div {
         @media only screen and (max-width: 75em) {
-          width: 60rem;
+          width: 54rem;
           justify-self: center;
+        }
+
+        @media only screen and (max-width: 37.5em) {
+          width: 100%;
         }
       }
 
@@ -63,6 +71,10 @@
     padding: 8rem 8rem;
     background-color: var(--c-white-d);
 
+    @media only screen and (max-width: 37.5em) {
+      padding: 8rem 4rem;
+    }
+
     & > a {
       width: 30rem;
       margin: 0 auto;
@@ -91,6 +103,14 @@
       object-fit: cover;
       border-top-left-radius: var(--br);
       border-top-right-radius: var(--br);
+
+      @media only screen and (max-width: 75em) {
+        height: 100%;
+      }
+
+      @media only screen and (max-width: 56.25em) {
+        height: 30rem;
+      }
     }
 
     &__content {
@@ -99,6 +119,20 @@
       gap: 2rem 0;
       height: 100%;
       padding: 3rem 4rem;
+
+      @media only screen and (max-width: 37.5em) {
+        grid-template-columns: 1fr;
+      }
+
+      &_left {
+        @media only screen and (max-width: 56.25em) {
+          margin-right: 2rem;
+        }
+
+        @media only screen and (max-width: 37.5em) {
+          margin-right: 0 !important;
+        }
+      }
 
       &_left > * {
         overflow-wrap: break-word;
@@ -120,7 +154,7 @@
       font-size: var(--fs-1);
       margin-top: 1rem;
       color: var(--c-black-l-2);
-      line-height: var(--lh-1);
+      line-height: var(--lh-2);
     }
 
     &__date {
@@ -141,6 +175,11 @@
       width: 70rem;
       margin: 0 auto;
 
+      @media only screen and (max-width: 56.25em) {
+        width: 100%;
+        padding: var(--pp-desktop);
+      }
+
       & > h1 {
         margin-bottom: 2rem;
       }
@@ -148,6 +187,10 @@
       & > h4 {
         line-height: var(--lh-2);
         width: 56rem;
+
+        @media only screen and (max-width: 37.5em) {
+          width: 100% !important;
+        }
       }
     }
 
@@ -164,10 +207,25 @@
       box-shadow: 0 0.5rem 1rem rgba(154, 160, 185, 0.05),
         0 1.5rem 4rem rgba(166, 173, 201, 0.2);
 
+      @media only screen and (max-width: 37.5em) {
+        padding: 5rem 3rem;
+      }
+
+      & input {
+        @media only screen and (max-width: 25em) {
+          min-width: 100%;
+        }
+      }
+
       & > button {
         margin-top: auto;
         align-self: flex-start;
         padding: 1.2rem 8rem;
+
+        @media only screen and (max-width: 37.5em) {
+          padding: 1.2rem 2rem;
+          width: 100%;
+        }
       }
     }
   }

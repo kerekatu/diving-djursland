@@ -15,7 +15,7 @@ export const Form = ({ children, customClass, buttonTitle }) => {
 Form.propTypes = {
   children: PropTypes.node.isRequired,
   customClass: PropTypes.string,
-  buttonTitle: PropTypes.string,
+  buttonTitle: PropTypes.string
 }
 
 export const FormInput = ({ label, name, type = 'text', ...props }) => {
@@ -25,6 +25,7 @@ export const FormInput = ({ label, name, type = 'text', ...props }) => {
         {label}
       </label>
       <input
+        size="10"
         type={type}
         id={name}
         name={name}
@@ -38,5 +39,5 @@ export const FormInput = ({ label, name, type = 'text', ...props }) => {
 FormInput.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  type: PropTypes.string,
+  type: PropTypes.string
 }

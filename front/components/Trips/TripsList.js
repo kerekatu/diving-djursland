@@ -17,12 +17,17 @@ const TripsList = ({
   filteredStatus,
   handleMapVisibility,
   handleFilterStatus,
-  hoverMarkerWithTrip,
+  hoverMarkerWithTrip
 }) => {
   const { t, lang } = useTranslation()
 
   return (
-    <div className={styles.trips_listing}>
+    <div
+      className={cx(
+        styles.trips_listing,
+        mapVisibility && styles.trips_listing_margin
+      )}
+    >
       <div className={styles.trips_listing__top_container}>
         <div className={styles.trips_listing__top_left}>
           <span className={styles.trips_listing__amount}>
@@ -62,7 +67,7 @@ const TripsList = ({
             const marker = trip.trip_places[0].map_marker
             const category = trip.trip_places[0].trip_category
             const img = trip.trip_places[0].media[0]
-              ? `http://localhost:1337'${trip.trip_places[0].media[0]?.formats.small.url}`
+              ? `http://localhost:1337${trip.trip_places[0].media[0]?.formats.small.url}`
               : '/placeholder.png'
             const title = trimWords(trip.title, 10, 40)
             const date = formatDate(trip.date, 'EEEE d. MMMM, HH:mm', lang)
@@ -116,10 +121,10 @@ const TripsList = ({
               </li>
             )
           })}
-        <p className={styles.trips_listing__notification}>
-          Flere dykkerture kommer snart...
-        </p>
       </ul>
+      <p className={styles.trips_listing__notification}>
+        Flere dykkerture kommer snart...
+      </p>
     </div>
   )
 }
@@ -131,7 +136,7 @@ TripsList.propTypes = {
   handleMapVisibility: PropTypes.func.isRequired,
   handleFilterStatus: PropTypes.func.isRequired,
   filteredStatus: PropTypes.bool.isRequired,
-  hoverMarkerWithTrip: PropTypes.func.isRequired,
+  hoverMarkerWithTrip: PropTypes.func.isRequired
 }
 
 export default TripsList

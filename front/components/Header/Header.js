@@ -1,17 +1,24 @@
 import PropTypes from 'prop-types'
 import styles from './Header.module.scss'
 import useTranslation from 'next-translate/useTranslation'
+import cx from 'classnames'
 
 import Navbar from '@/components/Navbar/Navbar'
 import Logo from '@/components/Logo/Logo'
 import { Button } from '@/components/Button/Button'
 
-const Header = ({ isExtended }) => {
+const Header = ({ isExtended, containedWidth }) => {
   const { t } = useTranslation()
 
   return (
     <header className={isExtended ? styles.header_extended : styles.header}>
-      <div className={styles.header__content}>
+      <div
+        className={
+          containedWidth
+            ? cx(styles.header__content, styles.header__content_contained)
+            : styles.header__content
+        }
+      >
         <Logo />
         <Navbar />
       </div>
@@ -40,6 +47,7 @@ const Header = ({ isExtended }) => {
 
 Header.propTypes = {
   isExtended: PropTypes.bool,
+  containedWidth: PropTypes.bool
 }
 
 export default Header

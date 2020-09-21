@@ -62,7 +62,7 @@ const TripsPage = ({ allTrips, allMarkers }) => {
   }
 
   return (
-    <Layout>
+    <Layout containedWidth={!mapVisibility}>
       <section className={mapVisibility ? 'trips' : 'trips_full'}>
         <TripsList
           items={trips}
@@ -96,14 +96,14 @@ export async function getStaticProps() {
   return {
     props: {
       allTrips,
-      allMarkers,
-    },
+      allMarkers
+    }
   }
 }
 
 TripsPage.propTypes = {
   allTrips: PropTypes.array.isRequired,
-  allMarkers: PropTypes.array.isRequired,
+  allMarkers: PropTypes.array.isRequired
 }
 
 export default TripsPage

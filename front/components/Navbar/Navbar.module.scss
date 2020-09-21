@@ -12,6 +12,7 @@
   &__list {
     display: flex;
     align-items: center;
+    width: 100%;
   }
 
   &__item:not(:last-child) {
@@ -50,6 +51,22 @@
     background-color: var(--c-blue);
     z-index: 100;
 
+    & > button {
+      font-size: var(--fs-5);
+      color: var(--c-white);
+      margin-top: 4rem;
+      margin-left: 4rem;
+      background-color: var(--c-blue-d);
+      padding: 1rem 2rem;
+      border-radius: var(--br);
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        background-color: var(--c-white);
+        color: var(--c-blue);
+      }
+    }
+
     & > ul {
       position: absolute;
       top: 50%;
@@ -76,4 +93,24 @@
 
 .navbar_footer {
   display: flex !important;
+
+  & > ul {
+    @media only screen and (max-width: 56.25em) {
+    }
+
+    @media only screen and (max-width: 37.5em) {
+      flex-direction: column;
+    }
+  }
+
+  & > ul li {
+    @media only screen and (max-width: 56.25em) {
+      margin-right: 1rem !important;
+    }
+
+    @media only screen and (max-width: 37.5em) {
+      margin-right: 0 !important;
+      margin-bottom: 2rem;
+    }
+  }
 }

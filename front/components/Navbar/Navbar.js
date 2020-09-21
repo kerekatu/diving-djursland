@@ -2,9 +2,9 @@ import { useState } from 'react'
 import Link from 'next-translate/Link'
 import styles from './Navbar.module.scss'
 import cx from 'classnames'
-import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
-import { faArrowUp, faBars } from '@fortawesome/free-solid-svg-icons'
 import { useRouter } from 'next/router'
+import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
+import { faArrowUp, faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 import useTranslation from 'next-translate/useTranslation'
 
 import { ButtonDropdown, Button } from '@/components/Button/Button'
@@ -13,11 +13,14 @@ const Navbar = ({ isFooter = false }) => {
   const [open, setOpen] = useState(false)
   const [language, setLanguage] = useState([
     { title: 'Dansk', slug: 'da', icon: '/dk-flag.svg' },
-    { title: 'English', slug: 'en', icon: '/gb-flag.svg' },
+    { title: 'English', slug: 'en', icon: '/gb-flag.svg' }
   ])
   const router = useRouter()
-
   const { t, lang } = useTranslation()
+
+  const handleClose = () => {
+    setOpen(!open)
+  }
 
   if (!isFooter) {
     return (
@@ -78,31 +81,48 @@ const Navbar = ({ isFooter = false }) => {
 
           {open && (
             <div className={styles.navbar_hamburger__content}>
+              <Button
+                type="icon"
+                icon={faTimes}
+                onClick={() => handleClose()}
+              />
               <ul className={styles.navbar__list}>
                 <li className={styles.navbar__item}>
                   <Link href="/">
-                    <a className={styles.navbar__link}>
+                    <a
+                      className={styles.navbar__link}
+                      onClick={() => handleClose()}
+                    >
                       {t('common:navbar-link-1')}
                     </a>
                   </Link>
                 </li>
                 <li className={styles.navbar__item}>
                   <Link href="/trips">
-                    <a className={styles.navbar__link}>
+                    <a
+                      className={styles.navbar__link}
+                      onClick={() => handleClose()}
+                    >
                       {t('common:navbar-link-2')}
                     </a>
                   </Link>
                 </li>
                 <li className={styles.navbar__item}>
                   <Link href="/info">
-                    <a className={styles.navbar__link}>
+                    <a
+                      className={styles.navbar__link}
+                      onClick={() => handleClose()}
+                    >
                       {t('common:navbar-link-3')}
                     </a>
                   </Link>
                 </li>
                 <li className={styles.navbar__item}>
                   <Link href="/contact">
-                    <a className={styles.navbar__link}>
+                    <a
+                      className={styles.navbar__link}
+                      onClick={() => handleClose()}
+                    >
                       {t('common:navbar-link-4')}
                     </a>
                   </Link>

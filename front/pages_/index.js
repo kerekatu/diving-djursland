@@ -152,8 +152,8 @@ export async function getStaticProps() {
   return {
     props: {
       popularPlaces,
-      newestTrips,
-    },
+      newestTrips
+    }
   }
 }
 
@@ -161,7 +161,7 @@ HomePage.propTypes = {
   popularPlaces: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
     .isRequired,
   newestTrips: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
-    .isRequired,
+    .isRequired
 }
 
 export default HomePage

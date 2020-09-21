@@ -1,11 +1,26 @@
+// TRIPS LIST
+
 .trips_listing {
   margin: 6rem 0;
+
+  &_margin {
+    @media only screen and (max-width: 37.5em) {
+      margin-top: 46rem;
+    }
+  }
 
   &__top {
     &_container {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
+
+      @media only screen and (max-width: 37.5em) {
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        gap: 2rem;
+      }
     }
 
     &_right {
@@ -30,26 +45,44 @@
     &_full {
       margin-top: 2.6rem;
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
+      gap: 4rem;
+      grid-template-columns: repeat(auto-fill, 24rem);
+
+      @media only screen and (max-width: 37.5em) {
+        justify-content: center;
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
     }
+  }
+
+  &__list_full &__img_container {
+    width: 100% !important;
+  }
+
+  &__list_full &__img {
+    width: 100% !important;
   }
 
   &__list_full > &__item {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    gap: 1.5rem;
     border-top: none;
-    gap: 2rem;
 
-    &:not(:last-of-type) {
-      margin-right: 4rem;
+    @media only screen and (max-width: 37.5em) {
+      border-top: 0.1rem solid var(--c-gray);
+      padding: 2rem 0;
     }
   }
 
   &__list_full &__checkout {
     align-self: initial;
     width: 100%;
-    justify-content: center;
+
+    & > a {
+      width: 100%;
+    }
   }
 
   &__list_full &__notification {
@@ -63,6 +96,11 @@
     background-color: var(--c-white);
     padding: 2rem 0;
     border-top: 0.1rem solid var(--c-gray);
+
+    @media only screen and (max-width: 37.5em) {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
   }
 
   &__amount {
@@ -74,6 +112,10 @@
   &__img_container {
     display: block;
     position: relative;
+
+    @media only screen and (max-width: 37.5em) {
+      width: 100%;
+    }
 
     & > button {
       position: absolute;
@@ -109,6 +151,10 @@
     height: 18rem;
     width: 24rem;
     border-radius: var(--br);
+
+    @media only screen and (max-width: 37.5em) {
+      width: 100%;
+    }
   }
 
   &__content {
@@ -139,6 +185,16 @@
     display: flex;
     margin-top: auto;
     align-self: end;
+
+    @media only screen and (max-width: 37.5em) {
+      align-self: initial;
+    }
+
+    & > a {
+      @media only screen and (max-width: 37.5em) {
+        width: 100% !important;
+      }
+    }
   }
 
   &__price {
@@ -150,6 +206,8 @@
   }
 }
 
+// TRIPS MAP
+
 .trips_map {
   position: sticky;
   top: 8rem;
@@ -157,6 +215,20 @@
   right: auto !important;
   width: 100% !important;
   height: calc(100vh - 8rem);
+
+  @media only screen and (max-width: 75em) {
+    position: relative;
+    top: 0;
+    height: 36rem;
+    margin-top: 4rem;
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    position: absolute;
+    top: 4rem;
+    left: 0;
+    height: 40rem;
+  }
 
   &_hidden {
     visibility: none;
@@ -173,7 +245,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 13;
+    z-index: 1;
   }
 
   &__btn:hover > &__icon {
