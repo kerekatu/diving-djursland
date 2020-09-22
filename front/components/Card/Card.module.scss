@@ -2,7 +2,6 @@
   &_primary {
     display: flex;
     flex-direction: column;
-    background-color: var(--c-white-d);
     border-radius: var(--br);
   }
 
@@ -21,7 +20,5 @@
     background-color: var(--c-gray);
     border-radius: var(--br);
     border: 0.1rem solid var(--c-gray-d);
-    grid-row: 1 / -1;
-    grid-column: 1 / 2;
   }
 }

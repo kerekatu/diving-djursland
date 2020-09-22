@@ -3,9 +3,9 @@ import styles from './Marker.module.scss'
 import cx from 'classnames'
 import PropTypes from 'prop-types'
 import Link from 'next-translate/Link'
+import useTranslation from 'next-translate/useTranslation'
 
 import useOnClickOutside from '@/hooks/useOnClickOutside'
-import { trimWords } from '@/lib/trim'
 
 const Marker = ({
   category,
@@ -14,11 +14,13 @@ const Marker = ({
   handleFilterStatus,
   filteredStatus,
   hoveredMarker,
-  markerId,
+  markerId
 }) => {
   const ref = useRef()
   const [open, setOpen] = useState(false)
   const [hovered, setHovered] = useState(false)
+
+  const { t } = useTranslation()
 
   useOnClickOutside(ref, () => {
     if (filteredStatus) {
@@ -53,6 +55,8 @@ const Marker = ({
     }
   }
 
+  console.log(placeInfo)
+
   return (
     <div className={styles.marker_container} ref={ref}>
       <button
@@ -83,14 +87,15 @@ const Marker = ({
                 <div className={styles.marker_dropdown__title}>
                   {placeInfo?.title}
                 </div>
-                <p className={styles.marker_dropdown__desc}>
-                  {placeInfo.content &&
-                    trimWords(
-                      placeInfo.content.replace(/[^\w\s]/gi, ''),
-                      6,
-                      30
-                    )}
-                </p>
+                <div className={styles.marker_dropdown__desc}>
+                  <p>
+                    {t('trips:trips-depth')}: {placeInfo?.depth} m
+                  </p>
+                  <p>
+                    {placeInfo?.address &&
+                      `${t('trips:trips-address')}: ${placeInfo.address}`}
+                  </p>
+                </div>
               </div>
             </div>
           </a>
@@ -108,7 +113,7 @@ Marker.propTypes = {
   handleFilterStatus: PropTypes.func.isRequired,
   filteredStatus: PropTypes.bool.isRequired,
   hoveredMarker: PropTypes.number.isRequired,
-  markerId: PropTypes.number.isRequired,
+  markerId: PropTypes.number.isRequired
 }
 
 export default Marker

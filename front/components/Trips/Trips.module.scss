@@ -77,11 +77,18 @@
   }
 
   &__list_full &__checkout {
+    display: flex;
     align-self: initial;
     width: 100%;
 
+    & > div {
+      padding: 1rem 0;
+      width: 40%;
+    }
+
     & > a {
-      width: 100%;
+      width: 60%;
+      padding: 1rem 2rem;
     }
   }
 
@@ -162,6 +169,12 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+
+    & > h4 {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
   }
 
   &__participants {
@@ -181,28 +194,43 @@
     color: var(--c-black-l);
   }
 
+  &__price {
+    font-size: var(--fs-1);
+    font-weight: 400;
+    align-self: flex-end;
+    text-align: center;
+    border-radius: var(--br);
+    padding: 1rem 2rem;
+    margin-right: 1rem;
+    color: var(--c-blue);
+    border: 0.1rem solid var(--c-blue);
+
+    @media only screen and (max-width: 37.5em) {
+      margin-right: 1rem !important;
+      padding: 1rem 0;
+      width: 30% !important;
+    }
+  }
+
   &__checkout {
     display: flex;
     margin-top: auto;
     align-self: end;
 
     @media only screen and (max-width: 37.5em) {
+      flex-direction: row !important;
       align-self: initial;
     }
 
     & > a {
+      padding: 1rem 8rem;
+
       @media only screen and (max-width: 37.5em) {
-        width: 100% !important;
+        width: 70% !important;
+        padding: 1rem 4rem;
+        margin-top: 1rem;
       }
     }
-  }
-
-  &__price {
-    font-size: var(--fs);
-    font-weight: 700;
-    color: var(--c-black-l-3);
-    align-self: end;
-    margin-bottom: 0.5rem;
   }
 }
 

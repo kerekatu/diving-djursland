@@ -31,16 +31,21 @@ const TripsList = ({
       <div className={styles.trips_listing__top_container}>
         <div className={styles.trips_listing__top_left}>
           <span className={styles.trips_listing__amount}>
-            {items.length} ture
+            {items.length}{' '}
+            {t(
+              items.length > 1
+                ? 'trips:trips-amount_plural'
+                : 'trips:trips-amount'
+            )}
           </span>
-          <h3>Kommende Dykkerture – Djursland</h3>
+          <h3>{t('trips:trips-heading')}</h3>
         </div>
         <div className={styles.trips_listing__top_right}>
           {filteredStatus && (
             <Button
               icon={faTimes}
               type="secondary"
-              title="Slet Filtrering"
+              title={t('trips:trips-filter-btn')}
               onClick={handleFilterStatus}
             />
           )}
@@ -71,10 +76,12 @@ const TripsList = ({
               : '/placeholder.png'
             const title = trimWords(trip.title, 10, 40)
             const date = formatDate(trip.date, 'EEEE d. MMMM, HH:mm', lang)
+            const price =
+              lang === 'da' ? trip.priceDKK + ' DKK' : trip.priceEUR + ' EUR'
             const btnTitle =
               lang === 'da'
-                ? `${t('common:trip-book-cta')} (${trip.priceDKK} DKK)`
-                : `${t('common:trip-book-cta')} (${trip.priceEUR} EUR)`
+                ? `${t('common:trip-book-cta')}`
+                : `${t('common:trip-book-cta')}`
 
             return (
               <li
@@ -106,10 +113,13 @@ const TripsList = ({
                       styles.trips_listing__participants,
                       trip.participantsLeft < 4 && 'red_text'
                     )}
-                  >{`${trip.participantsLeft} pladser tilbage (ud af ${trip.participants})`}</p>
+                  >{`${trip.participantsLeft} ${t(
+                    'trips:trips-participants'
+                  )} ${trip.participants})`}</p>
                   <h4>{title}</h4>
                   <span className={styles.trips_listing__date}>{date}</span>
                   <div className={styles.trips_listing__checkout}>
+                    <div className={styles.trips_listing__price}>{price}</div>
                     <Button
                       title={btnTitle}
                       as={`/trips/${trip.slug}`}
@@ -123,7 +133,9 @@ const TripsList = ({
           })}
       </ul>
       <p className={styles.trips_listing__notification}>
-        Flere dykkerture kommer snart...
+        {items.length > 0
+          ? t('trips:trips-notification')
+          : t('trips:trips-notification-2')}
       </p>
     </div>
   )

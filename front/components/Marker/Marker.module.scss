@@ -48,6 +48,16 @@
   top: 4rem;
   left: calc(50% - -1.5rem) !important;
   transform: translate(-50%, 0) !important;
+  transition: opacity 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    width: 18rem;
+    height: 10rem;
+  }
 
   &__img {
     display: block;
@@ -68,14 +78,19 @@
   &__title {
     display: flex;
     align-items: center;
-    font-size: var(--fs-2);
+    font-size: var(--fs-3);
     font-weight: 700;
+    text-overflow: ellipsis;
+    overflow: hidden;
     white-space: nowrap;
   }
 
   &__desc {
     margin-top: 0.5rem;
     color: var(--c-black-l);
+    font-size: var(--fs-2);
+    font-weight: 400;
+    line-height: var(--lh-2);
   }
 
   &__address {

@@ -1,1 +1,11 @@
-{}
+{
+  "trips-heading": "Upcoming Tours – Djursland",
+  "trips-amount": "trip",
+  "trips-amount_plural": "trips",
+  "trips-participants": "places left (out of",
+  "trips-notification": "More diving trips coming soon...",
+  "trips-notification-2": "This place has no trips planned...",
+  "trips-filter-btn": "Remove Filters",
+  "trips-depth": "Depth",
+  "trips-address": "Address"
+}

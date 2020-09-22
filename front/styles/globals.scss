@@ -51,12 +51,12 @@
 /* RESET */
 
 ::-moz-selection {
-  background-color: var(--c-orange-d);
+  background-color: var(--c-blue-d);
   color: var(--c-white);
 }
 
 ::selection {
-  background-color: var(--c-orange-d);
+  background-color: var(--c-blue-d);
   color: var(--c-white);
 }
 
@@ -115,12 +115,14 @@ h1 {
   font-size: var(--fs-6);
   font-weight: 700;
   color: var(--c-white);
+  letter-spacing: -0.1rem;
 }
 
 h2 {
   font-size: var(--fs-5);
   font-weight: 700;
   color: var(--c-blue);
+  letter-spacing: -0.1rem;
 }
 
 h3 {

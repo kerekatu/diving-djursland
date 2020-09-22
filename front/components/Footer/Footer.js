@@ -2,14 +2,17 @@ import styles from './Footer.module.scss'
 import PropTypes from 'prop-types'
 import {
   faFacebookSquare,
-  faInstagramSquare,
+  faInstagramSquare
 } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
+import useTranslation from 'next-translate/useTranslation'
 
 import Logo from '@/components/Logo/Logo'
 import Navbar from '@/components/Navbar/Navbar'
 
 const Footer = ({ isExtended = false }) => {
+  const { t } = useTranslation()
+
   return (
     <footer className={isExtended ? styles.footer_extended : styles.footer}>
       <div className={styles.footer__content}>
@@ -40,7 +43,7 @@ const Footer = ({ isExtended = false }) => {
             </div>
           </div>
           <div className={styles.footer_top__right}>
-            <h3 className="black_text">Find os</h3>
+            <h3 className="black_text">{t('common:footer-social')}</h3>
             <div className={styles.footer__social}>
               <a href="https://facebook.com/">
                 <Icon icon={faFacebookSquare} className={styles.footer__icon} />
@@ -64,7 +67,7 @@ const Footer = ({ isExtended = false }) => {
 }
 
 Footer.propTypes = {
-  isExtended: PropTypes.bool,
+  isExtended: PropTypes.bool
 }
 
 export default Footer
