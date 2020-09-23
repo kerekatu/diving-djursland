@@ -1,0 +1,114 @@
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 70rem 0;
+  height: 100%;
+  max-width: 144rem;
+  margin: 0 auto;
+
+  @media only screen and (max-width: 37.5em) {
+    gap: 0;
+  }
+
+  &__map_container {
+    width: 100%;
+
+    @media only screen and (max-width: 37.5em) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__map {
+    position: absolute;
+    display: block;
+    top: 8rem;
+    left: 0;
+    width: 100% !important;
+    height: 50rem;
+    z-index: 1;
+
+    @media only screen and (max-width: 37.5em) {
+      height: 40rem;
+    }
+  }
+
+  &__link {
+    opacity: 0.8;
+    transition: opacity 0.2s ease-in-out;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__info {
+    position: absolute;
+    top: 32rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 34rem;
+    padding: 2rem 4rem;
+    z-index: 2;
+    background-color: var(--c-blue);
+    border-radius: var(--br);
+    box-shadow: 0 0.5rem 1rem rgba(154, 160, 185, 0.05),
+      0 1.5rem 4rem rgba(166, 173, 201, 0.2);
+
+    @media only screen and (max-width: 37.5em) {
+      position: initial;
+      top: 0;
+      margin: 46rem 0 6rem 0;
+      align-items: flex-start;
+    }
+  }
+
+  &__info_text {
+    margin-top: 2rem;
+
+    & > p {
+      color: var(--c-white);
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10rem;
+    background-color: var(--c-white-d);
+    padding: 6rem;
+
+    @media only screen and (max-width: 37.5em) {
+      padding: 6rem 3rem;
+    }
+
+    & > h2 {
+      @media only screen and (max-width: 37.5em) {
+        font-size: max(2.4rem, 4vw) !important;
+      }
+    }
+
+    & > p {
+      margin-top: 1.5rem;
+      margin-bottom: 5rem;
+    }
+
+    & > form > p {
+      color: var(--c-black-l-2);
+      margin-top: 5rem;
+      width: 100%;
+      font-size: var(--fs-1);
+    }
+
+    & > form > button {
+      margin-top: 2rem;
+      padding: 1rem 10rem;
+
+      @media only screen and (max-width: 37.5em) {
+        padding: 1rem 4rem;
+        width: 100%;
+      }
+    }
+  }
+}

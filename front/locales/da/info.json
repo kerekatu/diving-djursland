@@ -1,1 +1,52 @@
-{}
+{
+  "info-title": "Ofte Stillede Spørgsmål",
+  "info-subtitle": "Her kan du finde svar på de mest almindelige spørgsmål, som vi får på daglig basis.",
+  "info-bottom-text": "ellers",
+  "info-bottom-btn": "Skriv til os",
+  "questions": [
+    {
+      "title": "Hvem kan deltage?",
+      "question": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae magni voluptatem reprehenderit dolorem non alias pariatur suscipit dicta voluptas maxime deleniti, nihil velit possimus consequuntur consectetur sequi, sunt at voluptates."
+    },
+    {
+      "title": "Dykkersteder",
+      "question": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae magni voluptatem reprehenderit dolorem non alias pariatur suscipit dicta voluptas maxime deleniti, nihil velit possimus consequuntur consectetur sequi, sunt at voluptates."
+    },
+    {
+      "title": "Dykkerguiden",
+      "question": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae magni voluptatem reprehenderit dolorem non alias pariatur suscipit dicta voluptas maxime deleniti, nihil velit possimus consequuntur consectetur sequi, sunt at voluptates."
+    },
+    {
+      "title": "Ansvar",
+      "question": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae magni voluptatem reprehenderit dolorem non alias pariatur suscipit dicta voluptas maxime deleniti, nihil velit possimus consequuntur consectetur sequi, sunt at voluptates."
+    },
+    {
+      "title": "Tilmelding",
+      "question": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae magni voluptatem reprehenderit dolorem non alias pariatur suscipit dicta voluptas maxime deleniti, nihil velit possimus consequuntur consectetur sequi, sunt at voluptates."
+    },
+    {
+      "title": "Udstyr",
+      "question": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae magni voluptatem reprehenderit dolorem non alias pariatur suscipit dicta voluptas maxime deleniti, nihil velit possimus consequuntur consectetur sequi, sunt at voluptates."
+    },
+    {
+      "title": "Udlejning af udstyr",
+      "question": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae magni voluptatem reprehenderit dolorem non alias pariatur suscipit dicta voluptas maxime deleniti, nihil velit possimus consequuntur consectetur sequi, sunt at voluptates."
+    },
+    {
+      "title": "Hvad skal jeg have med?",
+      "question": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae magni voluptatem reprehenderit dolorem non alias pariatur suscipit dicta voluptas maxime deleniti, nihil velit possimus consequuntur consectetur sequi, sunt at voluptates."
+    },
+    {
+      "title": "Betaling",
+      "question": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae magni voluptatem reprehenderit dolorem non alias pariatur suscipit dicta voluptas maxime deleniti, nihil velit possimus consequuntur consectetur sequi, sunt at voluptates."
+    },
+    {
+      "title": "Grill",
+      "question": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae magni voluptatem reprehenderit dolorem non alias pariatur suscipit dicta voluptas maxime deleniti, nihil velit possimus consequuntur consectetur sequi, sunt at voluptates."
+    },
+    {
+      "title": "Spørgsmål",
+      "question": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae magni voluptatem reprehenderit dolorem non alias pariatur suscipit dicta voluptas maxime deleniti, nihil velit possimus consequuntur consectetur sequi, sunt at voluptates."
+    }
+  ]
+}

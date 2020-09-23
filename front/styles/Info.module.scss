@@ -1,0 +1,28 @@
+.info {
+  max-width: 144rem;
+  margin: 12rem auto;
+
+  & > h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  & > p {
+    margin-bottom: 4rem;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 0 3rem;
+
+    & > span {
+      color: var(--c-black-l);
+    }
+
+    & > a {
+      padding: 1rem 2rem;
+    }
+  }
+}

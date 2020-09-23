@@ -1,0 +1,60 @@
+.faq {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4rem;
+
+  &__item {
+    width: 100%;
+  }
+
+  &__item:not(:first-child) {
+    margin-top: 1.5rem;
+  }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: var(--c-white-d);
+    font-size: var(--fs-3);
+    color: var(--c-black-l);
+    font-weight: 700;
+    text-align: start;
+    border: none;
+    padding: 2.6rem 4rem;
+
+    @media only screen and (max-width: 37.5em) {
+      padding: 2rem;
+    }
+  }
+
+  &__icon {
+    margin-left: 2rem;
+  }
+
+  &__item_content {
+    padding: 2.6rem 4rem;
+    background-color: var(--c-white-d);
+    border-top: 0.2rem solid var(--c-white);
+    border-bottom-right-radius: var(--br);
+    border-bottom-left-radius: var(--br);
+
+    @media only screen and (max-width: 37.5em) {
+      padding: 3rem 2rem;
+    }
+  }
+
+  &__text {
+    color: var(--c-black-l);
+    width: 80%;
+
+    @media only screen and (max-width: 75em) {
+      width: 100%;
+    }
+
+    @media only screen and (max-width: 37.5em) {
+      font-size: var(--fs-3);
+    }
+  }
+}

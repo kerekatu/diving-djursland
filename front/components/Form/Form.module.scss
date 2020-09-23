@@ -18,6 +18,12 @@
     font-size: var(--fs-2);
   }
 
+  textarea.form__input {
+    min-height: 15rem;
+    resize: vertical;
+    width: 100% !important;
+  }
+
   &__input {
     background-color: var(--c-gray);
     border-radius: var(--br);
@@ -45,6 +51,14 @@
       border: 0.1rem solid var(--c-red) !important;
       outline: none !important;
       box-shadow: none !important;
+    }
+  }
+
+  &__link {
+    color: var(--c-blue);
+
+    &:hover {
+      text-decoration: underline;
     }
   }
 }

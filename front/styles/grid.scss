@@ -1,10 +1,10 @@
 .app {
   display: grid;
-  grid-template-rows: 8rem 1fr;
+  grid-template-rows: 8rem 1fr max-content;
 
   &_home {
     display: grid;
-    grid-template-rows: 65rem 1fr;
+    grid-template-rows: 65rem 1fr max-content;
 
     @media only screen and (max-width: 56.25em) {
       grid-template-rows: 50rem 1fr;
@@ -27,6 +27,7 @@
 
   &_contained {
     padding: var(--pp-desktop);
+    min-height: calc(100vh - 8rem);
   }
 }
 

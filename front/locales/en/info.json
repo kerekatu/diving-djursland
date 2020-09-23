@@ -1,1 +1,24 @@
-{}
+{
+  "info-title": "Frequently Asked Questions",
+  "info-subtitle": "Here you can find answers to the most common questions we get on a daily basis.",
+  "info-bottom-text": "or",
+  "info-bottom-btn": "Contact us",
+  "questions": [
+    {
+      "title": "title",
+      "question": "question"
+    },
+    {
+      "title": "title",
+      "question": "question"
+    },
+    {
+      "title": "title",
+      "question": "question"
+    },
+    {
+      "title": "title",
+      "question": "question"
+    }
+  ]
+}
