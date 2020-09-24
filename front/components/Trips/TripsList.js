@@ -133,9 +133,11 @@ const TripsList = ({
           })}
       </ul>
       <p className={styles.trips_listing__notification}>
-        {items.length > 0
+        {items.length === 0
           ? t('trips:trips-notification')
-          : t('trips:trips-notification-2')}
+          : filteredStatus && items.length === 0
+          ? t('trips:trips-notification-2')
+          : t('trips:trips-notification')}
       </p>
     </div>
   )

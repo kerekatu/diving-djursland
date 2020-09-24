@@ -12,7 +12,7 @@ const TripsMap = ({
   handleFindTrips,
   handleFilterStatus,
   filteredStatus,
-  hoveredMarker,
+  hoveredMarker
 }) => {
   return (
     <div className={styles.trips_map}>
@@ -54,7 +54,7 @@ TripsMap.propTypes = {
   handleFindTrips: PropTypes.func.isRequired,
   handleFilterStatus: PropTypes.func.isRequired,
   filteredStatus: PropTypes.bool.isRequired,
-  hoveredMarker: PropTypes.number.isRequired,
+  hoveredMarker: PropTypes.number
 }
 
 export default TripsMap

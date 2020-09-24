@@ -55,8 +55,6 @@ const Marker = ({
     }
   }
 
-  console.log(placeInfo)
-
   return (
     <div className={styles.marker_container} ref={ref}>
       <button
@@ -112,7 +110,7 @@ Marker.propTypes = {
   handleFindTrips: PropTypes.func.isRequired,
   handleFilterStatus: PropTypes.func.isRequired,
   filteredStatus: PropTypes.bool.isRequired,
-  hoveredMarker: PropTypes.number.isRequired,
+  hoveredMarker: PropTypes.number,
   markerId: PropTypes.number.isRequired
 }
 

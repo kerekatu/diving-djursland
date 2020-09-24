@@ -130,6 +130,11 @@
         gap: 4rem 0;
       }
 
+      &_full {
+        display: flex;
+        justify-content: center;
+      }
+
       & > div:first-child {
         grid-row: 1 / -1;
         grid-column: 1 / 2;

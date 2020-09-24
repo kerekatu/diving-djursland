@@ -2,10 +2,11 @@ import styles from '@/styles/Home.module.scss'
 import PropTypes from 'prop-types'
 import useTranslation from 'next-translate/useTranslation'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
+import cx from 'classnames'
 
 import { trimWords } from '@/lib/trim'
 import { getPopularData, getNewestTrips } from '@/lib/api'
-import { formatDate, getFullDate } from '@/lib/date'
+import { formatDate, getFilteredDate } from '@/lib/date'
 
 import Card from '@/components/Card/Card'
 import { Button } from '@/components/Button/Button'
@@ -15,8 +16,8 @@ import { Form, FormInput } from '@/components/Form/Form'
 const HomePage = ({ popularPlaces, newestTrips }) => {
   const { t, lang } = useTranslation()
 
-  const newestTripsCondition = newestTrips.filter(
-    (trip) => formatDate(trip.date, 'dMY') > getFullDate(new Date())
+  const newestTripsCondition = newestTrips.filter((trip) =>
+    getFilteredDate(trip.date)
   )
 
   return (
@@ -59,14 +60,20 @@ const HomePage = ({ popularPlaces, newestTrips }) => {
 
       <section className={styles.home_trips}>
         <h2 className="center">{t('home:heading-section-trips')}</h2>
-        <div className={styles.home_trips__container}>
+        <div
+          className={cx(
+            styles.home_trips__container,
+            newestTripsCondition.length === 1 &&
+              styles.home_trips__container_full
+          )}
+        >
           {newestTripsCondition &&
             newestTripsCondition.slice(0, 4).map((trip, index) => {
               const title = trip.title && trimWords(trip.title, 10, 40)
               const description =
                 trip.description && trimWords(trip.description, 16, 100)
               const img = trip.trip_places[0].media[0]
-                ? `http://localhost:1337'${trip.trip_places[0].media[0]?.formats.medium.url}`
+                ? `http://localhost:1337${trip.trip_places[0].media[0]?.formats.medium.url}`
                 : '/placeholder.png'
               const date = formatDate(trip.date, 'd/MM/yy HH:mm', lang)
               const price =

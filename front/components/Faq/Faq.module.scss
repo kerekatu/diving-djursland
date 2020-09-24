@@ -23,6 +23,15 @@
     text-align: start;
     border: none;
     padding: 2.6rem 4rem;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      background-color: var(--c-gray);
+    }
+
+    &_active {
+      background-color: var(--c-gray);
+    }
 
     @media only screen and (max-width: 37.5em) {
       padding: 2rem;

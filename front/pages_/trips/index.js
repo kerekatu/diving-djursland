@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 
-import { formatDate, getFullDate } from '@/lib/date'
+import { getFilteredDate } from '@/lib/date'
 import { getNewestTrips, getAllData } from '@/lib/api'
 
 import TripsList from '@/components/Trips/TripsList'
@@ -9,8 +9,8 @@ import TripsMap from '@/components/Trips/TripsMap'
 import Layout from '@/components/Layout/Layout'
 
 const TripsPage = ({ allTrips, allMarkers }) => {
-  const tripsDateCondition = allTrips.filter(
-    (trip) => formatDate(trip.date, 'dMY') > getFullDate(new Date())
+  const tripsDateCondition = allTrips.filter((trip) =>
+    getFilteredDate(trip.date)
   )
 
   const [trips, setTrips] = useState(tripsDateCondition)

@@ -1,4 +1,5 @@
 import styles from './Faq.module.scss'
+import cx from 'classnames'
 import PropTypes from 'prop-types'
 import { useState } from 'react'
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
@@ -21,7 +22,10 @@ export const Faq = ({ items }) => {
         {items.map((item, index) => (
           <li className={styles.faq__item} key={index}>
             <button
-              className={styles.faq__btn}
+              className={cx(
+                styles.faq__btn,
+                itemOpen === index && styles.faq__btn_active
+              )}
               onClick={() => handleClickItem(index)}
             >
               <p>{item.title}</p>
@@ -44,5 +48,5 @@ export const Faq = ({ items }) => {
 }
 
 Faq.propTypes = {
-  items: PropTypes.array.isRequired,
+  items: PropTypes.array.isRequired
 }
