@@ -1,4 +1,9 @@
 .logo {
   font-size: 3.6rem;
   color: var(--c-white);
+
+  &_blue {
+    font-size: 3.6rem;
+    color: var(--c-blue);
+  }
 }

@@ -1,7 +1,7 @@
 .contact {
   display: flex;
   flex-direction: column;
-  gap: 70rem 0;
+  gap: 65rem 0;
   height: 100%;
   max-width: 144rem;
   margin: 0 auto;
@@ -74,10 +74,16 @@
 
   &__form {
     display: flex;
+    align-items: center;
     flex-direction: column;
     margin-bottom: 10rem;
+    border-radius: var(--br);
     background-color: var(--c-white-d);
     padding: 6rem;
+
+    @media only screen and (max-width: 56.25em) {
+      align-items: flex-start;
+    }
 
     @media only screen and (max-width: 37.5em) {
       padding: 6rem 3rem;
@@ -86,6 +92,16 @@
     & > h2 {
       @media only screen and (max-width: 37.5em) {
         font-size: max(2.4rem, 4vw) !important;
+      }
+    }
+
+    & form {
+      display: flex;
+      flex-direction: column;
+      width: 80rem;
+
+      @media only screen and (max-width: 75em) {
+        width: 100%;
       }
     }
 
@@ -104,6 +120,11 @@
     & > form > button {
       margin-top: 2rem;
       padding: 1rem 10rem;
+      align-self: start;
+
+      @media only screen and (max-width: 56.25em) {
+        width: 100%;
+      }
 
       @media only screen and (max-width: 37.5em) {
         padding: 1rem 4rem;

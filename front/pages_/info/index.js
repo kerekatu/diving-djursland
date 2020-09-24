@@ -9,18 +9,22 @@ const InfoPage = () => {
   const { t } = useTranslation()
 
   return (
-    <Layout>
-      <section className={styles.info}>
+    <Layout variantWhite={true} containedWidth={false}>
+      <div className={styles.info_title}>
         <h2>{t('info:info-title')}</h2>
         <p>{t('info:info-subtitle')}</p>
-        <Faq items={t('info:questions', {}, { returnObjects: true })} />
-        <div className={styles.info__bottom}>
-          <span>{t('info:info-bottom-text')}</span>
-          <Button
-            type="secondary"
-            title={t('info:info-bottom-btn')}
-            link="/contact"
-          />
+      </div>
+      <section className={styles.info}>
+        <div className={styles.info_container}>
+          <Faq items={t('info:questions', {}, { returnObjects: true })} />
+          <div className={styles.info__bottom}>
+            <span>{t('info:info-bottom-text')}</span>
+            <Button
+              type="secondary"
+              title={t('info:info-bottom-btn')}
+              link="/contact"
+            />
+          </div>
         </div>
       </section>
     </Layout>

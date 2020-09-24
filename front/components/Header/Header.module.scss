@@ -7,6 +7,23 @@
   padding: var(--pp-desktop);
   z-index: 10;
 
+  &_white {
+    background-color: var(--c-white) !important;
+    box-shadow: 0 2px 4px rgba(3, 27, 78, 0.1);
+
+    & nav button {
+      background-color: var(--c-blue);
+    }
+
+    & nav:first-of-type a {
+      color: var(--c-blue);
+    }
+
+    & nav:first-of-type svg {
+      color: var(--c-white);
+    }
+  }
+
   &__content {
     height: 8rem;
     display: flex;

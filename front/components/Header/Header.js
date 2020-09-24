@@ -7,11 +7,17 @@ import Navbar from '@/components/Navbar/Navbar'
 import Logo from '@/components/Logo/Logo'
 import { Button } from '@/components/Button/Button'
 
-const Header = ({ isExtended, containedWidth }) => {
+const Header = ({ isExtended, containedWidth, variant }) => {
   const { t } = useTranslation()
 
   return (
-    <header className={isExtended ? styles.header_extended : styles.header}>
+    <header
+      className={
+        isExtended
+          ? styles.header_extended
+          : cx(styles.header, variant && styles.header_white)
+      }
+    >
       <div
         className={
           containedWidth
@@ -19,7 +25,7 @@ const Header = ({ isExtended, containedWidth }) => {
             : styles.header__content
         }
       >
-        <Logo />
+        <Logo variant={variant} />
         <Navbar />
       </div>
 
@@ -47,7 +53,8 @@ const Header = ({ isExtended, containedWidth }) => {
 
 Header.propTypes = {
   isExtended: PropTypes.bool,
-  containedWidth: PropTypes.bool
+  containedWidth: PropTypes.bool,
+  variant: PropTypes.string
 }
 
 export default Header

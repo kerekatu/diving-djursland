@@ -1,13 +1,37 @@
 .info {
-  max-width: 144rem;
-  margin: 12rem auto;
+  padding: var(--pp-desktop);
 
-  & > h2 {
-    margin-bottom: 1.5rem;
+  &_container {
+    max-width: 144rem;
+    margin: 5rem auto 10rem auto;
+    max-width: 70%;
+
+    @media only screen and (max-width: 75em) {
+      max-width: 100%;
+    }
   }
 
-  & > p {
-    margin-bottom: 4rem;
+  &_title {
+    background-color: var(--c-blue);
+    padding: 4rem 4rem;
+    width: 100%;
+    left: 0;
+
+    & > h2,
+    & > p {
+      text-align: center;
+    }
+
+    & > h2 {
+      margin-top: 4rem;
+      margin-bottom: 1.5rem;
+      color: var(--c-white);
+    }
+
+    & > p {
+      margin-bottom: 4rem;
+      color: var(--c-white);
+    }
   }
 
   &__bottom {

@@ -7,7 +7,7 @@ const ContactPage = () => {
   const { t } = useTranslation()
 
   return (
-    <Layout>
+    <Layout extendedFooter={true}>
       <section className={styles.contact}>
         <div className={styles.contact__map_container}>
           <iframe
