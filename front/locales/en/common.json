@@ -16,5 +16,8 @@
   "trip-book-cta": "Reserve",
   "footer-social": "Find us",
   "accept-terms": "By filling out this form, Diving Djursland processes your personal information. For more information about our data processing, please read our",
-  "accept-terms-link": "privacy policy"
+  "accept-terms-link": "privacy policy",
+  "trip-address": "Address",
+  "trip-depth": "Depth",
+  "trip-difficulty": "Difficulty"
 }

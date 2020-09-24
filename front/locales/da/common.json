@@ -16,5 +16,8 @@
   "trip-book-cta": "Tilmeld",
   "footer-social": "Find os",
   "accept-terms": "Når du udfylder denne formular, behandler Diving Djursland dine personlige oplysninger. For mere information om vores databehandling, læs venligst vores",
-  "accept-terms-link": "privatlivspolitik"
+  "accept-terms-link": "privatlivspolitik",
+  "trip-address": "Adresse",
+  "trip-depth": "Dybde",
+  "trip-difficulty": "Sværhedsgrad"
 }
