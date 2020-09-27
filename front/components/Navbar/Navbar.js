@@ -10,13 +10,14 @@ import useTranslation from 'next-translate/useTranslation'
 import { ButtonDropdown, Button } from '@/components/Button/Button'
 
 const Navbar = ({ isFooter = false }) => {
+  const router = useRouter()
+  const { t, lang } = useTranslation()
+
   const [open, setOpen] = useState(false)
   const [language, setLanguage] = useState([
     { title: 'Dansk', slug: 'da', icon: '/dk-flag.svg' },
-    { title: 'English', slug: 'en', icon: '/gb-flag.svg' }
+    { title: 'English', slug: 'en', icon: '/gb-flag.svg' },
   ])
-  const router = useRouter()
-  const { t, lang } = useTranslation()
 
   const handleClose = () => {
     setOpen(!open)
@@ -153,9 +154,14 @@ const Navbar = ({ isFooter = false }) => {
             </Link>
           </li>
           <li className={styles.navbar__item}>
-            <Link href="/equipment">
-              <a className={styles.navbar__link}>{t('common:navbar-link-6')}</a>
-            </Link>
+            <a
+              href="https://scubafun.dk/"
+              target="_blank"
+              rel="noreferrer"
+              className={styles.navbar__link}
+            >
+              {t('common:navbar-link-6')}
+            </a>
           </li>
           <li className={styles.navbar__item}>
             <Link href="/privacy">

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
+import { NextSeo } from 'next-seo'
 
 import { getFilteredDate } from '@/lib/date'
 import { getNewestTrips, getAllData } from '@/lib/api'
@@ -62,30 +63,36 @@ const TripsPage = ({ allTrips, allMarkers }) => {
   }
 
   return (
-    <Layout containedWidth={!mapVisibility}>
-      <section className={mapVisibility ? 'trips' : 'trips_full'}>
-        <TripsList
-          items={trips}
-          filterItems={filterTripCategory}
-          mapVisibility={mapVisibility}
-          filteredStatus={filteredStatus}
-          handleMapVisibility={handleMapVisibility}
-          handleFilterStatus={handleFilterStatus}
-          hoverMarkerWithTrip={hoverMarkerWithTrip}
-        />
-
-        {mapVisibility && (
-          <TripsMap
-            markers={markers}
+    <>
+      <NextSeo
+        title="Diving Djursland - Dykkerture"
+        description="Har du taget certifikat for nylig og har brug for lidt mere erfaring er vores guidede ture lige noget for dig. Vi dykker forskellige destinationer alt efter vind og vejr så du har mulighed for at prøve lidt forskelligt. Er det længere tid siden du har dykket er det også en mulighed for en genopfriskning af dine dykkerfærdigheder eller bare."
+      />
+      <Layout containedWidth={!mapVisibility}>
+        <section className={mapVisibility ? 'trips' : 'trips_full'}>
+          <TripsList
+            items={trips}
+            filterItems={filterTripCategory}
+            mapVisibility={mapVisibility}
             filteredStatus={filteredStatus}
             handleMapVisibility={handleMapVisibility}
-            handleFindTrips={handleFindTrips}
             handleFilterStatus={handleFilterStatus}
-            hoveredMarker={hoveredMarker}
+            hoverMarkerWithTrip={hoverMarkerWithTrip}
           />
-        )}
-      </section>
-    </Layout>
+
+          {mapVisibility && (
+            <TripsMap
+              markers={markers}
+              filteredStatus={filteredStatus}
+              handleMapVisibility={handleMapVisibility}
+              handleFindTrips={handleFindTrips}
+              handleFilterStatus={handleFilterStatus}
+              hoveredMarker={hoveredMarker}
+            />
+          )}
+        </section>
+      </Layout>
+    </>
   )
 }
 
@@ -96,14 +103,14 @@ export async function getStaticProps() {
   return {
     props: {
       allTrips,
-      allMarkers
-    }
+      allMarkers,
+    },
   }
 }
 
 TripsPage.propTypes = {
   allTrips: PropTypes.array.isRequired,
-  allMarkers: PropTypes.array.isRequired
+  allMarkers: PropTypes.array.isRequired,
 }
 
 export default TripsPage

@@ -8,7 +8,7 @@ const Layout = ({
   extendedHeader = false,
   extendedFooter = false,
   containedWidth = true,
-  variantWhite = false
+  variantWhite = false,
 }) => {
   if (extendedHeader) {
     return (
@@ -42,7 +42,7 @@ Layout.propTypes = {
   extendedHeader: PropTypes.bool,
   extendedFooter: PropTypes.bool,
   containedWidth: PropTypes.bool,
-  variantWhite: PropTypes.bool
+  variantWhite: PropTypes.bool,
 }
 
 export default Layout

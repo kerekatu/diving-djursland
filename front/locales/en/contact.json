@@ -1,5 +1,9 @@
 {
   "heading": "Contact Info",
   "heading-form": "Contact Form",
-  "text-form": "Use the form below to contact us by email. You will receive an answer as soon as possible."
+  "text-form": "Use the form below to contact us by email. You will receive an answer as soon as possible.",
+  "form-label-name": "Name",
+  "form-label-email": "E-mail",
+  "form-label-topic": "Topic",
+  "form-label-message": "Message"
 }

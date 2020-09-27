@@ -2,7 +2,8 @@ import styles from './Footer.module.scss'
 import PropTypes from 'prop-types'
 import {
   faFacebookSquare,
-  faInstagramSquare
+  faInstagramSquare,
+  faYoutubeSquare,
 } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
 import useTranslation from 'next-translate/useTranslation'
@@ -18,7 +19,7 @@ const Footer = ({ isExtended = false }) => {
       <div className={styles.footer__content}>
         <div className={styles.footer_top}>
           <div className={styles.footer_top__left}>
-            <Logo />
+            <Logo variant />
             <div className={styles.footer__address}>
               <p>Svinget 2</p>
               <p>8570 Trustrup</p>
@@ -45,12 +46,32 @@ const Footer = ({ isExtended = false }) => {
           <div className={styles.footer_top__right}>
             <h3 className="black_text">{t('common:footer-social')}</h3>
             <div className={styles.footer__social}>
-              <a href="https://facebook.com/">
+              <a
+                href="https://www.facebook.com/ScubaFunDK/"
+                target="_blank"
+                rel="noreferrer"
+                title="Facebook Fanpage"
+              >
                 <Icon icon={faFacebookSquare} className={styles.footer__icon} />
+              </a>
+              <a
+                href="https://www.instagram.com/scubafundk/"
+                target="_blank"
+                rel="noreferrer"
+                title="Instagram"
+              >
                 <Icon
                   icon={faInstagramSquare}
                   className={styles.footer__icon}
                 />
+              </a>
+              <a
+                href="https://www.youtube.com/channel/UCspWLkThHe5d-Kdv2Tou8ww"
+                target="_blank"
+                rel="noreferrer"
+                title="Youtube Channel"
+              >
+                <Icon icon={faYoutubeSquare} className={styles.footer__icon} />
               </a>
             </div>
           </div>
@@ -67,7 +88,7 @@ const Footer = ({ isExtended = false }) => {
 }
 
 Footer.propTypes = {
-  isExtended: PropTypes.bool
+  isExtended: PropTypes.bool,
 }
 
 export default Footer

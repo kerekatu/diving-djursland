@@ -1,5 +1,9 @@
 {
   "heading": "Kontaktoplysninger",
   "heading-form": "Kontaktformular",
-  "text-form": "Brug nedenstående formular til at kontakte os via e-mail. Du får et svar hurtigst muligt."
+  "text-form": "Brug nedenstående formular til at kontakte os via e-mail. Du får et svar hurtigst muligt.",
+  "form-label-name": "Navn",
+  "form-label-email": "Email-adresse",
+  "form-label-topic": "Emne",
+  "form-label-message": "Besked"
 }

@@ -5,10 +5,11 @@ import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome'
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons'
 import Link from 'next-translate/Link'
 import cx from 'classnames'
+import { motion } from 'framer-motion'
 
 import useOnClickOutside from '@/hooks/useOnClickOutside'
 
-export const Button = ({ title, type, icon, link, ...props }) => {
+export const Button = ({ title, type, buttonType, icon, link, ...props }) => {
   if (link) {
     return (
       <Link href={link} {...props}>
@@ -26,7 +27,7 @@ export const Button = ({ title, type, icon, link, ...props }) => {
   }
 
   return (
-    <button className={styles['btn_' + type]} {...props}>
+    <button type={buttonType} className={styles['btn_' + type]} {...props}>
       {icon && (
         <Icon
           icon={icon}
@@ -43,7 +44,18 @@ Button.propTypes = {
   type: PropTypes.string.isRequired,
   icon: PropTypes.any,
   droppable: PropTypes.bool,
+  buttonType: PropTypes.string,
   link: PropTypes.string,
+}
+
+const animationVariants = {
+  closed: { opacity: 1, scale: 0 },
+  open: {
+    scale: 1,
+    transition: {
+      delay: 0.3,
+    },
+  },
 }
 
 export const ButtonDropdown = ({
@@ -92,7 +104,15 @@ export const ButtonDropdown = ({
       </button>
 
       {open && (
-        <div className={styles.btn_dropdown__content}>
+        <motion.div
+          className={styles.btn_dropdown__content}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.6, ease: [0.175, 0.85, 0.42, 0.96] },
+          }}
+        >
           {navbar
             ? options.map((option) =>
                 option.slug === defaultOption ? null : (
@@ -128,7 +148,7 @@ export const ButtonDropdown = ({
                   </button>
                 )
               )}
-        </div>
+        </motion.div>
       )}
     </div>
   )

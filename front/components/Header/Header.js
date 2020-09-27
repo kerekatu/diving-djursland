@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import styles from './Header.module.scss'
 import useTranslation from 'next-translate/useTranslation'
 import cx from 'classnames'
+import { motion } from 'framer-motion'
 
 import Navbar from '@/components/Navbar/Navbar'
 import Logo from '@/components/Logo/Logo'
@@ -30,7 +31,16 @@ const Header = ({ isExtended, containedWidth, variant }) => {
       </div>
 
       {isExtended && (
-        <section className={styles.header__hero}>
+        <motion.section
+          className={styles.header__hero}
+          initial={{ opacity: 0, y: 50, scale: 0.9 }}
+          animate={{
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: { duration: 1.8, ease: [0.175, 0.85, 0.42, 0.96] },
+          }}
+        >
           <h1>{t('common:header-hero-h1')}</h1>
           <p>{t('common:header-hero-p')}</p>
           <div className={styles.header__cta}>
@@ -45,7 +55,7 @@ const Header = ({ isExtended, containedWidth, variant }) => {
               link="/contact"
             />
           </div>
-        </section>
+        </motion.section>
       )}
     </header>
   )
@@ -54,7 +64,7 @@ const Header = ({ isExtended, containedWidth, variant }) => {
 Header.propTypes = {
   isExtended: PropTypes.bool,
   containedWidth: PropTypes.bool,
-  variant: PropTypes.string
+  variant: PropTypes.bool,
 }
 
 export default Header

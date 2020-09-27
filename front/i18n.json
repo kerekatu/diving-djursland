@@ -10,6 +10,7 @@
     "/trips": ["trips"],
     "/contact": ["contact"],
     "/info": ["info"],
-    "/places": ["places"]
+    "/places": ["places"],
+    "/privacy": ["privacy"]
   }
 }

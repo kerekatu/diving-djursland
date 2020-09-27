@@ -55,16 +55,18 @@
 
   &__social {
     margin-top: 1rem;
+
+    & a {
+      &:not(:last-child) {
+        margin-right: 1.5rem;
+      }
+    }
   }
 
   &__icon {
-    font-size: var(--fs-5);
+    font-size: 4rem;
     color: var(--c-blue);
     transition: opacity 0.2s ease-in-out;
-
-    &:not(:last-child) {
-      margin-right: 1.5rem;
-    }
 
     &:hover {
       opacity: 0.6;

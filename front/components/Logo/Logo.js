@@ -2,11 +2,17 @@ import styles from './Logo.module.scss'
 import PropTypes from 'prop-types'
 
 const Logo = ({ variant }) => {
-  return <div className={variant ? styles.logo_blue : styles.logo}>Logo</div>
+  return (
+    <img
+      className={styles.logo__img}
+      src={!variant ? 'logo.svg' : 'logo-white.png'}
+      alt="Logo"
+    />
+  )
 }
 
 Logo.propTypes = {
-  variant: PropTypes.bool
+  variant: PropTypes.bool,
 }
 
 export default Logo

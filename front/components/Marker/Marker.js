@@ -4,6 +4,7 @@ import cx from 'classnames'
 import PropTypes from 'prop-types'
 import Link from 'next-translate/Link'
 import useTranslation from 'next-translate/useTranslation'
+import { motion } from 'framer-motion'
 
 import useOnClickOutside from '@/hooks/useOnClickOutside'
 
@@ -14,7 +15,7 @@ const Marker = ({
   handleFilterStatus,
   filteredStatus,
   hoveredMarker,
-  markerId
+  markerId,
 }) => {
   const ref = useRef()
   const [open, setOpen] = useState(false)
@@ -69,7 +70,13 @@ const Marker = ({
 
       {open && (
         <Link as={`/places/${placeInfo.slug}`} href="/places/[slug]">
-          <a>
+          <motion.a
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: 1,
+              transition: { duration: 0.6, ease: [0.175, 0.85, 0.42, 0.96] },
+            }}
+          >
             <div className={styles.marker_dropdown}>
               <img
                 src={
@@ -96,7 +103,7 @@ const Marker = ({
                 </div>
               </div>
             </div>
-          </a>
+          </motion.a>
         </Link>
       )}
     </div>
@@ -111,7 +118,7 @@ Marker.propTypes = {
   handleFilterStatus: PropTypes.func.isRequired,
   filteredStatus: PropTypes.bool.isRequired,
   hoveredMarker: PropTypes.number,
-  markerId: PropTypes.number.isRequired
+  markerId: PropTypes.number.isRequired,
 }
 
 export default Marker

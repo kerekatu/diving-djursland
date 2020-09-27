@@ -3,6 +3,8 @@
     margin-top: auto;
   }
 
+  // INPUT
+
   &__input_container {
     display: flex;
     flex-direction: column;
@@ -33,6 +35,12 @@
     transition: all 0.2s ease-in-out;
 
     &:placeholder-shown {
+      color: var(--c-black-l);
+      opacity: 0.6;
+    }
+
+    &::placeholder {
+      color: var(--c-black-l);
       opacity: 0.6;
     }
 
@@ -52,6 +60,30 @@
       outline: none !important;
       box-shadow: none !important;
     }
+
+    &_error {
+      border: 0.1rem solid var(--c-red);
+
+      &:focus,
+      &:active {
+        border: 0.1rem solid var(--c-red);
+        outline: none;
+      }
+    }
+  }
+
+  &__error {
+    display: block;
+    margin-top: 0.5rem;
+    color: var(--c-red);
+    font-size: var(--fs-1);
+  }
+
+  &__terms {
+    color: var(--c-black-l-2);
+    margin-top: 4rem;
+    width: 100%;
+    font-size: var(--fs-1);
   }
 
   &__link {
@@ -59,6 +91,66 @@
 
     &:hover {
       text-decoration: underline;
+    }
+  }
+
+  // SELECT
+
+  &__select {
+    background-color: var(--c-gray);
+    border-radius: var(--br);
+    border: 0.1rem solid var(--c-gray-d);
+    color: var(--c-black-l);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+
+    &_open {
+      border: 0.1rem solid var(--c-blue);
+    }
+
+    &_placeholder {
+      padding: 1.2rem 2rem;
+      opacity: 0.6;
+      color: var(--c-black-l);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &_selected {
+        opacity: 1;
+      }
+    }
+
+    &_dropdown {
+      margin: 1rem;
+    }
+
+    &_list {
+      display: block;
+      margin-top: 1rem;
+    }
+
+    &_item {
+      padding: 1.2rem 2rem;
+      cursor: pointer;
+      margin: 1rem 0;
+
+      &_selected {
+        background-color: var(--c-blue);
+        border-radius: var(--br);
+        color: var(--c-white);
+        font-weight: 700;
+
+        &:hover {
+          background-color: var(--c-blue) !important;
+        }
+      }
+
+      &:hover {
+        background-color: var(--c-blue-l);
+        border-radius: var(--br);
+        color: var(--c-white);
+      }
     }
   }
 }
