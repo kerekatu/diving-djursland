@@ -25,6 +25,9 @@ const Trip = ({ tripData }) => {
   const { handleSubmit, register, errors } = useForm()
   const [selectValue, setSelectValue] = useState(selectOptions[0])
 
+  console.log(trip)
+  console.log(lang)
+
   const onSubmit = (values) => {
     console.log(values)
     console.log(selectValue)
@@ -41,7 +44,7 @@ const Trip = ({ tripData }) => {
   return (
     <>
       <NextSeo
-        title={`Diving Djursland - ${trip.title}`}
+        title={`Diving Djursland - ${trip}`}
         description="Har du taget certifikat for nylig og har brug for lidt mere erfaring er vores guidede ture lige noget for dig. Vi dykker forskellige destinationer alt efter vind og vejr så du har mulighed for at prøve lidt forskelligt. Er det længere tid siden du har dykket er det også en mulighed for en genopfriskning af dine dykkerfærdigheder eller bare."
       />
       <Layout>
@@ -108,7 +111,7 @@ const Trip = ({ tripData }) => {
                       register={register({
                         required: 'Feltet er obligatorisk',
                         minLength: 2,
-                        maxLength: 30,
+                        maxLength: 30
                       })}
                     />
                     <FormInput
@@ -119,7 +122,7 @@ const Trip = ({ tripData }) => {
                       register={register({
                         required: 'Feltet er obligatorisk',
                         minLength: 6,
-                        maxLength: 30,
+                        maxLength: 30
                       })}
                     />
                   </div>
@@ -132,8 +135,8 @@ const Trip = ({ tripData }) => {
                       required: 'Feltet er obligatorisk',
                       pattern: {
                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                        message: 'Ugyldig email-adresse',
-                      },
+                        message: 'Ugyldig email-adresse'
+                      }
                     })}
                   />
                   <div className={styles.trip__input_grid}>
@@ -145,7 +148,7 @@ const Trip = ({ tripData }) => {
                       register={register({
                         required: 'Feltet er obligatorisk',
                         minLength: 3,
-                        maxLength: 6,
+                        maxLength: 6
                       })}
                     />
                     <FormInput
@@ -156,7 +159,7 @@ const Trip = ({ tripData }) => {
                       register={register({
                         required: 'Feltet er obligatorisk',
                         minLength: 2,
-                        maxLength: 8,
+                        maxLength: 8
                       })}
                     />
                   </div>
@@ -169,7 +172,7 @@ const Trip = ({ tripData }) => {
                       register={register({
                         required: 'Feltet er obligatorisk',
                         minLength: 2,
-                        maxLength: 4,
+                        maxLength: 4
                       })}
                     />
                     <FormSelect
@@ -213,22 +216,29 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
-      tripData,
-    },
+      tripData
+    }
   }
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths({ lang }) {
   const allTripsLinks = await getAllData('trips')
 
   return {
-    paths: allTripsLinks.map((trip) => `/trips/${trip.slug}`) || [],
-    fallback: true,
+    paths:
+      allTripsLinks.map((trip) => {
+        if (lang === 'da') {
+          return `/trips/${trip.slug}`
+        } else {
+          return `/${lang}/trips/${trip.slug}`
+        }
+      }) || [],
+    fallback: true
   }
 }
 
 Trip.propTypes = {
-  tripData: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
+  tripData: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired
 }
 
 export default Trip

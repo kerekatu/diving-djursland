@@ -38,7 +38,7 @@ const Header = ({ isExtended, containedWidth, variant }) => {
             opacity: 1,
             y: 0,
             scale: 1,
-            transition: { duration: 1.8, ease: [0.175, 0.85, 0.42, 0.96] },
+            transition: { duration: 1, ease: [0.175, 0.85, 0.42, 0.96] }
           }}
         >
           <h1>{t('common:header-hero-h1')}</h1>
@@ -64,7 +64,7 @@ const Header = ({ isExtended, containedWidth, variant }) => {
 Header.propTypes = {
   isExtended: PropTypes.bool,
   containedWidth: PropTypes.bool,
-  variant: PropTypes.bool,
+  variant: PropTypes.bool
 }
 
 export default Header

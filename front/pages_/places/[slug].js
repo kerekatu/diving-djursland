@@ -136,23 +136,30 @@ export async function getStaticProps({ params }) {
     props: {
       post: {
         ...placeData[0],
-        content,
-      },
-    },
+        content
+      }
+    }
   }
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths({ lang }) {
   const allDataLinks = await getAllData('trip-places', '')
 
   return {
-    paths: allDataLinks.map((trip) => `/places/${trip.slug}`) || [],
-    fallback: true,
+    paths:
+      allDataLinks.map((place) => {
+        if (lang === 'da') {
+          return `/places/${place.slug}`
+        } else {
+          return `/${lang}/places/${place.slug}`
+        }
+      }) || [],
+    fallback: true
   }
 }
 
 Place.propTypes = {
-  post: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
+  post: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired
 }
 
 export default Place

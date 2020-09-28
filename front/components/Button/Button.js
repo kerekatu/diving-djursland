@@ -45,24 +45,14 @@ Button.propTypes = {
   icon: PropTypes.any,
   droppable: PropTypes.bool,
   buttonType: PropTypes.string,
-  link: PropTypes.string,
-}
-
-const animationVariants = {
-  closed: { opacity: 1, scale: 0 },
-  open: {
-    scale: 1,
-    transition: {
-      delay: 0.3,
-    },
-  },
+  link: PropTypes.string
 }
 
 export const ButtonDropdown = ({
   defaultOption,
   options,
   setOption,
-  navbar = false,
+  navbar = false
 }) => {
   const ref = useRef()
   const [open, setOpen] = useState(false)
@@ -110,7 +100,7 @@ export const ButtonDropdown = ({
           animate={{
             opacity: 1,
             y: 0,
-            transition: { duration: 0.6, ease: [0.175, 0.85, 0.42, 0.96] },
+            transition: { duration: 0.4, ease: [0.175, 0.85, 0.42, 0.96] }
           }}
         >
           {navbar
@@ -158,9 +148,9 @@ ButtonDropdown.propTypes = {
   defaultOption: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object,
-    PropTypes.array,
+    PropTypes.array
   ]).isRequired,
   options: PropTypes.array.isRequired,
   setOption: PropTypes.func.isRequired,
-  navbar: PropTypes.bool,
+  navbar: PropTypes.bool
 }

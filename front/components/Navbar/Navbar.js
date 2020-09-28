@@ -16,7 +16,7 @@ const Navbar = ({ isFooter = false }) => {
   const [open, setOpen] = useState(false)
   const [language, setLanguage] = useState([
     { title: 'Dansk', slug: 'da', icon: '/dk-flag.svg' },
-    { title: 'English', slug: 'en', icon: '/gb-flag.svg' },
+    { title: 'English', slug: 'en', icon: '/gb-flag.svg' }
   ])
 
   const handleClose = () => {
@@ -169,7 +169,7 @@ const Navbar = ({ isFooter = false }) => {
             </Link>
           </li>
           <li className={styles.navbar__item}>
-            <Link href={router.pathname}>
+            <Link href={router.pathname} noLang>
               <a className={styles.navbar__link}>
                 <Icon icon={faArrowUp}></Icon>
               </a>

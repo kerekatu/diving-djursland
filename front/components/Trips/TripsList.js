@@ -17,7 +17,7 @@ const TripsList = ({
   filteredStatus,
   handleMapVisibility,
   handleFilterStatus,
-  hoverMarkerWithTrip,
+  hoverMarkerWithTrip
 }) => {
   const { t, lang } = useTranslation()
 
@@ -150,7 +150,7 @@ TripsList.propTypes = {
   handleMapVisibility: PropTypes.func.isRequired,
   handleFilterStatus: PropTypes.func.isRequired,
   filteredStatus: PropTypes.bool.isRequired,
-  hoverMarkerWithTrip: PropTypes.func.isRequired,
+  hoverMarkerWithTrip: PropTypes.func.isRequired
 }
 
 export default TripsList
