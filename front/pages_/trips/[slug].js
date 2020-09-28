@@ -18,15 +18,12 @@ import { useState } from 'react'
 
 const Trip = ({ tripData }) => {
   const trip = tripData && tripData[0]
-  const selectOptions = ['Kontant', 'Mobile Pay', 'Paypal', 'Webshop']
+  const selectOptions = ['Cash', 'Mobile Pay', 'Paypal', 'Webshop']
 
   const router = useRouter()
   const { t, lang } = useTranslation()
   const { handleSubmit, register, errors } = useForm()
   const [selectValue, setSelectValue] = useState(selectOptions[0])
-
-  console.log(trip)
-  console.log(lang)
 
   const onSubmit = (values) => {
     console.log(values)
@@ -44,7 +41,7 @@ const Trip = ({ tripData }) => {
   return (
     <>
       <NextSeo
-        title={`Diving Djursland - ${trip}`}
+        title={`Diving Djursland - ${trip.title}`}
         description="Har du taget certifikat for nylig og har brug for lidt mere erfaring er vores guidede ture lige noget for dig. Vi dykker forskellige destinationer alt efter vind og vejr så du har mulighed for at prøve lidt forskelligt. Er det længere tid siden du har dykket er det også en mulighed for en genopfriskning af dine dykkerfærdigheder eller bare."
       />
       <Layout>
@@ -74,90 +71,91 @@ const Trip = ({ tripData }) => {
               <h3 className="black_text">{trip.title}</h3>
               <div className={styles.trip__info_text}>
                 <p>
-                  <strong>Dato: </strong>
+                  <strong>{t('trips:trips-date')}: </strong>
                   {formatDate(trip.date, 'EEEE d. MMMM, HH:mm', lang)}
                 </p>
               </div>
               <div className={styles.trip__info_text}>
-                <strong>Adresse:</strong> {trip.address}
+                <strong>{t('trips:trips-address')}:</strong> {trip.address}
               </div>
               <div className={styles.trip__info_text}>
-                <strong>Pris per person:</strong> {trip.priceDKK} DKK
+                <strong>{t('trips:trips-price')}:</strong>{' '}
+                {lang === 'da'
+                  ? `${trip.priceDKK} DKK`
+                  : `${trip.priceEUR} EUR`}
               </div>
               <div className={styles.trip__info_text}>
-                <strong>Antal ledige pladser:</strong> {trip.participantsLeft}
+                <strong>{t('trips:trips-participants-2')}: </strong>
+                {trip.participantsLeft}
               </div>
               <div className={styles.trip__form}>
-                <h3 className="center">Tilmeldingsformular</h3>
+                <h3 className="center">{t('trips:trips-form-title')}</h3>
                 <div className={styles.trip__form_notice}>
-                  <strong>Vigtig Info!</strong>
-                  <p>1. Du skal være en certificeret dykker for at deltage</p>
-                  <p>
-                    2. Din tilmelding er først bekræftet, når du har betalt
-                    (hold øje med dit email for instruktioner)
-                  </p>
+                  <strong>{t('trips:trips-notice-title')}</strong>
+                  <p>{t('trips:trips-notice-1')}</p>
+                  <p>{t('trips:trips-notice-2')}</p>
                 </div>
                 <Form
-                  buttonTitle="Tilmeld"
+                  buttonTitle={t('trips:form-button-cta')}
                   acceptTerms
                   onSubmit={handleSubmit(onSubmit)}
                 >
                   <div className={styles.trip__input_grid}>
                     <FormInput
-                      label="Navn"
+                      label={t('trips:form-label-name')}
                       name="input_name"
                       placeholder="Joe Doe"
                       error={errors?.input_name}
                       register={register({
-                        required: 'Feltet er obligatorisk',
+                        required: t('trips:form-required'),
                         minLength: 2,
                         maxLength: 30
                       })}
                     />
                     <FormInput
-                      label="Tlf."
+                      label={t('trips:form-label-phone')}
                       name="input_phone"
-                      placeholder="Telefonnummer"
+                      placeholder={t('trips:form-label-phone')}
                       error={errors?.input_phone}
                       register={register({
-                        required: 'Feltet er obligatorisk',
+                        required: t('trips:form-required'),
                         minLength: 6,
                         maxLength: 30
                       })}
                     />
                   </div>
                   <FormInput
-                    label="Email-adresse"
+                    label={t('trips:form-label-email')}
                     name="input_email"
                     placeholder="example@example.com"
                     error={errors?.input_email}
                     register={register({
-                      required: 'Feltet er obligatorisk',
+                      required: t('trips:form-required'),
                       pattern: {
                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                        message: 'Ugyldig email-adresse'
+                        message: t('trips:form-error-email')
                       }
                     })}
                   />
                   <div className={styles.trip__input_grid}>
                     <FormInput
-                      label="Højde"
+                      label={t('trips:form-label-height')}
                       name="input_height"
-                      placeholder="Højde"
+                      placeholder={t('trips:form-label-height')}
                       error={errors?.input_height}
                       register={register({
-                        required: 'Feltet er obligatorisk',
+                        required: t('trips:form-required'),
                         minLength: 3,
                         maxLength: 6
                       })}
                     />
                     <FormInput
-                      label="Vægt"
+                      label={t('trips:form-label-weight')}
                       name="input_weight"
-                      placeholder="Vægt"
+                      placeholder={t('trips:form-label-weight')}
                       error={errors?.input_weight}
                       register={register({
-                        required: 'Feltet er obligatorisk',
+                        required: t('trips:form-required'),
                         minLength: 2,
                         maxLength: 8
                       })}
@@ -165,18 +163,18 @@ const Trip = ({ tripData }) => {
                   </div>
                   <div className={styles.trip__input_grid}>
                     <FormInput
-                      label="Skostørrelse"
+                      label={t('trips:form-label-shoe')}
                       name="input_shoe"
-                      placeholder="Skostørrelse"
+                      placeholder={t('trips:form-label-shoe')}
                       error={errors?.input_shoe}
                       register={register({
-                        required: 'Feltet er obligatorisk',
+                        required: t('trips:form-required'),
                         minLength: 2,
                         maxLength: 4
                       })}
                     />
                     <FormSelect
-                      label="Betalingsmetode"
+                      label={t('trips:form-label-payment')}
                       name="input_payment"
                       options={selectOptions}
                       setSelectValue={setSelectValue}
@@ -187,21 +185,23 @@ const Trip = ({ tripData }) => {
               </div>
             </div>
             <div className={styles.trip__desc}>
-              <h4>Beskrivelse</h4>
+              <h4>{t('trips:trips-desc-title')}</h4>
               <p>{trip.description}</p>
               <p>
-                <strong>Dybde: </strong>
+                <strong>{t('trips:trips-depth')}: </strong>
                 {trip.trip_places[0]?.depth}m
               </p>
               <p>
-                <strong>Sværhedgrad: </strong>
+                <strong>{t('trips:trips-difficulty')}: </strong>
                 {categoryFormat(trip.trip_places[0]?.trip_category, t)}
               </p>
               <Link
                 as={`/places/${trip.trip_places[0]?.slug}`}
                 href="/places/[slug]"
               >
-                <a className={styles.trip__link}>Læs mere om dykkerstedet...</a>
+                <a className={styles.trip__link}>
+                  {t('trips:trips-read-more')}
+                </a>
               </Link>
             </div>
           </section>

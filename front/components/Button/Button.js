@@ -8,6 +8,7 @@ import cx from 'classnames'
 import { motion } from 'framer-motion'
 
 import useOnClickOutside from '@/hooks/useOnClickOutside'
+import { useRouter } from 'next/router'
 
 export const Button = ({ title, type, buttonType, icon, link, ...props }) => {
   if (link) {
@@ -56,6 +57,7 @@ export const ButtonDropdown = ({
 }) => {
   const ref = useRef()
   const [open, setOpen] = useState(false)
+  const router = useRouter()
 
   // const routerQuery = router.asPath.split('/').pop()
 

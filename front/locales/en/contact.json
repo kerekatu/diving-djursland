@@ -5,5 +5,7 @@
   "form-label-name": "Name",
   "form-label-email": "E-mail",
   "form-label-topic": "Topic",
-  "form-label-message": "Message"
+  "form-label-message": "Message",
+  "form-required": "This field is required",
+  "form-error-email": "Invalid email"
 }

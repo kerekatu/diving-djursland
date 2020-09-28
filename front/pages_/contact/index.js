@@ -77,21 +77,22 @@ const ContactPage = () => {
                 name="input_email"
                 placeholder="example@example.com"
                 register={register({
-                  required: 'Feltet er obligatorisk',
+                  required: t('contact:form-required'),
                   pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: 'Ugyldig email-adresse',
-                  },
+                    message: t('contact:form-error-email')
+                  }
                 })}
                 error={errors?.input_email}
               />
               <FormInput
                 label={t('contact:form-label-topic')}
                 name="input_topic"
+                placeholder={t('contact:form-label-topic')}
                 register={register({
-                  required: 'Feltet er obligatorisk',
+                  required: t('contact:form-required'),
                   minLength: 2,
-                  maxLength: 100,
+                  maxLength: 100
                 })}
                 error={errors?.input_topic}
               />
@@ -99,11 +100,11 @@ const ContactPage = () => {
                 label={t('contact:form-label-message')}
                 type="textarea"
                 name="input_message"
-                placeholder="..."
+                placeholder={t('contact:form-label-message')}
                 register={register({
-                  required: 'Feltet er obligatorisk',
+                  required: t('contact:form-required'),
                   minLength: 3,
-                  maxLength: 1000,
+                  maxLength: 1000
                 })}
                 error={errors?.input_message}
               />

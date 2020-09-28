@@ -5,5 +5,7 @@
   "form-label-name": "Navn",
   "form-label-email": "Email-adresse",
   "form-label-topic": "Emne",
-  "form-label-message": "Besked"
+  "form-label-message": "Besked",
+  "form-required": "Feltet er obligatorisk",
+  "form-error-email": "Ugyldig email-adresse"
 }

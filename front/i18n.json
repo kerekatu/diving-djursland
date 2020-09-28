@@ -8,9 +8,11 @@
     "*": ["common"],
     "/": ["home"],
     "/trips": ["trips"],
+    "/trips/[slug]": ["trips"],
     "/contact": ["contact"],
     "/info": ["info"],
     "/places": ["places"],
+    "/places/[slug]": ["places"],
     "/privacy": ["privacy"]
   }
 }

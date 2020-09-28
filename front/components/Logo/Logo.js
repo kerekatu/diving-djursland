@@ -11,6 +11,11 @@ const Logo = ({ variant }) => {
           src={!variant ? '/logo.svg' : '/logo-white.svg'}
           alt="Logo"
         />
+        <img
+          className={styles.logo__img_small}
+          src={!variant ? '/logo-small.svg' : '/logo-small-white.svg'}
+          alt="Logo"
+        />
       </a>
     </Link>
   )

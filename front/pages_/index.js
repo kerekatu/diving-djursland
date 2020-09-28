@@ -93,10 +93,6 @@ const HomePage = ({ popularPlaces, newestTrips }) => {
                   lang === 'da'
                     ? trip.priceDKK + ' DKK'
                     : trip.priceEUR + ' EUR'
-                const btnTitle =
-                  lang === 'da'
-                    ? `${t('common:trip-book-cta')}`
-                    : `${t('common:trip-book-cta')}`
 
                 return index === 0 ? (
                   <Card type="secondary" key={index}>
@@ -116,7 +112,7 @@ const HomePage = ({ popularPlaces, newestTrips }) => {
                           <p className={styles.home_trips__price}>{price}</p>
                         </div>
                         <Button
-                          title={btnTitle}
+                          title={t('common:trip-book-cta')}
                           as={`/trips/${trip.slug}`}
                           link="/trips/[slug]"
                           type="primary"
@@ -136,7 +132,10 @@ const HomePage = ({ popularPlaces, newestTrips }) => {
                           <p className={styles.home_trips__date}>{date}</p>
                           <p className={styles.home_trips__price}>{price}</p>
                         </div>
-                        <Button title={btnTitle} type="primary" />
+                        <Button
+                          title={t('common:trip-book-cta')}
+                          type="primary"
+                        />
                       </div>
                     </div>
                   </Card>
@@ -181,8 +180,8 @@ const HomePage = ({ popularPlaces, newestTrips }) => {
                   required: 'Feltet er obligatorisk',
                   pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: 'Ugyldig email-adresse',
-                  },
+                    message: 'Ugyldig email-adresse'
+                  }
                 })}
                 error={errors?.input_email}
               />
@@ -201,8 +200,8 @@ export async function getStaticProps() {
   return {
     props: {
       popularPlaces,
-      newestTrips,
-    },
+      newestTrips
+    }
   }
 }
 
@@ -210,7 +209,7 @@ HomePage.propTypes = {
   popularPlaces: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
     .isRequired,
   newestTrips: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
-    .isRequired,
+    .isRequired
 }
 
 export default HomePage
